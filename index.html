@@ -731,6 +731,7 @@ var MONTHS = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10
 function goHome(){
   document.getElementById('main').style.display = 'none';
   document.getElementById('predPage').style.display = 'none';
+  document.getElementById('datasheetsPage').style.display = 'none';
   document.getElementById('quotePreview').style.display = 'none';
   document.getElementById('printBtn').style.display = 'none';
   document.getElementById('floatBar').classList.remove('show');
@@ -1585,6 +1586,7 @@ function getBrandLogo(brand) {
 }
 
 function goDatasheets() {
+  document.getElementById("homePage").style.display = "none";
   document.getElementById("skillsPage").style.display = "none";
   document.getElementById("datasheetsPage").style.display = "flex";
   filterDatasheets();
