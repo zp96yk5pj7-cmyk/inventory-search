@@ -649,6 +649,9 @@ document.getElementById('kw').addEventListener('keydown',function(e){
 function goHome(){
   document.getElementById('main').style.display = 'none';
   document.getElementById('datasheetsPage').style.display = 'none';
+  document.getElementById('skillsPage').style.display = 'none';
+  document.getElementById('converterPage').style.display = 'none';
+  document.getElementById('fortunePage').style.display = 'none';
   document.getElementById('quotePreview').style.display = 'none';
   document.getElementById('printBtn').style.display = 'none';
   document.getElementById('floatBar').classList.remove('show');
@@ -1122,11 +1125,6 @@ function goDatasheets() {
   document.getElementById("skillsPage").style.display = "none";
   document.getElementById("datasheetsPage").style.display = "flex";
   filterDatasheets();
-}
-
-function backToSkillsFromDatasheets() {
-  document.getElementById("datasheetsPage").style.display = "none";
-  document.getElementById("skillsPage").style.display = "flex";
 }
 
 function filterDatasheets() {
