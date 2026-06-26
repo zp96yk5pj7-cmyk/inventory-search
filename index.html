@@ -109,15 +109,21 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
 .empty{text-align:center;padding:60px 20px;color:#bbb;font-size:15px;display:none}
 .empty.show{display:block}
 
-/* === 采购预测系统样式 === */
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:10px 24px;border-radius:20px;font-size:14px;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}
+.toast.success{background:#4caf50}
+.toast.error{background:#f44336}
+
+.home-btn{background:rgba(255,255,255,.15);border:none;color:#fff;padding:4px 12px;border-radius:14px;font-size:13px;cursor:pointer;transition:background .2s}
+.home-btn:active{background:rgba(255,255,255,.3)}
+.hero-copy{font-size:11px;color:rgba(255,255,255,.35);text-align:center;margin-top:6px;letter-spacing:.5px}
+
 /* === 首页样式 === */
 .hero-banner{width:100%;max-width:600px;background:linear-gradient(135deg,#0d1b3e 0%,#1a3a6b 50%,#1a56b0 100%);border-radius:20px;padding:32px 24px;text-align:center;box-shadow:0 4px 24px rgba(13,27,62,.2);animation:contentIn .5s both}
 .hero-banner h2{color:#fff;font-size:22px;font-weight:700;margin-bottom:6px}
-.hero-banner .hero-sub{color:rgba(255,255,255,.7);font-size:13px;margin-bottom:10px}
-.hero-banner .hero-date{color:rgba(255,255,255,.5);font-size:12px}
+.hero-sub{color:rgba(255,255,255,.7);font-size:13px;margin-bottom:10px}
+.hero-date{color:rgba(255,255,255,.5);font-size:12px}
 .home-page{display:flex;flex-direction:column;align-items:center;padding:30px 20px;gap:20px;min-height:100vh;animation:contentIn .5s both}
-.home-page h2{display:none}
-.home-page .sub{display:none}
 .home-cards{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;width:100%;max-width:600px}
 .home-card{flex:1;min-width:140px;max-width:280px;border-radius:20px;padding:24px 18px;text-align:center;cursor:pointer;box-shadow:0 4px 24px rgba(0,0,0,.08);transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s;border:none;position:relative;overflow:hidden}
 .home-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.12)}
@@ -128,70 +134,10 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
 .home-card .card-desc{font-size:13px;color:rgba(255,255,255,.92);line-height:1.5;text-shadow:0 1px 2px rgba(0,0,0,.1)}
 .home-card.card-inventory{background:linear-gradient(135deg,#1565C0,#1976D2,#1E88E5)}
 .home-card.card-inventory .card-icon{background:rgba(255,255,255,.2);color:#fff}
-.home-card.card-prediction{background:linear-gradient(135deg,#E65100,#F57C00,#FB8C00)}
-.home-card.card-prediction .card-icon{background:rgba(255,255,255,.2);color:#fff}
 .home-card.card-skills{background:linear-gradient(135deg,#2E7D32,#388E3C,#43A047)}
 .home-card.card-skills .card-icon{background:rgba(255,255,255,.2);color:#fff}
 .home-card.card-datasheets{background:linear-gradient(135deg,#6A1B9A,#7B1FA2,#8E24AA)}
 .home-card.card-datasheets .card-icon{background:rgba(255,255,255,.2);color:#fff}
-
-.pred-page{display:flex;flex-direction:column;min-height:100vh;background:#eef1f6;padding-bottom:80px;animation:contentIn .4s both}
-.pred-header{position:sticky;top:0;z-index:100;background:linear-gradient(135deg,#0d1b3e,#1a3a6b,#1a56b0);padding:12px 16px;box-shadow:0 4px 20px rgba(13,27,62,.35);display:flex;align-items:center;gap:12px}
-.pred-header .back-btn{background:rgba(255,255,255,.15);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .2s}
-.pred-header .back-btn:active{background:rgba(255,255,255,.3)}
-.pred-header h1{color:#fff;font-size:17px;font-weight:600;flex:1;text-align:center;margin-right:36px}
-.pred-bar{padding:12px 16px;background:#fff;border-bottom:1px solid #eee;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.pred-bar input,.pred-bar select{height:38px;padding:0 12px;border:1px solid #ddd;border-radius:10px;font-size:14px;outline:none;background:#fafafa}
-.pred-bar input:focus,.pred-bar select:focus{border-color:#1a56b0;background:#fff}
-.pred-bar .name-inp{width:110px}
-.pred-bar .month-sel{width:130px}
-.pred-bar .search-inp{flex:1;min-width:120px;max-width:240px}
-
-.pred-tabs{display:flex;background:#fff;border-bottom:2px solid #eee}
-.pred-tab{flex:1;text-align:center;padding:12px;font-size:14px;font-weight:500;color:#888;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .2s,border-color .2s}
-.pred-tab.active{color:#1a56b0;border-bottom-color:#1a56b0;font-weight:600}
-
-.pred-list{padding:0 8px;flex:1;overflow-y:auto}
-.pred-item{background:#fff;border-radius:12px;margin-bottom:8px;padding:10px 12px;box-shadow:0 1px 6px rgba(0,0,0,.04);display:flex;flex-wrap:wrap;align-items:center;gap:6px}
-.pred-item .prod-name{flex:1;min-width:140px;font-size:12px;color:#333;word-break:break-all;line-height:1.4;padding-right:4px}
-.pred-item .month-inputs{display:flex;gap:4px;flex-shrink:0}
-.pred-item .month-inputs input{width:52px;height:34px;text-align:center;border:1px solid #e0e0e0;border-radius:8px;font-size:13px;outline:none;background:#fafafa;-moz-appearance:textfield}
-.pred-item .month-inputs input::-webkit-outer-spin-button,.pred-item .month-inputs input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-.pred-item .month-inputs input:focus{border-color:#1a56b0;background:#fff;box-shadow:0 0 0 2px rgba(26,86,176,.08)}
-.pred-item.hidden{display:none}
-.pred-month-labels{display:flex;gap:4px;padding:0 16px;margin:8px 0 4px;font-size:10px;color:#aaa}
-.pred-month-labels span{width:52px;text-align:center}
-
-.pred-actions{position:sticky;bottom:0;background:#fff;box-shadow:0 -2px 12px rgba(0,0,0,.08);padding:12px 16px;display:flex;gap:10px;z-index:50}
-.pred-actions button{flex:1;height:44px;border:none;border-radius:22px;font-size:15px;font-weight:600;cursor:pointer;transition:transform .15s}
-.pred-actions button:active{transform:scale(.97)}
-.pred-actions .btn-draft{background:#f0f0f0;color:#555}
-.pred-actions .btn-export{background:#1a56b0;color:#fff;box-shadow:0 3px 12px rgba(26,86,176,.25)}
-
-.summary-page{padding:12px 16px;flex:1}
-.summary-page h3{font-size:16px;color:#0d1b3e;margin-bottom:12px;font-weight:600}
-.upload-zone{border:2px dashed #ccc;border-radius:16px;padding:30px 20px;text-align:center;color:#999;font-size:14px;cursor:pointer;background:#fafafa;transition:border-color .2s,background .2s;margin-bottom:16px}
-.upload-zone:hover,.upload-zone.dragover{border-color:#1a56b0;background:rgba(26,86,176,.04);color:#1a56b0}
-.upload-zone input{display:none}
-.summary-table-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:12px}
-.summary-table{width:100%;border-collapse:collapse;font-size:11px;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.04)}
-.summary-table th,.summary-table td{padding:8px 6px;text-align:center;border-bottom:1px solid #f0f0f0;white-space:nowrap}
-.summary-table th{background:#0d1b3e;color:#fff;font-weight:500;font-size:10px;position:sticky;top:0}
-.summary-table td:first-child{text-align:left;font-size:11px;white-space:normal;min-width:160px;color:#333}
-.summary-table tr:last-child td{font-weight:700;background:#f8faff;border-top:2px solid #1a56b0;color:#1a56b0}
-.summary-actions{display:flex;gap:10px;flex-wrap:wrap}
-.summary-actions button{flex:1;min-width:90px;height:40px;border:none;border-radius:20px;font-size:14px;font-weight:600;cursor:pointer;transition:transform .15s}
-.summary-actions button:active{transform:scale(.97)}
-.summary-actions .btn-csv{background:#1a56b0;color:#fff;box-shadow:0 3px 12px rgba(26,86,176,.25)}
-.summary-actions .btn-clear{background:#f0f0f0;color:#666}
-
-.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:10px 24px;border-radius:20px;font-size:14px;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none}
-.toast.show{opacity:1}
-.toast.success{background:#4caf50}
-.toast.error{background:#f44336}
-
-.home-btn{background:rgba(255,255,255,.15);border:none;color:#fff;padding:4px 12px;border-radius:14px;font-size:13px;cursor:pointer;transition:background .2s}
-.home-btn:active{background:rgba(255,255,255,.3)}
 
 
 /* === 三聚绝活样式 === */
@@ -263,10 +209,6 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
 .lock-overlay.fading{animation:fadeOut .5s ease forwards}
 @keyframes fadeOut{to{opacity:0;pointer-events:none}}
 
-@media(max-width:400px){
-  .pred-item .month-inputs input{width:44px;height:30px;font-size:12px}
-  .pred-item .prod-name{font-size:11px}
-}
 
 /* === 物性表查询样式 === */
 .datasheets-page{display:flex;flex-direction:column;min-height:100vh;background:#eef1f6;padding-bottom:40px;animation:contentIn .4s both}
@@ -305,19 +247,15 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
 <div class="home-page" id="homePage" style="display:none">
   <div class="hero-banner">
     <h2>三聚材料助手</h2>
-    <div class="hero-sub">工程塑料供应链数字化工具集</div>
+    <div class="hero-sub">三聚秘籍</div>
     <div class="hero-date" id="heroDate"></div>
+    <div class="hero-copy">&copy; 2026 Alex</div>
   </div>
   <div class="home-cards">
     <div class="home-card card-inventory" onclick="goInventory()">
       <div class="card-icon">📦</div>
       <div class="card-title">库存查询</div>
       <div class="card-desc">搜索库存材料<br>生成报价单 / 打印PDF</div>
-    </div>
-    <div class="home-card card-prediction" onclick="goPrediction()">
-      <div class="card-icon">📊</div>
-      <div class="card-title">采购预测</div>
-      <div class="card-desc">填写月度采购预测<br>多人数据汇总分析</div>
     </div>
     <div class="home-card card-skills" onclick="goSkills()">
       <div class="card-icon">🧰</div>
@@ -332,41 +270,6 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
   </div>
 </div>
 
-<div class="pred-page" id="predPage" style="display:none">
-  <div class="pred-header">
-    <button class="back-btn" onclick="goHome()">←</button>
-    <h1>采购预测</h1>
-  </div>
-  <div class="pred-tabs">
-    <div class="pred-tab active" id="tabFill" onclick="switchTab('fill')">填表</div>
-    <div class="pred-tab" id="tabSummary" onclick="switchTab('summary')">汇总</div>
-  </div>
-  <div class="pred-bar" id="fillBar">
-    <input class="name-inp" id="predName" placeholder="姓名" maxlength="20">
-    <select class="month-sel" id="startMonth">
-    </select>
-    <input class="search-inp" id="predSearch" placeholder="搜索产品名..." oninput="filterProducts()">
-  </div>
-  <div class="pred-month-labels" id="monthLabels"></div>
-  <div class="pred-list" id="productList"></div>
-  <div class="pred-actions" id="fillActions">
-    <button class="btn-draft" onclick="saveDraft()">💾 保存草稿</button>
-    <button class="btn-export" onclick="exportJSON()">📤 导出JSON</button>
-  </div>
-  <div class="summary-page" id="summaryPage" style="display:none">
-    <h3>汇总采购预测数据</h3>
-    <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()" ondragover="event.preventDefault();this.classList.add('dragover')" ondragleave="this.classList.remove('dragover')" ondrop="handleDrop(event)">
-      <div style="font-size:32px;margin-bottom:8px">📁</div>
-      <div>拖放JSON文件到此处<br>或点击选择文件</div>
-      <input type="file" id="fileInput" accept=".json" multiple onchange="handleFiles(this.files)">
-    </div>
-    <div class="summary-table-wrapper" id="summaryTableWrapper"></div>
-    <div class="summary-actions" id="summaryActions" style="display:none">
-      <button class="btn-csv" onclick="exportCSV()">📥 导出CSV</button>
-      <button class="btn-clear" onclick="clearSummary()">🗑 清除</button>
-    </div>
-  </div>
-</div>
 
 <!-- 三聚绝活 - 工具选择页 -->
 <div class="skills-page" id="skillsPage" style="display:none">
@@ -743,15 +646,8 @@ document.getElementById('kw').addEventListener('keydown',function(e){
   if(e.key==='Enter') search();
 });
 
-
-// ========== 采购预测系统 ==========
-var PRODUCTS = ["Akulon K224-HG6 NA99001 Natural","Akulon K224-PG8 BK25018 Black","Akulon K224-G8 NA99001 Natural","Akulon K224-HG8 NA99001 Natural","Akulon K224-G6 BK00001 Black","Akulon K222-DHV BK26019 Black","Akulon K224-HG8 BK00001 Black","Akulon K224-LG3 BK26058 Black","Akulon K224-G7 BK25018 Black","Akulon K-FHG0 BK00001 Black","Akulon K225-KS NA99001 Natural","Akulon K224-G3 NA99001 Natural","Akulon XG-FKGS6 BK30015 Black","Akulon K224-HG6 BK25019 Black","Akulon S223-HM0 NA99001 Natural","Akulon S225-KS BK3003 Black","Arnite TV4261 T5.03.10 Black","Arnite TV4461KL T5.03.10 Black","Arnite TV4260S TN.00.19 Black","Arnite AV2370 XL-T 99.99.99 Natural","Arnite TV4240 99.99.99 Natural","Arnite T06 200 99.99.99 Natural","Arnite TV4260S 99.99.99 Natural","Arnite ACE325 CRC-MB GY73007-AE RX","Arnite ACE339 RC-MB BN48100 H24 Gold 4-PM5-P","Arnite ACE339 RC-MB GY30000 Pearl Gray 912-02780-A-P","Arnite ACE339 RC-MB GY66007 H23 Silver 4 Light-PM3-P","Arnite ACE339 RC-MB BG75100 Stardust-PM12","Arnite ACE339 RC-MB GY73007 Wolf Gray 74","Arnitel EM460 BK27000 V3 Black","Arnitel EM550 99.99.99 Natural","Arnitel XG5858 GY89011 Gray 84.5","Arnitel EL550-08 NA99001 Natural","Arnitel EL250-08 NA99001 Natural","Arnitel EL630-08 NA99001 Natural","Stanyl TW241F12 NA99001 Natural","Stanyl TW271F6 99.99.99 Natural","Stanyl TW200F6 BK00001 Black","Xytron G4024T NA99001 Natural","Xytron G4010T BK00002 Black","Xytron G4080HR NA99001 Natural","Fortii F11 NAT Natural","Fortii F12 NAT Natural","Fortii MX46 BK00001 Black","Durethan BKV215 H2.0 901510 Black","Ecopaxx Q-KS GY86011 Moon Grey","Akulon K224-PG6 BK00001 Black","Akulon K-FKGS6/B BK26037 Black","Arnitel EM400-08 NA99001 Natural"];
-
-var MONTHS = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
-
 function goHome(){
   document.getElementById('main').style.display = 'none';
-  document.getElementById('predPage').style.display = 'none';
   document.getElementById('datasheetsPage').style.display = 'none';
   document.getElementById('quotePreview').style.display = 'none';
   document.getElementById('printBtn').style.display = 'none';
@@ -765,7 +661,6 @@ function goHome(){
 
 function goInventory(){
   document.getElementById('homePage').style.display = 'none';
-  document.getElementById('predPage').style.display = 'none';
   var main = document.getElementById('main');
   main.style.display = 'block';
   main.style.animation = 'contentIn .4s ease both';
@@ -784,393 +679,6 @@ function goInventory(){
   setTimeout(function(){ document.getElementById('kw').focus(); }, 400);
 }
 
-function goPrediction(){
-  document.getElementById('homePage').style.display = 'none';
-  document.getElementById('main').style.display = 'none';
-  var pp = document.getElementById('predPage');
-  pp.style.display = 'flex';
-  pp.style.animation = 'contentIn .4s ease both';
-  initPredPage();
-}
-
-// ---- 填表页 ----
-var predData = {};
-var currentStartMonth = 0;
-
-function initPredPage(){
-  // Load name
-  var savedName = localStorage.getItem('pred_name') || '';
-  document.getElementById('predName').value = savedName;
-  document.getElementById('predName').oninput = function(){
-    localStorage.setItem('pred_name', this.value);
-  };
-
-  // Populate month selector
-  var sel = document.getElementById('startMonth');
-  var now = new Date();
-  var curMonth = now.getMonth();
-  var curYear = now.getFullYear();
-  sel.innerHTML = '';
-  for(var i = -1; i <= 5; i++){
-    var m = (curMonth + i + 12) % 12;
-    var y = curYear + Math.floor((curMonth + i) / 12);
-    var val = y + '-' + String(m+1).padStart(2,'0');
-    var label = y + '年' + (m+1) + '月';
-    sel.innerHTML += '<option value="'+val+'">'+label+'</option>';
-    if(i === 0) sel.value = val;
-  }
-  sel.onchange = function(){
-    renderProducts();
-    loadDraft();
-  };
-
-  // Load draft or init
-  currentStartMonth = sel.value;
-  loadDraft();
-  renderProducts();
-
-  // Switch to fill tab
-  switchTab('fill');
-}
-
-function getStartMonthIndex(){
-  var val = document.getElementById('startMonth').value;
-  var parts = val.split('-');
-  return (parseInt(parts[0]) - 2025) * 12 + parseInt(parts[1]) - 1;
-}
-
-function getMonthLabels(){
-  var idx = getStartMonthIndex();
-  var labels = [];
-  for(var i = 0; i < 4; i++){
-    var mi = (idx + i) % 12;
-    var y = 2025 + Math.floor((idx + i) / 12);
-    labels.push(y+'年'+(mi+1)+'月');
-  }
-  return labels;
-}
-
-function renderProducts(){
-  var labels = getMonthLabels();
-  var html = '';
-  for(var i = 0; i < labels.length; i++){
-    html += '<span>'+labels[i]+'</span>';
-  }
-  document.getElementById('monthLabels').innerHTML = html;
-
-  var list = document.getElementById('productList');
-  var searchKw = (document.getElementById('predSearch').value || '').toLowerCase();
-  var key = getStartMonthIndex();
-  if(!predData[key]) predData[key] = {};
-  var monthData = predData[key];
-
-  var listHtml = '';
-  for(var i = 0; i < PRODUCTS.length; i++){
-    var vals = monthData[i] || [0,0,0,0];
-    var hidden = searchKw && PRODUCTS[i].toLowerCase().indexOf(searchKw) === -1 ? ' hidden' : '';
-    listHtml += '<div class="pred-item'+hidden+'" data-idx="'+i+'">';
-    listHtml += '<div class="prod-name">'+esc(PRODUCTS[i])+'</div>';
-    listHtml += '<div class="month-inputs">';
-    for(var j = 0; j < 4; j++){
-      listHtml += '<input type="number" min="0" step="0.1" value="'+(vals[j]||'')+'" onchange="updatePredVal('+i+','+j+',this.value)" placeholder="0">';
-    }
-    listHtml += '</div></div>';
-  }
-  list.innerHTML = listHtml;
-}
-
-function updatePredVal(prodIdx, monthIdx, val){
-  var key = getStartMonthIndex();
-  if(!predData[key]) predData[key] = {};
-  if(!predData[key][prodIdx]) predData[key][prodIdx] = [0,0,0,0];
-  predData[key][prodIdx][monthIdx] = parseFloat(val) || 0;
-}
-
-function filterProducts(){
-  var kw = (document.getElementById('predSearch').value || '').toLowerCase();
-  var items = document.querySelectorAll('.pred-item');
-  for(var i = 0; i < items.length; i++){
-    var name = PRODUCTS[i].toLowerCase();
-    items[i].classList.toggle('hidden', kw && name.indexOf(kw) === -1);
-  }
-}
-
-function saveDraft(){
-  var key = getStartMonthIndex();
-  var name = document.getElementById('predName').value || '未命名';
-  var data = {
-    name: name,
-    startMonth: document.getElementById('startMonth').value,
-    startIdx: key,
-    data: predData[key] || {}
-  };
-  localStorage.setItem('pred_draft_'+key, JSON.stringify(data));
-  showToast('草稿已保存','success');
-}
-
-function loadDraft(){
-  var key = getStartMonthIndex();
-  var raw = localStorage.getItem('pred_draft_'+key);
-  if(raw){
-    try{
-      var data = JSON.parse(raw);
-      predData[key] = data.data || {};
-      if(data.name) document.getElementById('predName').value = data.name;
-    } catch(e){}
-  } else {
-    if(!predData[key]) predData[key] = {};
-  }
-}
-
-function exportJSON(){
-  saveDraft();
-  var key = getStartMonthIndex();
-  var name = document.getElementById('predName').value || '未命名';
-  var labels = getMonthLabels();
-  var products = [];
-  var monthData = predData[key] || {};
-  for(var i = 0; i < PRODUCTS.length; i++){
-    var vals = monthData[i] || [0,0,0,0];
-    var row = {product: PRODUCTS[i]};
-    for(var j = 0; j < 4; j++){
-      row[labels[j]] = vals[j] || 0;
-    }
-    products.push(row);
-  }
-  var exportData = {
-    name: name,
-    startMonth: document.getElementById('startMonth').value,
-    monthLabels: labels,
-    exportedAt: new Date().toISOString(),
-    products: products
-  };
-  var blob = new Blob([JSON.stringify(exportData, null, 2)], {type: 'application/json'});
-  var url = URL.createObjectURL(blob);
-  var a = document.createElement('a');
-  a.href = url;
-  a.download = '预测_' + name + '_' + exportData.startMonth + '.json';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  showToast('JSON文件已导出','success');
-}
-
-// ---- 汇总页 ----
-var summaryData = [];
-var summaryFiles = [];
-
-function switchTab(tab){
-  document.getElementById('tabFill').classList.toggle('active', tab === 'fill');
-  document.getElementById('tabSummary').classList.toggle('active', tab === 'summary');
-  document.getElementById('fillBar').style.display = tab === 'fill' ? 'flex' : 'none';
-  document.getElementById('monthLabels').style.display = tab === 'fill' ? 'flex' : 'none';
-  document.getElementById('productList').style.display = tab === 'fill' ? 'block' : 'none';
-  document.getElementById('fillActions').style.display = tab === 'fill' ? 'flex' : 'none';
-  document.getElementById('summaryPage').style.display = tab === 'summary' ? 'block' : 'none';
-}
-
-function handleDrop(e){
-  e.preventDefault();
-  e.target.classList.remove('dragover');
-  if(e.dataTransfer.files.length > 0){
-    handleFiles(e.dataTransfer.files);
-  }
-}
-
-function handleFiles(files){
-  var loaded = 0;
-  for(var i = 0; i < files.length; i++){
-    var f = files[i];
-    if(!f.name.endsWith('.json')) continue;
-    var reader = new FileReader();
-    reader.onload = (function(fileName){
-      return function(e){
-        try{
-          var data = JSON.parse(e.target.result);
-          if(data.products && Array.isArray(data.products)){
-            data._fileName = fileName;
-            summaryData.push(data);
-            summaryFiles.push(fileName);
-            loaded++;
-            if(loaded === files.length || loaded === summaryData.length){
-              renderSummary();
-            }
-          }
-        } catch(ex){
-          showToast(fileName + ' 解析失败','error');
-        }
-      };
-    })(f.name);
-    reader.readAsText(f);
-  }
-  if(files.length === 0){
-    showToast('请选择JSON文件','error');
-  }
-}
-
-function renderSummary(){
-  if(summaryData.length === 0){
-    document.getElementById('summaryTableWrapper').innerHTML = '<div style="text-align:center;color:#bbb;padding:40px">暂无汇总数据，请上传JSON预测文件</div>';
-    document.getElementById('summaryActions').style.display = 'none';
-    return;
-  }
-
-  // Collect all month labels across all files
-  var allMonths = [];
-  var seen = {};
-  for(var i = 0; i < summaryData.length; i++){
-    var labels = summaryData[i].monthLabels || [];
-    for(var j = 0; j < labels.length; j++){
-      if(!seen[labels[j]]){
-        seen[labels[j]] = true;
-        allMonths.push(labels[j]);
-      }
-    }
-  }
-  allMonths.sort();
-
-  // Aggregate by product
-  var agg = {};
-  for(var i = 0; i < PRODUCTS.length; i++){
-    agg[PRODUCTS[i]] = {};
-    for(var j = 0; j < allMonths.length; j++){
-      agg[PRODUCTS[i]][allMonths[j]] = 0;
-    }
-  }
-
-  for(var i = 0; i < summaryData.length; i++){
-    var prods = summaryData[i].products || [];
-    for(var j = 0; j < prods.length; j++){
-      var p = prods[j];
-      if(agg[p.product]){
-        for(var k = 0; k < allMonths.length; k++){
-          agg[p.product][allMonths[k]] += (parseFloat(p[allMonths[k]]) || 0);
-        }
-      }
-    }
-  }
-
-  // Build table
-  var html = '<table class="summary-table"><thead><tr><th>产品名称</th>';
-  for(var i = 0; i < allMonths.length; i++){
-    html += '<th>' + allMonths[i] + '</th>';
-  }
-  html += '<th>总计</th></tr></thead><tbody>';
-
-  var totals = {};
-  for(var i = 0; i < allMonths.length; i++){
-    totals[allMonths[i]] = 0;
-  }
-  var grandTotal = 0;
-
-  for(var i = 0; i < PRODUCTS.length; i++){
-    var rowTotal = 0;
-    html += '<tr><td>' + esc(PRODUCTS[i]) + '</td>';
-    for(var j = 0; j < allMonths.length; j++){
-      var v = agg[PRODUCTS[i]][allMonths[j]] || 0;
-      html += '<td>' + (v === 0 ? '' : v.toFixed(1)) + '</td>';
-      rowTotal += v;
-      totals[allMonths[j]] += v;
-    }
-    html += '<td>' + (rowTotal === 0 ? '' : '<b>'+rowTotal.toFixed(1)+'</b>') + '</td></tr>';
-    grandTotal += rowTotal;
-  }
-
-  // Totals row
-  html += '<tr><td><b>合计</b></td>';
-  for(var i = 0; i < allMonths.length; i++){
-    html += '<td><b>' + (totals[allMonths[i]] || 0).toFixed(1) + '</b></td>';
-  }
-  html += '<td><b>' + grandTotal.toFixed(1) + '</b></td></tr>';
-  html += '</tbody></table>';
-
-  document.getElementById('summaryTableWrapper').innerHTML = html;
-  document.getElementById('summaryActions').style.display = 'flex';
-}
-
-function exportCSV(){
-  if(summaryData.length === 0){
-    showToast('暂无汇总数据','error');
-    return;
-  }
-
-  var allMonths = [];
-  var seen = {};
-  for(var i = 0; i < summaryData.length; i++){
-    var labels = summaryData[i].monthLabels || [];
-    for(var j = 0; j < labels.length; j++){
-      if(!seen[labels[j]]){
-        seen[labels[j]] = true;
-        allMonths.push(labels[j]);
-      }
-    }
-  }
-  allMonths.sort();
-
-  var agg = {};
-  for(var i = 0; i < PRODUCTS.length; i++){
-    agg[PRODUCTS[i]] = {};
-    for(var j = 0; j < allMonths.length; j++){
-      agg[PRODUCTS[i]][allMonths[j]] = 0;
-    }
-  }
-  for(var i = 0; i < summaryData.length; i++){
-    var prods = summaryData[i].products || [];
-    for(var j = 0; j < prods.length; j++){
-      var p = prods[j];
-      if(agg[p.product]){
-        for(var k = 0; k < allMonths.length; k++){
-          agg[p.product][allMonths[k]] += (parseFloat(p[allMonths[k]]) || 0);
-        }
-      }
-    }
-  }
-
-  var csv = '\uFEFF产品名称,' + allMonths.join(',') + ',总计\n';
-  for(var i = 0; i < PRODUCTS.length; i++){
-    var row = [PRODUCTS[i]];
-    var rt = 0;
-    for(var j = 0; j < allMonths.length; j++){
-      var v = agg[PRODUCTS[i]][allMonths[j]] || 0;
-      row.push(v);
-      rt += v;
-    }
-    row.push(rt);
-    csv += row.join(',') + '\n';
-  }
-  var totalsRow = ['合计'];
-  var gt = 0;
-  for(var j = 0; j < allMonths.length; j++){
-    var s = 0;
-    for(var i = 0; i < PRODUCTS.length; i++){
-      s += agg[PRODUCTS[i]][allMonths[j]] || 0;
-    }
-    totalsRow.push(s);
-    gt += s;
-  }
-  totalsRow.push(gt);
-  csv += totalsRow.join(',') + '\n';
-
-  var blob = new Blob([csv], {type: 'text/csv;charset=utf-8'});
-  var url = URL.createObjectURL(blob);
-  var a = document.createElement('a');
-  a.href = url;
-  a.download = '采购预测汇总_' + new Date().toISOString().slice(0,10) + '.csv';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  showToast('CSV已导出','success');
-}
-
-function clearSummary(){
-  summaryData = [];
-  summaryFiles = [];
-  document.getElementById('summaryTableWrapper').innerHTML = '<div style="text-align:center;color:#bbb;padding:40px">暂无汇总数据，请上传JSON预测文件</div>';
-  document.getElementById('summaryActions').style.display = 'none';
-  showToast('汇总数据已清除');
-}
 
 // ---- Toast ----
 var toastTimer;
