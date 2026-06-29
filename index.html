@@ -384,7 +384,7 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
 </div>
 
 <div class="quote-preview" id="quotePreview"></div>
-<div style="text-align:center"><button class="print-btn" id="printBtn" style="display:none" onclick="doPrint()">导出 PDF / 打印</button></div>
+<div style="text-align:center"><button class="print-btn" id="printBtn" style="display:none" onclick="doPrint()">下载报价单</button></div>
 
 
 <!-- 三聚绝活 - 物性表查询 -->
@@ -632,39 +632,49 @@ function generateQuote(){
 }
 
 function doPrint(){
-  var isMobile = /Android|iPhone|iPad|iPod|webOS/i.test(navigator.userAgent);
   var content = document.getElementById('quotePreview').innerHTML;
   var title = document.title || '材料报价单';
+  var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  // 构建独立 HTML 文件
+  var html = '<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' + title + '</title>';
+  html += '<style>';
+  html += '*{box-sizing:border-box;margin:0;padding:0}';
+  html += 'body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;font-size:13px;color:#222;padding:16px;max-width:800px;margin:0 auto;background:#fff}';
+  html += '.q-title{text-align:center;font-size:20px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #1a56b0}';
+  html += '.q-header{display:grid;grid-template-columns:1fr 1fr;gap:4px 20px;margin-bottom:12px}';
+  html += '.q-col{font-size:12px;line-height:1.8}';
+  html += '.q-greeting{margin-bottom:6px;line-height:1.8}';
+  html += 'table{width:100%;border-collapse:collapse;margin:12px 0;font-size:12px}';
+  html += 'th,td{border:1px solid #555;padding:7px 8px;text-align:center}';
+  html += 'th{background:#e8e8e8;font-weight:700}';
+  html += 'td{background:#fff}';
+  html += '.q-footer{font-size:11px;line-height:1.8;margin-top:2px}';
+  html += '.q-sign{margin-top:14px;text-align:right;font-weight:700;font-size:14px}';
+  html += '@media print{body{padding:0;max-width:none}.q-title{border-bottom-color:#000}}';
+  html += '</style></head><body>';
+  html += content;
+  html += '<p style="text-align:center;color:#999;font-size:10px;margin-top:20px">— 三聚新材料 —</p>';
+  html += '</body></html>';
+
+  // Blob 下载（全平台通用，不依赖打印 API）
+  var blob = new Blob([html], {type: 'text/html;charset=utf-8'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = title.replace(/[\\/:*?"<>|]/g,'_') + '.html';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+
+  // 桌面端额外尝试调起打印
+  if(!isMobile){
+    setTimeout(function(){ window.print(); }, 300);
+  }
 
   if(isMobile){
-    // Android/iOS: 新窗口打开报价单内容后自动触发打印
-    var w = window.open('', '_blank', 'width=800,height=600');
-    w.document.write('<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' + title + '</title>');
-    w.document.write('<style>');
-    w.document.write('*{box-sizing:border-box;margin:0;padding:0}');
-    w.document.write('body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;font-size:13px;color:#222;padding:16px;background:#fff}');
-    w.document.write('.q-title{text-align:center;font-size:18px;font-weight:700;margin-bottom:12px}');
-    w.document.write('.q-header{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;margin-bottom:10px}');
-    w.document.write('.q-col{font-size:12px;line-height:1.6}');
-    w.document.write('.q-greeting{margin-bottom:6px}');
-    w.document.write('table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12px}');
-    w.document.write('th,td{border:1px solid #ccc;padding:6px 8px;text-align:center}');
-    w.document.write('th{background:#f5f5f5;font-weight:600}');
-    w.document.write('.q-footer{font-size:11px;line-height:1.6;margin-top:2px}');
-    w.document.write('.q-sign{margin-top:10px;text-align:right;font-weight:600}');
-    w.document.write('</style></head><body>');
-    w.document.write(content);
-    w.document.write('</body></html>');
-    w.document.close();
-    w.focus();
-    setTimeout(function(){ w.print(); w.close(); }, 500);
-  } else {
-    // 桌面端：保留确认提示
-    if(confirm('请在打印对话框中：\n1. 点击「更多设置」\n2. 取消勾选「页眉和页脚」\n3. 目标打印机选「另存为 PDF」\n\n点击确定继续')){
-      var preview = document.getElementById('quotePreview');
-      preview.classList.add('show');
-      setTimeout(function(){ window.print(); }, 200);
-    }
+    showToast('报价单已下载，可在浏览器下载列表中找到并打开打印', 'success');
   }
 }
 
