@@ -121,6 +121,35 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
 /* === 库存差异对比 === */
 .compare-page{display:none;flex-direction:column;min-height:100vh;background:#f0f2f5}
 .compare-page.show{display:flex}
+/* === RAL 色对应端口样式 === */
+.ral-page{display:none;flex-direction:column;min-height:100vh;background:#eef1f6;padding-bottom:40px;animation:contentIn .4s both}
+.ral-header{background:linear-gradient(135deg,#bf360c,#e65100,#f57c00);color:#fff;padding:16px 20px;display:flex;align-items:center;gap:12px}
+.ral-header .back-btn{background:rgba(255,255,255,.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;flex-shrink:0;transition:background .2s}
+.ral-header .back-btn:active{background:rgba(255,255,255,.35)}
+.ral-header h1{font-size:18px;font-weight:600}
+.ral-body{padding:20px;max-width:860px;margin:0 auto;width:100%}
+.ral-search{display:flex;gap:10px;margin-bottom:10px}
+.ral-input{flex:1;padding:12px 16px;border:2px solid #ddd;border-radius:12px;font-size:16px;outline:none;transition:border .2s;background:#fff}
+.ral-input:focus{border-color:#f57c00}
+.ral-btn{padding:0 28px;background:linear-gradient(135deg,#e65100,#f57c00);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;flex-shrink:0;transition:opacity .2s}
+.ral-btn:active{opacity:.8}
+.ral-hint{font-size:13px;color:#888;margin-bottom:16px}
+.ral-card{background:#fff;border-radius:14px;padding:18px 20px;margin-bottom:14px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.ral-card-title{font-size:16px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.ral-tag{display:inline-block;padding:3px 10px;border-radius:10px;font-size:12px;background:#fef3e2;color:#e65100;font-weight:600}
+.ral-color-chip{display:inline-block;padding:4px 12px;border-radius:8px;background:#eef1f6;color:#333;font-size:13px;margin-right:6px}
+.ral-match{background:#fff3cd;border:1px solid #ffe08a;border-radius:12px;padding:14px 16px;margin-bottom:12px}
+.ral-match-title{font-size:15px;font-weight:700;color:#b26a00;margin-bottom:8px}
+.ral-color-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.ral-color-box{flex:1;min-width:140px;border:2px solid #eee;border-radius:12px;padding:10px 14px;text-align:center}
+.ral-color-box .lb{font-size:12px;color:#888;margin-bottom:4px}
+.ral-color-box .vl{font-size:18px;font-weight:700;color:#e65100}
+.ral-color-box .st{font-size:12px;color:#aaa;margin-top:4px}
+.ral-stock-table{width:100%;border-collapse:collapse;font-size:13px}
+.ral-stock-table th{background:#f57c00;color:#fff;padding:8px 10px;text-align:left;font-weight:600}
+.ral-stock-table td{padding:7px 10px;border-bottom:1px solid #eee}
+.ral-stock-table tr:nth-child(even){background:#fafafa}
+.ral-empty{text-align:center;color:#bbb;padding:20px 0;font-size:13px}
 .compare-header{background:linear-gradient(135deg,#0d1b3e,#1a3a6b,#1a56b0);color:#fff;padding:16px 20px;display:flex;align-items:center;gap:12px}
 .compare-header .back-btn{background:rgba(255,255,255,.15);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;flex-shrink:0;transition:background .2s}
 .compare-header .back-btn:active{background:rgba(255,255,255,.3)}
@@ -193,6 +222,8 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
 .home-card.card-skills .card-icon{background:rgba(255,255,255,.2);color:#fff}
 .home-card.card-datasheets{background:linear-gradient(135deg,#6A1B9A,#7B1FA2,#8E24AA)}
 .home-card.card-datasheets .card-icon{background:rgba(255,255,255,.2);color:#fff}
+.home-card.card-ral{background:linear-gradient(135deg,#E65100,#EF6C00,#F57C00)}
+.home-card.card-ral .card-icon{background:rgba(255,255,255,.2);color:#fff}
 
 
 /* === 三聚绝活样式 === */
@@ -322,6 +353,11 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
       <div class="card-title">物性表查询</div>
       <div class="card-desc">工程塑料物性表PDF下载<br>品牌筛选+关键词检索</div>
     </div>
+    <div class="home-card card-ral" onclick="goRal()">
+      <div class="card-icon">🎨</div>
+      <div class="card-title">RAL色对应端口</div>
+      <div class="card-desc">输入RAL色号查询N300X/N300XD<br>对应色号及库存信息</div>
+    </div>
   </div>
 </div>
 
@@ -430,6 +466,23 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
     </div>
     <div class="cmp-tbl-wrap" id="cmpTblWrap" style="display:none"></div>
     <div class="compare-empty" id="cmpEmpty">上传两张 Excel 后点击「开始对比」</div>
+  </div>
+</div>
+
+
+<!-- RAL 色对应端口 -->
+<div class="ral-page" id="ralPage" style="display:none">
+  <div class="ral-header">
+    <button class="back-btn" onclick="backFromRal()">←</button>
+    <h1>RAL色对应端口</h1>
+  </div>
+  <div class="ral-body">
+    <div class="ral-search">
+      <input class="ral-input" id="ralInput" type="text" placeholder="输入 RAL 色号，如 RAL7035" autofocus onkeydown="if(event.key==='Enter')searchRal()">
+      <button class="ral-btn" onclick="searchRal()">查询</button>
+    </div>
+    <div class="ral-hint">输入RAL色号，自动匹配 N300X / N300XD 色号及对应库存</div>
+    <div id="ralResult"></div>
   </div>
 </div>
 
@@ -787,6 +840,7 @@ function goCompare(){
 }
 function backToSkillsFromCompare(){
   document.getElementById('comparePage').classList.remove('show');
+  document.getElementById('ralPage').style.display = 'none';
   document.getElementById('skillsPage').style.display = 'flex';
 }
 
@@ -1078,6 +1132,97 @@ function showToast(msg, type){
   var origUnlock = unlock;
   // The header home button will be added dynamically in goInventory
 })();
+
+
+// ========== RAL 色对应端口 ==========
+var RAL_DATA = [
+  {ral:"RAL9005",color:"黑色",n300x:"701",n300xd:"701"},
+  {ral:"RAL9001",color:"白色",n300x:"WH5E065",n300xd:"8N5B9270"},
+  {ral:"RAL4004",color:"酒红紫色",n300x:"RD2E063",n300xd:"6N2B9271"},
+  {ral:"RAL8011",color:"棕色",n300x:"BR2E195",n300xd:"5N2C2237"},
+  {ral:"RAL5021",color:"水蓝色",n300x:"GN4E043",n300xd:"3N4B9269"},
+  {ral:"RAL1001",color:"米黄色",n300x:"BR7E123",n300xd:"5N7C2240"},
+  {ral:"RAL1027",color:"咖喱色",n300x:"YW3E006",n300xd:"4N3C2241"},
+  {ral:"RAL2003",color:"粉彩橙色",n300x:"OR5E138",n300xd:"4N5C2243"},
+  {ral:"RAL6002",color:"叶绿色",n300x:"GN3E084",n300xd:""},
+  {ral:"RAL6019",color:"粉彩绿",n300x:"3N7D009",n300xd:""},
+  {ral:"RAL9010",color:"白色",n300x:"",n300xd:""},
+  {ral:"RAL5005",color:"蓝色",n300x:"BL3E087",n300xd:""},
+  {ral:"RAL7031",color:"灰色",n300x:"GY2E479",n300xd:"7N2C2238"},
+  {ral:"RAL4003",color:"粉色",n300x:"VT6E022",n300xd:"9N6C2205"},
+  {ral:"RAL5012",color:"淡蓝色",n300x:"2G6B6246",n300xd:"2N4C4368"},
+  {ral:"RAL6017",color:"绿色",n300x:"3G4B6735",n300xd:""},
+  {ral:"RAL7036",color:"灰色",n300x:"7G5B6726",n300xd:""},
+  {ral:"RAL3015",color:"浅粉色",n300x:"6G7B6728",n300xd:"6N7C3384"},
+  {ral:"RAL6018",color:"黄绿色",n300x:"3G5B6730",n300xd:""},
+  {ral:"RAL6027",color:"浅绿色",n300x:"3G7B6394",n300xd:""},
+  {ral:"RAL3020",color:"交通红",n300x:"6G3B6736",n300xd:""},
+  {ral:"RAL4006",color:"交通紫",n300x:"9G2B6737",n300xd:""},
+  {ral:"RAL5005",color:"蓝色",n300x:"9G2B6737",n300xd:"2N3B9272"},
+  {ral:"RAL3002",color:"胭脂红",n300x:"9G2B6737",n300xd:"6N5C2207"},
+  {ral:"RAL7036",color:"灰色",n300x:"9G2B6737",n300xd:"7N5C3382"}
+];
+
+function goRal(){
+  document.getElementById("homePage").style.display = "none";
+  document.getElementById("ralPage").style.display = "flex";
+  document.getElementById("ralInput").value = "";
+  document.getElementById("ralResult").innerHTML = "";
+  setTimeout(function(){ document.getElementById("ralInput").focus(); }, 300);
+}
+
+function backFromRal(){
+  document.getElementById("ralPage").style.display = "none";
+  document.getElementById("homePage").style.display = "flex";
+}
+
+function searchRal(){
+  var kw = document.getElementById("ralInput").value.trim().toUpperCase();
+  if(!kw){ showToast("请输入 RAL 色号", "error"); return; }
+  // 规范化输入：支持 RAL7035 / RAL 7035 / 7035
+  kw = kw.replace(/\s+/g,"");
+  if(kw.indexOf("RAL")!==0) kw = "RAL" + kw;
+  var hits = RAL_DATA.filter(function(r){ return r.ral === kw; });
+  if(hits.length===0){
+    document.getElementById("ralResult").innerHTML = '<div class="ral-card"><div class="ral-empty">未找到 RAL 色号 ' + kw + ' 的对应记录</div></div>';
+    return;
+  }
+  var html = '';
+  hits.forEach(function(h, i){
+    html += '<div class="ral-match">';
+    html += '<div class="ral-match-title">' + h.ral + ' · ' + h.color + '</div>';
+    html += '<div class="ral-color-row">';
+    html += '<div class="ral-color-box"><div class="lb">N300X 对应色号</div><div class="vl">' + (h.n300x || '—') + '</div><div class="st">' + (h.n300x ? '' : '无对应色号') + '</div></div>';
+    html += '<div class="ral-color-box"><div class="lb">N300XD 对应色号</div><div class="vl">' + (h.n300xd || '—') + '</div><div class="st">' + (h.n300xd ? '' : '无对应色号') + '</div></div>';
+    html += '</div>';
+    // 库存查询
+    html += stockByColor(h.n300x, h.n300xd);
+    html += '</div>';
+  });
+  document.getElementById("ralResult").innerHTML = html;
+}
+
+function stockByColor(cx, cxd){
+  var rows = [];
+  DATA.forEach(function(r){
+    var spec = String(r['规格型号']||'');
+    if(cx && spec.indexOf('N300X-'+cx) >= 0){
+      rows.push({grade:'N300X', color:cx, spec:spec, lot:r['批号'], qty:r['基本单位数量'], wh:r['仓库名称'], date:r['生产/采购日期'], name:r['物料名称']});
+    }
+    if(cxd && spec.indexOf('N300XD-'+cxd) >= 0){
+      rows.push({grade:'N300XD', color:cxd, spec:spec, lot:r['批号'], qty:r['基本单位数量'], wh:r['仓库名称'], date:r['生产/采购日期'], name:r['物料名称']});
+    }
+  });
+  if(rows.length===0){
+    return '<div class="ral-empty">库存表中暂无该色号对应库存</div>';
+  }
+  var h = '<table class="ral-stock-table"><tr><th>牌号</th><th>规格型号</th><th>批号</th><th>数量</th><th>进仓日期</th><th>仓库</th></tr>';
+  rows.forEach(function(r){
+    h += '<tr><td>'+r.grade+'</td><td>'+r.spec+'</td><td>'+r.lot+'</td><td>'+r.qty+'</td><td>'+(r.date||'—')+'</td><td>'+r.wh+'</td></tr>';
+  });
+  h += '</table>';
+  return h;
+}
 
 // ========== 三聚绝活 ==========
 function goSkills(){
