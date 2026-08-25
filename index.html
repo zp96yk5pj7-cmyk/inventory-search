@@ -224,6 +224,36 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
 .home-card.card-datasheets .card-icon{background:rgba(255,255,255,.2);color:#fff}
 .home-card.card-ral{background:linear-gradient(135deg,#E65100,#EF6C00,#F57C00)}
 .home-card.card-ral .card-icon{background:rgba(255,255,255,.2);color:#fff}
+.home-card.card-history{background:linear-gradient(135deg,#00695C,#00796B,#00897B)}
+.home-card.card-history .card-icon{background:rgba(255,255,255,.2);color:#fff}
+
+/* === 历史库存回顾样式 === */
+.history-page{display:none;flex-direction:column;min-height:100vh;background:#eef1f6;padding-bottom:40px;animation:contentIn .4s both}
+.history-header{background:linear-gradient(135deg,#004d40,#00695c,#00897b);color:#fff;padding:16px 20px;display:flex;align-items:center;gap:12px}
+.history-header .back-btn{background:rgba(255,255,255,.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;flex-shrink:0;transition:background .2s}
+.history-header .back-btn:active{background:rgba(255,255,255,.35)}
+.history-header h1{font-size:18px;font-weight:600}
+.history-body{padding:20px;max-width:1000px;margin:0 auto;width:100%}
+.history-picker{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.history-select{flex:1;min-width:200px;padding:12px 16px;border:2px solid #ddd;border-radius:12px;font-size:15px;outline:none;background:#fff;transition:border .2s}
+.history-select:focus{border-color:#00897b}
+.history-range{font-size:13px;color:#888}
+.history-summary{background:#fff;border-radius:14px;padding:14px 18px;margin-bottom:14px;box-shadow:0 2px 10px rgba(0,0,0,.06);display:flex;gap:24px;flex-wrap:wrap}
+.history-summary .sum-item{font-size:13px;color:#666}
+.history-summary .sum-item b{display:block;font-size:20px;color:#00695c}
+.history-search{display:flex;gap:10px;margin-bottom:12px}
+.history-input{flex:1;padding:12px 16px;border:2px solid #ddd;border-radius:12px;font-size:15px;outline:none;background:#fff;transition:border .2s}
+.history-input:focus{border-color:#00897b}
+.history-btn{padding:0 24px;background:linear-gradient(135deg,#00695c,#00897b);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;transition:opacity .2s}
+.history-btn:active{opacity:.8}
+.history-loading{text-align:center;color:#888;padding:40px 0;font-size:14px}
+.history-empty{text-align:center;color:#999;padding:40px 0;font-size:14px}
+.history-tbl-wrap{overflow-x:auto;background:#fff;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.history-table{width:100%;border-collapse:collapse;font-size:13px;min-width:900px}
+.history-table th{background:#00695c;color:#fff;padding:10px 12px;text-align:left;position:sticky;top:0;white-space:nowrap}
+.history-table td{padding:8px 12px;border-bottom:1px solid #f0f0f0;color:#333;white-space:nowrap}
+.history-table tr:nth-child(even){background:#f8fbfa}
+.history-table tr:hover{background:#e0f2f1}
 
 
 /* === 三聚绝活样式 === */
@@ -358,6 +388,11 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
       <div class="card-title">RAL色对应端口</div>
       <div class="card-desc">输入RAL色号查询N300X/N300XD<br>对应色号及库存信息</div>
     </div>
+    <div class="home-card card-history" onclick="goHistory()">
+      <div class="card-icon">📜</div>
+      <div class="card-title">历史库存回顾</div>
+      <div class="card-desc">2024至今130周库存快照<br>按周浏览 / 搜索 / 汇总</div>
+    </div>
   </div>
 </div>
 
@@ -483,6 +518,26 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
     </div>
     <div class="ral-hint">输入RAL色号，自动匹配 N300X / N300XD 色号及对应库存</div>
     <div id="ralResult"></div>
+  </div>
+</div>
+
+<!-- 历史库存回顾 -->
+<div class="history-page" id="historyPage" style="display:none">
+  <div class="history-header">
+    <button class="back-btn" onclick="backFromHistory()">←</button>
+    <h1>历史库存回顾</h1>
+  </div>
+  <div class="history-body">
+    <div class="history-picker">
+      <select class="history-select" id="historyWeek" onchange="loadHistoryWeek()"></select>
+      <span class="history-range" id="historyRange"></span>
+    </div>
+    <div class="history-summary" id="historySummary"></div>
+    <div class="history-search">
+      <input class="history-input" id="historyKw" type="text" placeholder="筛选：物料名称 / 规格 / 批号 / 厂家..." oninput="renderHistoryTable()">
+      <button class="history-btn" onclick="renderHistoryTable()">筛选</button>
+    </div>
+    <div id="historyResult"></div>
   </div>
 </div>
 
@@ -840,6 +895,7 @@ function goCompare(){
 }
 function backToSkillsFromCompare(){
   document.getElementById('comparePage').classList.remove('show');
+  document.getElementById('historyPage').style.display = 'none';
   document.getElementById('ralPage').style.display = 'none';
   document.getElementById('skillsPage').style.display = 'flex';
 }
@@ -1173,6 +1229,120 @@ function goRal(){
 function backFromRal(){
   document.getElementById("ralPage").style.display = "none";
   document.getElementById("homePage").style.display = "flex";
+}
+
+// ===== 历史库存回顾 =====
+var HISTORY_WEEKS = [
+"20240105","20240112","20240119","20240126","20240202","20240223","20240301","20240308","20240313","20240322","20240329","20240403","20240412","20240419","20240426","20240430","20240511","20240517","20240523","20240531","20240607","20240614","20240621","20240628","20240705","20240712","20240719","20240726","20240802","20240809","20240816","20240823","20240830","20240906","20240914","20240920","20240927","20241012","20241018","20241025","20241101","20241108","20241115","20241122","20241129","20241206","20241213","20241220","20241227",
+"20250103","20250109","20250117","20250124","20250208","20250214","20250221","20250228","20250307","20250314","20250321","20250328","20250403","20250411","20250418","20250425","20250430","20250509","20250516","20250523","20250530","20250606","20250613","20250620","20250627","20250704","20250711","20250718","20250725","20250801","20250808","20250815","20250822","20250829","20250905","20250912","20250919","20250926","20251011","20251017","20251024","20251031","20251107","20251114","20251121","20251128","20251205","20251212","20251219","20251226","20251231",
+"20260109","20260116","20260122","20260130","20260206","20260213","20260228","20260306","20260313","20260320","20260327","20260403","20260410","20260417","20260424","20260430","20260509","20260515","20260522","20260529","20260612","20260618","20260626","20260703","20260710","20260717","20260724","20260731","20260807","20260814"
+];
+var HISTORY_CACHE = {};
+var HISTORY_LOADED = '';
+
+function goHistory(){
+  document.getElementById("homePage").style.display = "none";
+  document.getElementById("historyPage").style.display = "flex";
+  var sel = document.getElementById("historyWeek");
+  if(sel.options.length === 0){
+    HISTORY_WEEKS.forEach(function(w){
+      var o = document.createElement("option");
+      o.value = w;
+      o.text = w.slice(0,4)+"-"+w.slice(4,6)+"-"+w.slice(6,8);
+      sel.appendChild(o);
+    });
+  }
+  sel.value = HISTORY_WEEKS[HISTORY_WEEKS.length-1];
+  loadHistoryWeek();
+}
+
+function backFromHistory(){
+  document.getElementById("historyPage").style.display = "none";
+  document.getElementById("homePage").style.display = "flex";
+}
+
+function loadHistoryWeek(){
+  var w = document.getElementById("historyWeek").value;
+  if(!w) return;
+  var range = document.getElementById("historyRange");
+  range.textContent = '已选择 ' + w.slice(0,4) + ' 年第 ' + w.slice(4,6) + ' 月 ' + w.slice(6,8) + ' 日库存快照';
+  document.getElementById("historyKw").value = '';
+  if(HISTORY_CACHE[w]){
+    HISTORY_LOADED = w;
+    renderHistorySummary();
+    renderHistoryTable();
+    return;
+  }
+  var res = document.getElementById("historyResult");
+  res.innerHTML = '<div class="history-loading">正在加载 ' + w + ' 库存数据...</div>';
+  var s = document.createElement("script");
+  s.src = "history_data/history_" + w + ".js";
+  s.onload = function(){
+    if(window["HIST_STOCK_" + w]){
+      HISTORY_CACHE[w] = window["HIST_STOCK_" + w];
+      HISTORY_LOADED = w;
+      renderHistorySummary();
+      renderHistoryTable();
+    }else{
+      res.innerHTML = '<div class="history-empty">数据加载失败，请确认 history_data 目录存在</div>';
+    }
+  };
+  s.onerror = function(){
+    res.innerHTML = '<div class="history-empty">未找到 ' + w + ' 数据文件</div>';
+  };
+  document.body.appendChild(s);
+}
+
+function renderHistorySummary(){
+  var data = HISTORY_CACHE[HISTORY_LOADED];
+  if(!data) return;
+  var totalQty = 0, cnt = 0;
+  var brands = {}, names = {};
+  data.forEach(function(r){
+    totalQty += Number(r[10]) || 0;
+    cnt++;
+    brands[r[3]] = (brands[r[3]]||0)+1;
+    names[r[1]] = (names[r[1]]||0)+1;
+  });
+  var html = '';
+  html += '<div class="sum-item">总记录<b>'+cnt+'</b>条</div>';
+  html += '<div class="sum-item">库存总量<b>'+Math.round(totalQty).toLocaleString()+'</b>kg</div>';
+  html += '<div class="sum-item">生产厂家<b>'+Object.keys(brands).length+'</b>家</div>';
+  html += '<div class="sum-item">物料种类<b>'+Object.keys(names).length+'</b>种</div>';
+  document.getElementById("historySummary").innerHTML = html;
+}
+
+function renderHistoryTable(){
+  var data = HISTORY_CACHE[HISTORY_LOADED];
+  if(!data) return;
+  var kw = document.getElementById("historyKw").value.trim();
+  var rows = data;
+  if(kw){
+    var k = kw.toUpperCase();
+    rows = data.filter(function(r){
+      return String(r[0]).toUpperCase().indexOf(k)>=0
+        || String(r[1]).toUpperCase().indexOf(k)>=0
+        || String(r[2]).toUpperCase().indexOf(k)>=0
+        || String(r[3]).toUpperCase().indexOf(k)>=0
+        || String(r[6]).toUpperCase().indexOf(k)>=0;
+    });
+  }
+  var wrap = document.getElementById("historyResult");
+  if(rows.length === 0){
+    wrap.innerHTML = '<div class="history-empty">无匹配记录</div>';
+    return;
+  }
+  var heads = ['物料代码','物料名称','规格型号','生产厂家','对应旧规格','辅助属性','批号','仓库名称','仓位名称','生产/采购日期','基本单位数量','常用计量单位','库龄','所属公司'];
+  var h = '<div class="history-tbl-wrap"><table class="history-table"><tr>';
+  heads.forEach(function(x){ h += '<th>'+x+'</th>'; });
+  h += '</tr>';
+  rows.forEach(function(r){
+    h += '<tr>';
+    heads.forEach(function(_,i){ h += '<td>'+(r[i]===undefined?'':String(r[i]))+'</td>'; });
+    h += '</tr>';
+  });
+  h += '</table><div class="history-empty" style="padding:10px;font-size:12px">共 '+rows.length+' 条记录</div></div>';
+  wrap.innerHTML = h;
 }
 
 function searchRal(){
