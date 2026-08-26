@@ -226,6 +226,49 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
 .home-card.card-ral .card-icon{background:rgba(255,255,255,.2);color:#fff}
 .home-card.card-history{background:linear-gradient(135deg,#00695C,#00796B,#00897B)}
 .home-card.card-history .card-icon{background:rgba(255,255,255,.2);color:#fff}
+.home-card.card-hfhs{background:linear-gradient(135deg,#4A148C,#6A1B9A,#8E24AA)}
+.home-card.card-hfhs .card-icon{background:rgba(255,255,255,.2);color:#fff}
+
+/* === 高频高速连接器色号样式 === */
+.hfhs-page{display:none;flex-direction:column;min-height:100vh;background:#eef1f6;padding-bottom:40px;animation:contentIn .4s both}
+.hfhs-header{background:linear-gradient(135deg,#4a148c,#6a1b9a,#8e24aa);color:#fff;padding:16px 20px;display:flex;align-items:center;gap:12px}
+.hfhs-header .back-btn{background:rgba(255,255,255,.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;flex-shrink:0;transition:background .2s}
+.hfhs-header .back-btn:active{background:rgba(255,255,255,.35)}
+.hfhs-header h1{font-size:18px;font-weight:600}
+.hfhs-body{padding:20px;max-width:1000px;margin:0 auto;width:100%}
+.hfhs-search{display:flex;gap:10px;margin-bottom:10px}
+.hfhs-input{flex:1;padding:12px 16px;border:2px solid #ddd;border-radius:12px;font-size:16px;outline:none;background:#fff;transition:border .2s}
+.hfhs-input:focus{border-color:#8e24aa}
+.hfhs-btn{padding:0 28px;background:linear-gradient(135deg,#6a1b9a,#8e24aa);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;transition:opacity .2s}
+.hfhs-btn:active{opacity:.8}
+.hfhs-toolbar{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.hfhs-mode-btn{padding:8px 18px;background:#fff;color:#6a1b9a;border:2px solid #6a1b9a;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s}
+.hfhs-mode-btn:active{opacity:.7}
+.hfhs-hint{font-size:13px;color:#888}
+.hfhs-card{background:#fff;border-radius:14px;padding:18px 20px;margin-bottom:14px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.hfhs-card-head{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.hfhs-color-chip{width:52px;height:52px;border-radius:10px;border:2px solid #eee;flex-shrink:0}
+.hfhs-card-title{font-size:17px;font-weight:700}
+.hfhs-card-sub{font-size:13px;color:#888;margin-top:2px}
+.hfhs-codes{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.hfhs-code-tag{display:inline-block;padding:4px 12px;border-radius:8px;background:#f3e5f5;color:#6a1b9a;font-size:13px;font-weight:600}
+.hfhs-code-tag.off{background:#eee;color:#999}
+.hfhs-prods{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.hfhs-prod{flex:1;min-width:150px;border:2px solid #f0f0f0;border-radius:12px;padding:10px 14px}
+.hfhs-prod .pn{font-size:12px;color:#888;margin-bottom:4px}
+.hfhs-prod .pv{font-size:16px;font-weight:700;color:#333}
+.hfhs-prod .ps{font-size:12px;margin-top:4px;font-weight:600}
+.hfhs-prod .ps.stock{color:#2e7d32}
+.hfhs-prod .ps.nostock{color:#c62828}
+.hfhs-use{font-size:13px;color:#555;background:#fafafa;border-radius:8px;padding:8px 12px}
+.hfhs-empty{text-align:center;color:#999;padding:40px 0;font-size:14px}
+.hfhs-tbl-wrap{overflow-x:auto;background:#fff;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.hfhs-table{width:100%;border-collapse:collapse;font-size:13px;min-width:1100px}
+.hfhs-table th{background:#6a1b9a;color:#fff;padding:10px 10px;text-align:left;position:sticky;top:0;white-space:nowrap}
+.hfhs-table td{padding:8px 10px;border-bottom:1px solid #f0f0f0;color:#333;white-space:nowrap}
+.hfhs-table tr:nth-child(even){background:#faf5fc}
+.hfhs-table tr:hover{background:#f3e5f5}
+.hfhs-table .mini-chip{display:inline-block;width:26px;height:26px;border-radius:6px;border:1px solid #ddd;vertical-align:middle;margin-right:6px}
 
 /* === 历史库存回顾样式 === */
 .history-page{display:none;flex-direction:column;min-height:100vh;background:#eef1f6;padding-bottom:40px;animation:contentIn .4s both}
@@ -393,6 +436,11 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
       <div class="card-title">历史库存回顾</div>
       <div class="card-desc">2024至今130周库存快照<br>按周浏览 / 搜索 / 汇总</div>
     </div>
+    <div class="home-card card-hfhs" onclick="goHfhs()">
+      <div class="card-icon">🌈</div>
+      <div class="card-title">高频高速色号</div>
+      <div class="card-desc">连接器颜色编码总表<br>单个检索 / 全表总览</div>
+    </div>
   </div>
 </div>
 
@@ -538,6 +586,25 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
       <button class="history-btn" onclick="renderHistoryTable()">筛选</button>
     </div>
     <div id="historyResult"></div>
+  </div>
+</div>
+
+<!-- 高频高速连接器色号 -->
+<div class="hfhs-page" id="hfhsPage" style="display:none">
+  <div class="hfhs-header">
+    <button class="back-btn" onclick="backFromHfhs()">←</button>
+    <h1>高频高速连接器色号</h1>
+  </div>
+  <div class="hfhs-body">
+    <div class="hfhs-search">
+      <input class="hfhs-input" id="hfhsKw" type="text" placeholder="输入 RAL 色号 / 颜色 / 编码 / 产品色号..." onkeydown="if(event.key==='Enter')searchHfhs()">
+      <button class="hfhs-btn" onclick="searchHfhs()">检索</button>
+    </div>
+    <div class="hfhs-toolbar">
+      <button class="hfhs-mode-btn" id="hfhsModeBtn" onclick="toggleHfhsMode()">查看总览</button>
+      <span class="hfhs-hint">共 23 个颜色编码</span>
+    </div>
+    <div id="hfhsResult"></div>
   </div>
 </div>
 
@@ -896,6 +963,7 @@ function goCompare(){
 function backToSkillsFromCompare(){
   document.getElementById('comparePage').classList.remove('show');
   document.getElementById('historyPage').style.display = 'none';
+  document.getElementById('hfhsPage').style.display = 'none';
   document.getElementById('ralPage').style.display = 'none';
   document.getElementById('skillsPage').style.display = 'flex';
 }
@@ -1259,6 +1327,133 @@ function goHistory(){
 function backFromHistory(){
   document.getElementById("historyPage").style.display = "none";
   document.getElementById("homePage").style.display = "flex";
+}
+
+// ===== 高频高速连接器色号 =====
+// [RAL, 颜色描述, FAKRA, MiniFAKRA, H-MTD, HSD, N300X, N300X常备, N300XD, N300XD常备, TX1, TX1常备, 用途, 色值HEX]
+var HFHS_DATA = [
+["RAL 9005","乌黑（Jet black）","A","A","A","A","701","有","701","有","BLK","有","收音机 AM/FM（无幻像供电）","#0A0A0A"],
+["RAL 9001","奶油白（Cream white）","B","B","-","B","WH5E065","有","8N5B9270","有","","无","收音机 AM/FM（带幻像供电）","#F5EBD7"],
+["RAL 9010","纯白色（Pure white）","-","-","B","-","","无","","无","WT94016","有","车载以太网 100/1000BASE-T1 主通道","#F2F3F0"],
+["RAL 5005","信号蓝（Signal blue）","C","C","-","C","BL3E087","无","2N3B9272","无","BL38302","有","GPS / 北斗 / 导航主天线","#005387"],
+["RAL 5012","浅蓝（Light blue）","-","-","C","-","2G6B6246","无","2N4C4368","有","BL55301","无","车载以太网 100/1000BASE-T1 通道","#3B83BD"],
+["RAL 4004","波尔多紫（Claret violet）","D","D","D","D","RD2E063","有","6N2B9271","有","RD33201","有","蜂窝通信 / GSM/4G/5G 主天线","#641C34"],
+["RAL 6002","叶绿色（Leaf green）","E","E","-","E","GN3E084","有","","无","GN40301","无","TV1/SDARS 卫星广播天线","#2D572C"],
+["RAL 6017","五月绿（May green）","-","-","E","-","3G4B6735","无","","无","","无","车载以太网差分数据通道","#4C9141"],
+["RAL 8011","棕褐色（Nut brown）","F","F","F","F","BR2E195","有","5N2C2237","有","BN34100","无","TV2 / 卫星广播第二通道","#5B3A29"],
+["RAL 7031","蓝灰色（Blue grey）","G","G","-","G","GY2E479","无","7N2C2238","无","GY48004","有","无钥匙进入 / PEPS 天线","#474B4E"],
+["RAL 7036","铂灰（Platinum grey）","-","-","G","-","7G5B6726","无","7N5C3382","无","","无","车载以太网差分数据通道","#7F7679"],
+["RAL 4003","石楠紫（Heather violet）","H","-","-","H","VT6E022","有","9N6C2205","无","RD57402","无","双 GPS / 导航分集天线","#DE4C8A"],
+["RAL 3015","浅粉（Light pink）","-","H","H","-","6G7B6728","无","6N7C3384","无","","无","车载高清摄像头 / 高速同轴 / 以太网通道","#EA899A"],
+["RAL 1001","浅米黄（Beige）","I","J","J","J","BR7E123","无","5N7C2240","有","BG75301","有","驻车加热 / 蓝牙 / 辅助功能通道","#CBB894"],
+["RAL 1027","咖喱黄（Curry）","K","K","K","K","YW3E006","有","4N3C2241","有","YL58500","无","收音机 IF 中频分集接收","#9D9101"],
+["RAL 3002","胭脂红（Carmine red）","L","-","-","-","9G2B6737","无","6N5C2207","无","RD40505","无","FAKRA 预留编码，极少量产使用","#A52019"],
+["RAL 6018","黄绿色（Yellow green）","-","L","L","L","3G5B6730","无","","无","","无","高速数据 / LVDS 视频 / 环视摄像头通道","#57A639"],
+["RAL 2003","淡橙色（Pastel orange）","M","M","M","M","OR5E138","无","4N5C2243","有","OR66700","无","预留未定义（客户自定义）","#F67828"],
+["RAL 6019","淡粉绿（Pastel green）","N","N","-","O","3N7D009","无","","无","GN81201","无","FAKRA 预留 N 编码；HSD 上出线 O 编码","#B7D9B1"],
+["RAL 6027","浅绿色（Light green）","-","-","O","-","3G7B6394","无","","无","","无","车载以太网预留 / 定制通道","#7FB5A8"],
+["RAL 5021","水蓝（Water blue）","Z","Z","Z","Z","GN4E043","有","3N4B9269","有","GN47301","有","通用中性编码，可与任意 Coding 互插（测试 / 通用）","#256D7B"],
+["RAL 3020","交通红（Traffic red）","-","-","-","-","6G3B6736","无","","无","","无","客户定制 CPA 锁片，红色高可见度提示 锁已到位","#BB1E10"],
+["RAL 4006","交通紫（Traffic purple）","-","-","-","-","9G2B6737","无","","无","","无","FAKRA/HFM 原厂标配 CPA 二次锁止卡扣","#8A2B5C"]
+];
+var HFHS_MODE = 'search'; // search | all
+
+function goHfhs(){
+  document.getElementById("homePage").style.display = "none";
+  document.getElementById("hfhsPage").style.display = "flex";
+  document.getElementById("hfhsKw").value = "";
+  HFHS_MODE = 'search';
+  document.getElementById("hfhsModeBtn").textContent = "查看总览";
+  renderHfhsSearch("", true);
+}
+
+function backFromHfhs(){
+  document.getElementById("hfhsPage").style.display = "none";
+  document.getElementById("homePage").style.display = "flex";
+}
+
+function toggleHfhsMode(){
+  if(HFHS_MODE === 'search'){
+    HFHS_MODE = 'all';
+    document.getElementById("hfhsModeBtn").textContent = "返回检索";
+    renderHfhsAll();
+  }else{
+    HFHS_MODE = 'search';
+    document.getElementById("hfhsModeBtn").textContent = "查看总览";
+    renderHfhsSearch(document.getElementById("hfhsKw").value, true);
+  }
+}
+
+function searchHfhs(){
+  var kw = document.getElementById("hfhsKw").value.trim();
+  HFHS_MODE = 'search';
+  document.getElementById("hfhsModeBtn").textContent = "查看总览";
+  renderHfhsSearch(kw, true);
+}
+
+function renderHfhsSearch(kw, showAllIfEmpty){
+  var data = HFHS_DATA;
+  if(kw){
+    var k = kw.toUpperCase().replace(/\s+/g,"");
+    data = data.filter(function(r){
+      return (r[0].toUpperCase().replace(/\s+/g,"").indexOf(k)>=0)
+        || r[1].toUpperCase().indexOf(k)>=0
+        || r[2].toUpperCase().indexOf(k)>=0
+        || r[3].toUpperCase().indexOf(k)>=0
+        || r[4].toUpperCase().indexOf(k)>=0
+        || r[5].toUpperCase().indexOf(k)>=0
+        || r[6].toUpperCase().indexOf(k)>=0
+        || r[8].toUpperCase().indexOf(k)>=0
+        || r[10].toUpperCase().indexOf(k)>=0;
+    });
+  }
+  var wrap = document.getElementById("hfhsResult");
+  if(data.length === 0){
+    wrap.innerHTML = '<div class="hfhs-empty">未找到匹配的颜色编码</div>';
+    return;
+  }
+  var html = '';
+  data.forEach(function(r){
+    html += '<div class="hfhs-card">';
+    html += '<div class="hfhs-card-head"><div class="hfhs-color-chip" style="background:'+r[13]+'"></div><div><div class="hfhs-card-title">'+r[0]+' '+r[1]+'</div><div class="hfhs-card-sub">'+r[12]+'</div></div></div>';
+    html += '<div class="hfhs-codes">';
+    ['FAKRA','MiniFAKRA','H-MTD','HSD'].forEach(function(lb,i){
+      var v = r[2+i];
+      html += '<span class="hfhs-code-tag'+(v==="-"||v===""?' off':'')+'">'+lb+': '+(v===""?'-':v)+'</span>';
+    });
+    html += '</div>';
+    html += '<div class="hfhs-prods">';
+    [["PPO N300X",6,7],["PPO N300XD",8,9],["PA4T TX1",10,11]].forEach(function(p){
+      var pv = r[p[1]], ps = r[p[2]];
+      html += '<div class="hfhs-prod"><div class="pn">'+p[0]+'</div><div class="pv">'+(pv===""?'-':pv)+'</div><div class="ps '+(ps==="有"?'stock':'nostock')+'">'+(ps==="有"?'● 常备库存':'○ 无库存')+'</div></div>';
+    });
+    html += '</div>';
+    html += '<div class="hfhs-use">用途：'+r[12]+'</div>';
+    html += '</div>';
+  });
+  wrap.innerHTML = html;
+}
+
+function renderHfhsAll(){
+  var wrap = document.getElementById("hfhsResult");
+  var heads = ['色','RAL 色号','颜色描述','FAKRA','Mini<br>FAKRA','H-MTD','HSD','PPO N300X','常备','PPO N300XD','常备','PA4T TX1','常备','用途'];
+  var h = '<div class="hfhs-tbl-wrap"><table class="hfhs-table"><tr>';
+  heads.forEach(function(x){ h += '<th>'+x+'</th>'; });
+  h += '</tr>';
+  HFHS_DATA.forEach(function(r){
+    h += '<tr>';
+    h += '<td><span class="mini-chip" style="background:'+r[13]+'"></span></td>';
+    h += '<td><b>'+r[0]+'</b></td><td>'+r[1]+'</td>';
+    for(var i=2;i<=5;i++){ h += '<td>'+(r[i]==="-"||r[i]===""?'-':r[i])+'</td>'; }
+    for(var j=6;j<=11;j++){
+      if(j%2===0){ h += '<td>'+(r[j]===""?'-':r[j])+'</td>'; }
+      else{ h += '<td>'+r[j]+'</td>'; }
+    }
+    h += '<td style="white-space:normal">'+r[12]+'</td>';
+    h += '</tr>';
+  });
+  h += '</table></div>';
+  wrap.innerHTML = h;
 }
 
 function loadHistoryWeek(){
