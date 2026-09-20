@@ -382,6 +382,120 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
   .datasheets-item-logo{width:44px;font-size:15px}
   .datasheets-item-name{font-size:13px}
 }
+
+/* ===================== UI 美化覆盖层（预览版） ===================== */
+:root{
+  --acc:#1a56b0;--acc2:#3b82f6;
+  --tx:#1c2733;--tx2:#6b7a90;
+  --card:rgba(255,255,255,.92);
+  --shadow:0 10px 32px rgba(23,43,77,.10);
+  --shadow-sm:0 4px 14px rgba(23,43,77,.07);
+  --r-lg:20px;--r-md:14px;
+}
+html,body{background:linear-gradient(175deg,#f7faff 0%,#eef4fd 45%,#e7effb 100%)!important;font-family:"PingFang SC","Microsoft YaHei UI","Microsoft YaHei",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;color:var(--tx)}
+
+/* ---- 顶部导航：统一白毛玻璃 ---- */
+.header,.skills-header,.history-header,.hfhs-header,.datasheets-header,.compare-header,.q-header{
+  background:rgba(255,255,255,.78)!important;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.85);box-shadow:0 4px 24px rgba(23,43,77,.06)!important;
+}
+.header h1,.skills-header h1,.history-header h1,.hfhs-header h1,.datasheets-header h1,.compare-header h1,.q-header h1{
+  color:var(--tx)!important;text-shadow:none!important;letter-spacing:2px;font-weight:700;
+}
+.back-btn{background:rgba(255,255,255,.8)!important;color:var(--tx)!important;border:1.5px solid rgba(23,43,77,.12)!important;box-shadow:var(--shadow-sm);border-radius:12px!important;}
+.fortune-header .back-btn{background:rgba(255,255,255,.12)!important;color:#e8d5a3!important;border:1px solid rgba(232,213,163,.25)!important;}
+
+/* ---- 搜索框 ---- */
+.search-box input{background:rgba(255,255,255,.92);border:1.5px solid rgba(23,43,77,.10);border-radius:12px;outline:none;color:var(--tx);box-shadow:inset 0 1px 4px rgba(23,43,77,.04);transition:border-color .2s,box-shadow .2s;}
+.search-box input:focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(26,86,176,.12);}
+.search-box button{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border:none;border-radius:12px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(26,86,176,.28);transition:transform .15s,box-shadow .15s;}
+.search-box button:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(26,86,176,.34);}
+
+/* ---- 首页 hero ---- */
+.hero-banner{background:linear-gradient(160deg,rgba(255,255,255,.92),rgba(235,243,255,.88))!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.85);box-shadow:var(--shadow-sm);}
+.hero-banner h2{color:var(--tx)!important;text-shadow:none!important;letter-spacing:4px;font-weight:800;}
+.hero-sub{color:var(--tx2)!important;}
+.hero-date{color:#9aa8bd!important;}
+.hero-copy{color:#aebbd0!important;}
+
+/* ---- 首页卡片：白底毛玻璃，品牌色图标 ---- */
+.home-card{background:var(--card)!important;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.85);box-shadow:var(--shadow-sm);}
+.home-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);}
+.card-icon{border-radius:16px!important;}
+.card-inventory .card-icon{background:rgba(21,101,192,.12);color:#1565C0;}
+.card-skills .card-icon{background:rgba(46,125,50,.12);color:#2E7D32;}
+.card-datasheets .card-icon{background:rgba(106,27,154,.12);color:#6A1B9A;}
+.card-history .card-icon{background:rgba(0,105,92,.12);color:#00695C;}
+.card-hfhs .card-icon{background:rgba(74,20,140,.12);color:#4A148C;}
+.card-title{color:var(--tx)!important;text-shadow:none!important;}
+.card-desc{color:var(--tx2)!important;text-shadow:none!important;}
+
+/* ---- 统计卡 ---- */
+.stats{color:var(--tx2)!important;}
+.stat-card{background:var(--card)!important;border-radius:var(--r-md)!important;box-shadow:var(--shadow-sm);border:1px solid rgba(255,255,255,.85);}
+.stat-card b,.stat-card .num{color:var(--acc);font-size:20px;}
+.stat-card span{color:var(--tx2);font-size:12px;}
+
+/* ---- 库存列表 ---- */
+.list{max-width:880px;margin:0 auto;}
+.detail-row{border-bottom:1px solid #eef2f8!important;transition:background .15s;}
+.detail-row:hover{background:rgba(240,246,255,.6);}
+.detail-label{color:var(--tx2);}
+.detail-value{color:var(--tx);}
+.empty{color:#a6b3c7!important;}
+
+/* ---- 底部操作条 ---- */
+.float-bar{background:rgba(255,255,255,.82)!important;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-top:1px solid rgba(255,255,255,.8);box-shadow:0 -6px 24px rgba(23,43,77,.08);}
+.float-bar .count{color:var(--tx2);font-size:14px;}
+.count b{color:var(--acc);}
+
+/* ---- 主按钮统一 ---- */
+.gen-btn,.print-btn,.exp-btn,.up-btn,.quote-btn,.hfhs-btn,.history-btn,.cmp-btn,.btn-clear,.btn-paste{
+  background:linear-gradient(135deg,var(--acc),var(--acc2))!important;color:#fff!important;border:none!important;border-radius:14px!important;box-shadow:0 4px 14px rgba(26,86,176,.28)!important;font-weight:600;cursor:pointer;
+}
+.gen-btn:hover,.print-btn:hover,.exp-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(26,86,176,.36)!important;}
+.home-btn{background:rgba(26,86,176,.10)!important;color:var(--acc)!important;border-radius:12px!important;font-weight:600;}
+
+/* ---- 弹窗 / 提示 ---- */
+.modal-overlay{background:rgba(23,43,77,.45)!important;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+.modal{background:rgba(255,255,255,.97)!important;border-radius:var(--r-lg)!important;box-shadow:0 24px 64px rgba(23,43,77,.18);}
+.modal h2,.modal h3{color:var(--tx);}
+.modal input,.modal select{background:#f6f9ff;border:1.5px solid rgba(23,43,77,.10);border-radius:10px;outline:none;color:var(--tx);}
+.modal input:focus,.modal select:focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(26,86,176,.12);}
+.toast{background:rgba(23,43,77,.88)!important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 8px 24px rgba(23,43,77,.25);border-radius:24px!important;}
+
+/* ---- 表格统一 ---- */
+.ral-stock-table,.hfhs-table,.history-table,.cmp-tbl{background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);}
+.ral-stock-table th,.hfhs-table th,.history-table th,.cmp-tbl th{background:#f2f7ff;color:#44556c;font-weight:600;letter-spacing:.5px;}
+.ral-stock-table td,.hfhs-table td,.history-table td,.cmp-tbl td{border-bottom:1px solid #eef2f8;}
+.ral-stock-table tr:hover td,.hfhs-table tr:hover td,.history-table tr:hover td,.cmp-tbl tr:hover td{background:#f6faff;}
+.hfhs-tbl-wrap,.history-tbl-wrap,.cmp-tbl-wrap{background:#fff;border-radius:14px;box-shadow:var(--shadow-sm);}
+
+/* ---- 三聚绝活 ---- */
+.tool-item{border-radius:18px!important;box-shadow:var(--shadow-sm)!important;border:1px solid rgba(255,255,255,.85);}
+.tool-item:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
+.tool-icon{background:rgba(26,86,176,.08)!important;border-radius:14px!important;color:var(--acc)!important;}
+.tool-name{color:var(--tx);font-weight:700;}
+.tool-desc{color:var(--tx2);}
+.tool-arrow{color:#b9c6d8!important;font-size:20px;}
+.converter-page,.compare-page,.history-page,.hfhs-page,.datasheets-page,.skills-page{background:transparent!important;}
+.converter-input{border-color:#dbe4f2!important;border-radius:16px!important;box-shadow:inset 0 2px 8px rgba(23,43,77,.04);}
+.converter-input:focus{border-color:var(--acc)!important;box-shadow:0 0 0 3px rgba(26,86,176,.12);}
+.history-input,.history-select,.hfhs-input{background:#fff!important;border:1.5px solid rgba(23,43,77,.10)!important;border-radius:12px!important;outline:none;}
+.history-input:focus,.hfhs-input:focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(26,86,176,.12);}
+
+/* ---- 物性表 ---- */
+.datasheets-item{border-radius:16px!important;box-shadow:var(--shadow-sm)!important;border:1px solid rgba(255,255,255,.85);}
+.datasheets-item:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
+
+/* ---- HFHS 卡片 ---- */
+.hfhs-card{background:var(--card)!important;border-radius:var(--r-lg)!important;box-shadow:var(--shadow-sm);}
+.hfhs-code-tag,.hfhs-color-chip{border-radius:10px!important;}
+
+/* ---- 报价单预览 ---- */
+.quote-preview{background:#fff!important;border-radius:var(--r-lg)!important;box-shadow:var(--shadow-sm)!important;}
+/* ===================== 美化覆盖层结束 ===================== */
+
 </style>
 </head>
 <body>
