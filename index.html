@@ -120,64 +120,10 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
 .home-btn:active{background:rgba(255,255,255,.3)}
 .hero-copy{font-size:11px;color:rgba(255,255,255,.35);text-align:center;margin-top:6px;letter-spacing:.5px}
 
-/* === 库存差异对比 === */
-.compare-page{display:none;flex-direction:column;min-height:100vh;background:#f0f2f5}
-.compare-page.show{display:flex}
 .ral-stock-table{width:100%;border-collapse:collapse;font-size:13px}
 .ral-stock-table th{background:#f57c00;color:#fff;padding:8px 10px;text-align:left;font-weight:600}
 .ral-stock-table td{padding:7px 10px;border-bottom:1px solid #eee}
 .ral-stock-table tr:nth-child(even){background:#fafafa}
-.compare-header{background:linear-gradient(135deg,#0d1b3e,#1a3a6b,#1a56b0);color:#fff;padding:16px 20px;display:flex;align-items:center;gap:12px}
-.compare-header .back-btn{background:rgba(255,255,255,.15);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;flex-shrink:0;transition:background .2s}
-.compare-header .back-btn:active{background:rgba(255,255,255,.3)}
-.compare-header h1{font-size:18px;font-weight:600}
-.compare-body{flex:1;padding:16px;max-width:1100px;width:100%;margin:0 auto}
-
-.upload-grid{display:flex;gap:14px;margin-bottom:16px}
-.upload-card{flex:1;min-width:0;background:#fff;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 1px 8px rgba(0,0,0,.06)}
-.upload-card .label{font-size:12px;color:#888}
-.upload-card .fname{font-size:13px;font-weight:600;color:#1a56b0;min-height:20px;margin:6px 0;word-break:break-all}
-.upload-card input[type=file]{display:none}
-.upload-card .up-btn{display:inline-block;background:#1a56b0;color:#fff;padding:8px 20px;border-radius:18px;font-size:13px;cursor:pointer;border:none}
-.upload-card .hint{font-size:11px;color:#aaa;margin-top:4px}
-
-.compare-tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
-.compare-tools select{height:34px;border:1px solid #ccc;border-radius:8px;padding:0 10px;font-size:12px;background:#fff}
-.compare-tools .cmp-btn{height:34px;background:#1a56b0;color:#fff;border:none;border-radius:8px;padding:0 22px;font-size:13px;font-weight:600;cursor:pointer}
-.compare-tools .cmp-btn:disabled{background:#ccc;cursor:not-allowed}
-.compare-tools .exp-btn{height:34px;background:#2E7D32;color:#fff;border:none;border-radius:8px;padding:0 18px;font-size:12px;cursor:pointer}
-
-.stats-grid{display:flex;gap:12px;margin-bottom:14px;flex-wrap:wrap}
-.stat-card{flex:1;min-width:80px;background:#fff;border-radius:8px;padding:12px;text-align:center;box-shadow:0 1px 6px rgba(0,0,0,.05)}
-.stat-card .num{font-size:24px;font-weight:700}
-.stat-card .lb{font-size:11px;color:#888;margin-top:2px}
-.stat-card.st-match .num{color:#2E7D32}
-.stat-card.st-diff .num{color:#E65100}
-.stat-card.st-onlyA .num{color:#1565C0}
-.stat-card.st-onlyB .num{color:#6A1B9A}
-
-.compare-filter{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap}
-.compare-filter input{flex:1;min-width:150px;height:34px;border:1px solid #ccc;border-radius:8px;padding:0 10px;font-size:12px}
-.compare-filter select{height:34px;border:1px solid #ccc;border-radius:8px;padding:0 8px;font-size:12px;background:#fff}
-.compare-filter .fc{font-size:11px;color:#888;align-self:center}
-
-.cmp-tbl-wrap{background:#fff;border-radius:12px;box-shadow:0 1px 8px rgba(0,0,0,.06);overflow:hidden;max-height:65vh;overflow-y:auto}
-.cmp-tbl{width:100%;border-collapse:collapse;font-size:12px}
-.cmp-tbl th{position:sticky;top:0;background:#f5f5f5;padding:8px 6px;text-align:center;font-weight:600;border-bottom:2px solid #ddd;z-index:1;white-space:nowrap}
-.cmp-tbl td{padding:7px 6px;text-align:center;border-bottom:1px solid #eee}
-.cmp-tbl tr:hover{background:#fafafa}
-.cmp-tbl .r-same{}
-.cmp-tbl .r-diff{background:#fff3e0}
-.cmp-tbl .r-onlyA{background:#e3f2fd}
-.cmp-tbl .r-onlyB{background:#fce4ec}
-.tag{margin:0 auto;display:inline-block;padding:1px 8px;border-radius:8px;font-size:10px;font-weight:600}
-.tag-same{background:#e0e0e0;color:#666}
-.tag-diff{background:#E65100;color:#fff}
-.tag-onlyA{background:#1565C0;color:#fff}
-.tag-onlyB{background:#c62828;color:#fff}
-.diff-bg{background:#ffe0b2;font-weight:700;border-radius:2px;padding:1px 4px}
-
-.compare-empty{text-align:center;padding:50px 20px;color:#bbb;font-size:13px}
 
 /* === 首页样式 === */
 .hero-banner{width:100%;max-width:600px;background:linear-gradient(135deg,#0d1b3e 0%,#1a3a6b 50%,#1a56b0 100%);border-radius:20px;padding:32px 24px;text-align:center;box-shadow:0 4px 24px rgba(13,27,62,.2);animation:contentIn .5s both}
@@ -195,8 +141,6 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
 .home-card .card-desc{font-size:13px;color:rgba(255,255,255,.92);line-height:1.5;text-shadow:0 1px 2px rgba(0,0,0,.1)}
 .home-card.card-inventory{background:linear-gradient(135deg,#1565C0,#1976D2,#1E88E5)}
 .home-card.card-inventory .card-icon{background:rgba(255,255,255,.2);color:#fff}
-.home-card.card-skills{background:linear-gradient(135deg,#2E7D32,#388E3C,#43A047)}
-.home-card.card-skills .card-icon{background:rgba(255,255,255,.2);color:#fff}
 .home-card.card-datasheets{background:linear-gradient(135deg,#6A1B9A,#7B1FA2,#8E24AA)}
 .home-card.card-datasheets .card-icon{background:rgba(255,255,255,.2);color:#fff}
 .home-card.card-history{background:linear-gradient(135deg,#00695C,#00796B,#00897B)}
@@ -282,71 +226,10 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
 .history-table tr:hover{background:#e0f2f1}
 
 
-/* === 三聚绝活样式 === */
-.skills-page{display:flex;flex-direction:column;min-height:100vh;background:#eef1f6;padding-bottom:80px;animation:contentIn .4s both}
-.skills-header{position:sticky;top:0;z-index:100;background:linear-gradient(135deg,#0d1b3e,#1a3a6b,#1a56b0);padding:12px 16px;box-shadow:0 4px 20px rgba(13,27,62,.35);display:flex;align-items:center;gap:12px}
-.skills-header .back-btn{background:rgba(255,255,255,.15);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .2s}
-.skills-header .back-btn:active{background:rgba(255,255,255,.3)}
-.skills-header h1{color:#fff;font-size:17px;font-weight:600;flex:1;text-align:center;margin-right:36px}
-.tool-list{padding:16px;display:flex;flex-direction:column;gap:12px}
-.tool-item{background:#fff;border-radius:16px;padding:20px 16px;box-shadow:0 3px 16px rgba(0,0,0,.06);cursor:pointer;transition:transform .15s,box-shadow .15s;display:flex;align-items:center;gap:14px}
-.tool-item:active{transform:scale(.98)}
-.tool-item .tool-icon{font-size:32px;flex-shrink:0}
-.tool-item .tool-info{flex:1;min-width:0}
-.tool-item .tool-name{font-size:16px;font-weight:600;color:#0d1b3e;margin-bottom:4px}
-.tool-item .tool-desc{font-size:12px;color:#999;line-height:1.5}
-.tool-item .tool-arrow{color:#ccc;font-size:16px;flex-shrink:0}
-.converter-page{display:flex;flex-direction:column;min-height:100vh;background:#eef1f6;padding-bottom:40px;animation:contentIn .4s both}
-.converter-body{padding:20px 16px}
-.converter-body .section-title{font-size:14px;color:#888;margin-bottom:8px;font-weight:500}
-.converter-input{width:100%;height:52px;padding:0 16px;border:2px solid #e0e0e0;border-radius:12px;font-size:20px;outline:none;background:#fff;text-align:center;letter-spacing:1px;transition:border-color .2s,box-shadow .2s;margin-bottom:20px}
-.converter-input:focus{border-color:#1a56b0;box-shadow:0 0 0 3px rgba(26,86,176,.1)}
-.converter-actions{display:flex;gap:10px;margin-bottom:20px}
-.converter-actions button{flex:1;height:42px;border:none;border-radius:21px;font-size:14px;font-weight:600;cursor:pointer;transition:transform .15s,opacity .2s}
-.converter-actions button:active{transform:scale(.97)}
-.converter-actions .btn-clear{background:#f0f0f0;color:#666}
-.converter-actions .btn-paste{background:rgba(26,86,176,.1);color:#1a56b0}
-.converter-result{margin-top:4px}
-.converter-row{background:#fff;border-radius:12px;padding:14px 16px;margin-bottom:10px;box-shadow:0 2px 10px rgba(0,0,0,.05);display:flex;align-items:center;gap:10px}
-.converter-row .result-label{font-size:12px;color:#999;width:72px;flex-shrink:0;font-weight:500}
-.converter-row .result-value{flex:1;font-size:16px;color:#0d1b3e;word-break:break-all;font-weight:500;min-width:0}
-.converter-row .copy-btn{background:#1a56b0;color:#fff;border:none;border-radius:16px;padding:5px 14px;font-size:12px;cursor:pointer;flex-shrink:0;white-space:nowrap;transition:background .2s}
-.converter-row .copy-btn:active{background:#0d3b6e}
-.converter-row .copy-btn.copied{background:#4caf50}
-.converter-placeholder{text-align:center;padding:40px 20px;color:#ccc;font-size:14px}
-/* === 易经占卜样式 === */
-.fortune-page{display:flex;flex-direction:column;min-height:100vh;background:linear-gradient(180deg,#1a1a2e 0%,#16213e 30%,#0f3460 100%);padding-bottom:40px;animation:contentIn .4s both;color:#e8d5a3}
-.fortune-header{position:sticky;top:0;z-index:100;background:rgba(26,26,46,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:12px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(232,213,163,.15)}
-.fortune-header .back-btn{background:rgba(232,213,163,.1);border:1px solid rgba(232,213,163,.25);color:#e8d5a3;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .2s}
-.fortune-header .back-btn:active{background:rgba(232,213,163,.25)}
-.fortune-header h1{color:#e8d5a3;font-size:18px;font-weight:600;flex:1;text-align:center;margin-right:36px;letter-spacing:2px}
-.fortune-stage{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:30px 20px;position:relative}
-.fortune-btn-wrap{position:relative;width:160px;height:160px;margin-bottom:30px}
-.fortune-btn-ring{position:absolute;top:-10px;left:-10px;width:180px;height:180px;border:2px solid rgba(232,213,163,.15);border-radius:50%;animation:fortuneRingPulse 2s ease-in-out infinite}
-.fortune-btn{width:160px;height:160px;border-radius:50%;border:2px solid #e8d5a3;background:radial-gradient(circle at 40% 40%,#2a1f0a,#1a1205);color:#e8d5a3;font-size:22px;font-weight:700;cursor:pointer;position:relative;z-index:2;letter-spacing:4px;transition:transform .2s,box-shadow .2s;font-family:"KaiTi","STKaiti","SimSun",serif}
-.fortune-btn:active{transform:scale(.95)}
-.fortune-btn:disabled{opacity:.6;pointer-events:none}
-.fortune-btn.spinning{animation:fortuneSpin .15s linear infinite}
-.fortune-btn-glow{position:absolute;top:-8px;left:-8px;width:176px;height:176px;border-radius:50%;background:transparent;border:3px solid transparent;border-top-color:#e8d5a3;border-right-color:rgba(232,213,163,.4);animation:fortuneGlow 1.5s linear infinite;display:none;z-index:1}
-.fortune-btn-glow.active{display:block}
-.fortune-hint{color:rgba(232,213,163,.6);font-size:13px;text-align:center;margin-top:8px;letter-spacing:1px}
-.fortune-result{text-align:center;animation:fortuneReveal .6s ease-out}
-.fortune-hexagram{font-size:64px;margin-bottom:8px;color:#e8d5a3;text-shadow:0 0 30px rgba(232,213,163,.3);letter-spacing:8px}
-.fortune-index{font-size:13px;color:rgba(232,213,163,.5);margin-bottom:8px;letter-spacing:1px}
-.fortune-name{font-size:28px;font-weight:700;color:#e8d5a3;margin-bottom:10px;letter-spacing:3px;font-family:"KaiTi","STKaiti","SimSun",serif}
-.fortune-level{display:inline-block;padding:4px 20px;border-radius:12px;font-size:15px;font-weight:600;letter-spacing:2px;margin-bottom:16px}
-.fortune-level.lv-great{background:rgba(255,215,0,.15);color:#ffd700;border:1px solid rgba(255,215,0,.3)}
-.fortune-level.lv-good{background:rgba(76,175,80,.15);color:#66bb6a;border:1px solid rgba(76,175,80,.25)}
-.fortune-level.lv-mid{background:rgba(232,213,163,.1);color:#e8d5a3;border:1px solid rgba(232,213,163,.25)}
-.fortune-level.lv-warn{background:rgba(255,152,0,.12);color:#ff9800;border:1px solid rgba(255,152,0,.25)}
-.fortune-level.lv-bad{background:rgba(244,67,54,.12);color:#ef5350;border:1px solid rgba(244,67,54,.25)}
-.fortune-text{max-width:480px;margin:0 auto;font-size:15px;line-height:1.9;color:#f5f0e0;text-align:justify;padding:16px 0}
-.fortune-again{margin-top:24px;padding:10px 36px;background:transparent;border:1.5px solid #e8d5a3;border-radius:24px;color:#e8d5a3;font-size:15px;cursor:pointer;letter-spacing:2px;transition:background .2s,color .2s;font-family:"KaiTi","STKaiti","SimSun",serif}
-.fortune-again:active{background:rgba(232,213,163,.15)}
-@keyframes fortuneRingPulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.6;transform:scale(1.04)}}
-@keyframes fortuneGlow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-@keyframes fortuneSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-@keyframes fortuneReveal{from{opacity:0;transform:translateY(20px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.datasheets-header{position:sticky;top:0;z-index:100;background:linear-gradient(135deg,#0d1b3e,#1a3a6b,#1a56b0);padding:12px 16px;box-shadow:0 4px 20px rgba(13,27,62,.35);display:flex;align-items:center;gap:12px}
+.datasheets-header .back-btn{background:rgba(255,255,255,.15);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.datasheets-header .back-btn:active{background:rgba(255,255,255,.3)}
+.datasheets-header h1{color:#fff;font-size:17px;font-weight:600;flex:1;text-align:center;margin-right:36px}
 @keyframes contentIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .lock-overlay.fading{animation:fadeOut .5s ease forwards}
 @keyframes fadeOut{to{opacity:0;pointer-events:none}}
@@ -395,15 +278,14 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
 html,body{background:linear-gradient(175deg,#f7faff 0%,#eef4fd 45%,#e7effb 100%)!important;font-family:"PingFang SC","Microsoft YaHei UI","Microsoft YaHei",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;color:var(--tx)}
 
 /* ---- 顶部导航：统一白毛玻璃 ---- */
-.header,.skills-header,.history-header,.hfhs-header,.datasheets-header,.compare-header,.q-header{
+.header,.history-header,.hfhs-header,.datasheets-header,.q-header{
   background:rgba(255,255,255,.78)!important;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
   border-bottom:1px solid rgba(255,255,255,.85);box-shadow:0 4px 24px rgba(23,43,77,.06)!important;
 }
-.header h1,.skills-header h1,.history-header h1,.hfhs-header h1,.datasheets-header h1,.compare-header h1,.q-header h1{
+.header h1,.history-header h1,.hfhs-header h1,.datasheets-header h1,.q-header h1{
   color:var(--tx)!important;text-shadow:none!important;letter-spacing:2px;font-weight:700;
 }
 .back-btn{background:rgba(255,255,255,.8)!important;color:var(--tx)!important;border:1.5px solid rgba(23,43,77,.12)!important;box-shadow:var(--shadow-sm);border-radius:12px!important;}
-.fortune-header .back-btn{background:rgba(255,255,255,.12)!important;color:#e8d5a3!important;border:1px solid rgba(232,213,163,.25)!important;}
 
 /* ---- 搜索框 ---- */
 .search-box input{background:rgba(255,255,255,.92);border:1.5px solid rgba(23,43,77,.10);border-radius:12px;outline:none;color:var(--tx);box-shadow:inset 0 1px 4px rgba(23,43,77,.04);transition:border-color .2s,box-shadow .2s;}
@@ -423,7 +305,6 @@ html,body{background:linear-gradient(175deg,#f7faff 0%,#eef4fd 45%,#e7effb 100%)
 .home-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);}
 .card-icon{border-radius:16px!important;}
 .card-inventory .card-icon{background:rgba(21,101,192,.12);color:#1565C0;}
-.card-skills .card-icon{background:rgba(46,125,50,.12);color:#2E7D32;}
 .card-datasheets .card-icon{background:rgba(106,27,154,.12);color:#6A1B9A;}
 .card-history .card-icon{background:rgba(0,105,92,.12);color:#00695C;}
 .card-hfhs .card-icon{background:rgba(74,20,140,.12);color:#4A148C;}
@@ -450,7 +331,7 @@ html,body{background:linear-gradient(175deg,#f7faff 0%,#eef4fd 45%,#e7effb 100%)
 .count b{color:var(--acc);}
 
 /* ---- 主按钮统一 ---- */
-.gen-btn,.print-btn,.exp-btn,.up-btn,.quote-btn,.hfhs-btn,.history-btn,.cmp-btn,.btn-clear,.btn-paste{
+.gen-btn,.print-btn,.exp-btn,.up-btn,.quote-btn,.hfhs-btn,.history-btn,.btn-clear,.btn-paste{
   background:linear-gradient(135deg,var(--acc),var(--acc2))!important;color:#fff!important;border:none!important;border-radius:14px!important;box-shadow:0 4px 14px rgba(26,86,176,.28)!important;font-weight:600;cursor:pointer;
 }
 .gen-btn:hover,.print-btn:hover,.exp-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(26,86,176,.36)!important;}
@@ -465,22 +346,13 @@ html,body{background:linear-gradient(175deg,#f7faff 0%,#eef4fd 45%,#e7effb 100%)
 .toast{background:rgba(23,43,77,.88)!important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 8px 24px rgba(23,43,77,.25);border-radius:24px!important;}
 
 /* ---- 表格统一 ---- */
-.ral-stock-table,.hfhs-table,.history-table,.cmp-tbl{background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);}
-.ral-stock-table th,.hfhs-table th,.history-table th,.cmp-tbl th{background:#f2f7ff;color:#44556c;font-weight:600;letter-spacing:.5px;}
-.ral-stock-table td,.hfhs-table td,.history-table td,.cmp-tbl td{border-bottom:1px solid #eef2f8;}
-.ral-stock-table tr:hover td,.hfhs-table tr:hover td,.history-table tr:hover td,.cmp-tbl tr:hover td{background:#f6faff;}
-.hfhs-tbl-wrap,.history-tbl-wrap,.cmp-tbl-wrap{background:#fff;border-radius:14px;box-shadow:var(--shadow-sm);}
+.ral-stock-table,.hfhs-table,.history-table{background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);}
+.ral-stock-table th,.hfhs-table th,.history-table th{background:#f2f7ff;color:#44556c;font-weight:600;letter-spacing:.5px;}
+.ral-stock-table td,.hfhs-table td,.history-table td{border-bottom:1px solid #eef2f8;}
+.ral-stock-table tr:hover td,.hfhs-table tr:hover td,.history-table tr:hover td{background:#f6faff;}
+.hfhs-tbl-wrap,.history-tbl-wrap{background:#fff;border-radius:14px;box-shadow:var(--shadow-sm);}
 
-/* ---- 三聚绝活 ---- */
-.tool-item{border-radius:18px!important;box-shadow:var(--shadow-sm)!important;border:1px solid rgba(255,255,255,.85);}
-.tool-item:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
-.tool-icon{background:rgba(26,86,176,.08)!important;border-radius:14px!important;color:var(--acc)!important;}
-.tool-name{color:var(--tx);font-weight:700;}
-.tool-desc{color:var(--tx2);}
-.tool-arrow{color:#b9c6d8!important;font-size:20px;}
-.converter-page,.compare-page,.history-page,.hfhs-page,.datasheets-page,.skills-page{background:transparent!important;}
-.converter-input{border-color:#dbe4f2!important;border-radius:16px!important;box-shadow:inset 0 2px 8px rgba(23,43,77,.04);}
-.converter-input:focus{border-color:var(--acc)!important;box-shadow:0 0 0 3px rgba(26,86,176,.12);}
+.history-page,.hfhs-page,.datasheets-page{background:transparent!important;}
 .history-input,.history-select,.hfhs-input{background:#fff!important;border:1.5px solid rgba(23,43,77,.10)!important;border-radius:12px!important;outline:none;}
 .history-input:focus,.hfhs-input:focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(26,86,176,.12);}
 
@@ -495,6 +367,44 @@ html,body{background:linear-gradient(175deg,#f7faff 0%,#eef4fd 45%,#e7effb 100%)
 /* ---- 报价单预览 ---- */
 .quote-preview{background:#fff!important;border-radius:var(--r-lg)!important;box-shadow:var(--shadow-sm)!important;}
 /* ===================== 美化覆盖层结束 ===================== */
+
+
+/* ===== 备货考量板块 ===== */
+.card-stockplan{background:linear-gradient(135deg,#B71C1C,#D32F2F,#E53935)}
+.stockplan-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.78)!important;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.85);box-shadow:0 4px 24px rgba(23,43,77,.06);display:flex;align-items:center;gap:12px;padding:12px 16px}
+.stockplan-header h1{color:#1c2733;font-size:18px;margin:0;letter-spacing:1px}
+.stockplan-page{flex-direction:column;min-height:100vh;background:transparent;padding-bottom:60px}
+.stockplan-note{background:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.9);border-radius:14px;padding:10px 14px;margin:12px 16px 0;font-size:12px;color:#6b7a90;line-height:1.6;box-shadow:0 4px 14px rgba(23,43,77,.05)}
+.stockplan-summary{display:flex;gap:12px;margin:12px 16px 0;flex-wrap:wrap}
+.sp-sum{flex:1;min-width:120px;background:rgba(255,255,255,.9);border-radius:14px;padding:12px 14px;text-align:center;box-shadow:0 4px 14px rgba(23,43,77,.06)}
+.sp-sum b{display:block;font-size:26px;line-height:1.2}
+.sp-sum span{font-size:12px;color:#6b7a90}
+.sp-danger b{color:#e53935}.sp-warn b{color:#f9a825}.sp-ok b{color:#2e7d32}
+.stockplan-legend{margin:12px 16px 0;font-size:12px;color:#6b7a90;display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+.lg{display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:600}
+.lg-ok{background:#d7f5e0;color:#1d7a3c}.lg-warn{background:#fff3cd;color:#8a6d00}.lg-danger{background:#ffdcd9;color:#c62828}.lg-low{background:#ffe9d1;color:#b25e00}
+.stockplan-tbl-wrap{background:#fff;border-radius:16px;box-shadow:0 4px 18px rgba(23,43,77,.07);margin:12px 16px 0;overflow-x:auto}
+.stockplan-table{width:100%;border-collapse:collapse;font-size:13px;min-width:1080px}
+.stockplan-table th{background:#f2f7ff;color:#44556c;padding:10px 10px;text-align:left;white-space:nowrap;font-weight:600;border-bottom:1px solid #e8eef8}
+.stockplan-table td{padding:10px 10px;border-bottom:1px solid #eef2f8;vertical-align:middle}
+.stockplan-table tr:hover td{background:#f6faff}
+.sp-grade{font-size:12px;font-weight:600;white-space:nowrap}
+.sp-grade.ok{color:#1d7a3c}.sp-grade.warn{color:#8a6d00}.sp-grade.danger{color:#c62828}
+.sp-flag{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+.sp-flag.ok{background:#34c759}.sp-flag.warn{background:#ffcc00}.sp-flag.danger{background:#ff3b30}
+.sp-heat{display:flex;gap:3px}
+.sp-heat i{width:26px;height:22px;border-radius:4px;font-style:normal;font-size:10px;line-height:22px;text-align:center;color:#fff;flex-shrink:0}
+.sp-heat .ok{background:#34c759}.sp-heat .warn{background:#ffcc00;color:#6b5300}.sp-heat .low{background:#ff9800}.sp-heat .danger{background:#ff3b30}
+.sp-old{display:block;font-size:11px;color:#9aa8bd;margin-top:2px}
+.sp-suggest{font-weight:700;color:#c62828;white-space:nowrap}
+.sp-suggest.zero{color:#9aa8bd;font-weight:400}
+.sp-note2{display:block;font-size:11px;color:#b25e00;margin-top:2px;max-width:260px}
+.sp-viewbar{margin:10px 0 8px;display:flex;gap:8px;flex-wrap:wrap}
+.sp-view-btn{background:#eef2f7;border:1px solid #d5dee8;color:#3a4a5a;padding:6px 14px;border-radius:16px;cursor:pointer;font-size:13px}
+.sp-view-btn.active{background:#2f6fed;border-color:#2f6fed;color:#fff}
+.sp-weekbar{background:#f6f9fc;border:1px solid #e3ebf3;border-radius:8px;padding:10px 12px;margin-bottom:8px;font-size:13px;color:#3a4a5a;line-height:1.7}
+.sp-weekbar select{padding:3px 6px;border-radius:6px;border:1px solid #c8d4e0;font-size:13px}
+.sp-weekbar b{color:#1f2d3d}
 
 </style>
 </head>
@@ -521,11 +431,6 @@ html,body{background:linear-gradient(175deg,#f7faff 0%,#eef4fd 45%,#e7effb 100%)
       <div class="card-title">库存查询</div>
       <div class="card-desc">搜索库存材料<br>生成报价单 / 打印PDF</div>
     </div>
-    <div class="home-card card-skills" onclick="goSkills()">
-      <div class="card-icon">🧰</div>
-      <div class="card-title">三聚绝活</div>
-      <div class="card-desc">实用小工具集合，数字转换 / 易经占卜</div>
-    </div>
     <div class="home-card card-datasheets" onclick="goDatasheets()">
       <div class="card-icon">📋</div>
       <div class="card-title">物性表查询</div>
@@ -541,116 +446,59 @@ html,body{background:linear-gradient(175deg,#f7faff 0%,#eef4fd 45%,#e7effb 100%)
       <div class="card-title">高频高速色号</div>
       <div class="card-desc">连接器颜色编码总表<br>单个检索 / 全表总览</div>
     </div>
-  </div>
-</div>
-
-
-<!-- 三聚绝活 - 工具选择页 -->
-<div class="skills-page" id="skillsPage" style="display:none">
-  <div class="skills-header">
-    <button class="back-btn" onclick="goHome()">←</button>
-    <h1>三聚绝活</h1>
-  </div>
-  <div class="tool-list">
-    <div class="tool-item" onclick="goConverter()">
-      <div class="tool-icon">🔢</div>
-      <div class="tool-info">
-        <div class="tool-name">数字大小写转换器</div>
-        <div class="tool-desc">输入数字，实时转换中文大写（财务）、中文小写格式</div>
-      </div>
-      <div class="tool-arrow">›</div>
-    </div>
-    <div class="tool-item" onclick="goFortune()">
-      <div class="tool-icon">☯️</div>
-      <div class="tool-info">
-        <div class="tool-name">易经占卜</div>
-        <div class="tool-desc">六十四卦随机占卜，古风界面，带智能解读</div>
-      </div>
-      <div class="tool-arrow">›</div>
-    </div>
-    <div class="tool-item" onclick="goCompare()">
-      <div class="tool-icon">📊</div>
-      <div class="tool-info">
-        <div class="tool-name">库存差异对比</div>
-        <div class="tool-desc">上传两张库存表格，自动匹配比对数量差异并标注</div>
-      </div>
-      <div class="tool-arrow">›</div>
+    <div class="home-card card-stockplan" onclick="goStockPlan()">
+      <div class="card-icon">📈</div>
+      <div class="card-title">备货考量</div>
+      <div class="card-desc">L客户备货计划<br>供需预测 / 缺口提醒</div>
     </div>
   </div>
 </div>
 
-<!-- 三聚绝活 - 数字大小写转换器 -->
-<div class="converter-page" id="converterPage" style="display:none">
-  <div class="skills-header">
-    <button class="back-btn" onclick="backToSkills()">←</button>
-    <h1>数字大小写转换器</h1>
+
+<div class="stockplan-page" id="stockplanPage" style="display:none">
+  <div class="stockplan-header">
+    <button class="back-btn" onclick="backFromStockPlan()">←</button>
+    <h1>备货考量 · L客户</h1>
   </div>
-  <div class="converter-body">
-    <div class="section-title">输入数字（支持整数和小数，最多两位小数）</div>
-    <input class="converter-input" id="numInput" type="text" inputmode="decimal" placeholder="例如：12345.67" autofocus oninput="convertNumber()">
-    <div class="converter-actions">
-      <button class="btn-clear" onclick="clearConverter()">清空</button>
-      <button class="btn-paste" onclick="pasteToConverter()">粘贴</button>
+  <div class="stockplan-note">
+    预测口径：按 L客户销售订单近3个月月均用量推演（全期月均作参考）· 采购前置期默认 2 个月 · 建议备至 3 个月用量水位 · 在途到货请结合采购报表自行判断
+  </div>
+  <div class="stockplan-summary" id="spSummary"></div>
+  <div class="stockplan-legend">
+    <span class="lg lg-ok">充足(≥4个月)</span><span class="lg lg-warn">关注(2~4个月)</span><span class="lg lg-danger">缺口(<2个月)</span>
+    <span style="margin-left:10px;color:#6b7a90">热力图 = 未来6个月余量：</span>
+    <span class="lg lg-ok">≥2月</span><span class="lg lg-warn">1~2月</span><span class="lg lg-low">0~1月</span><span class="lg lg-danger">缺口</span>
+  </div>
+  <div class="sp-viewbar">
+    <button class="sp-view-btn active" id="btnViewBase" onclick="switchSpView('base')">常规备货视图</button>
+    <button class="sp-view-btn" id="btnViewNet" onclick="switchSpView('net')">时间点净库存视图</button>
+  </div>
+  <div id="spNetPanel" style="display:none">
+    <div class="sp-weekbar">
+      <b>未来时间点净库存：</b>截至第 <select id="spWeekSel" onchange="renderNetStock()"></select> 周（<span id="spWeekRange">—</span>）<br>
+      <span class="sp-note2">口径：净库存 = 当前库存 + 在途到货(交期≤该周末) − L客户用量(至该周) − J客户用量(至该周)；月用量÷4.345 折算周用量、按整周估算。</span>
+      <span class="sp-note2">注：另有 1 批 200849 在途 8000kg 未注明交期，未自动计入；AV2370XL 9/20 已到 3075kg 计入本周。</span>
     </div>
-    <div class="converter-result" id="converterResult">
-      <div class="converter-placeholder">在上方输入数字后实时显示转换结果</div>
+    <div class="stockplan-tbl-wrap">
+    <table class="stockplan-table">
+      <thead><tr>
+        <th>状态</th><th>客户料号</th><th>牌号</th><th>当前库存(kg)</th><th>在途到货(kg)</th><th>L用量(kg)</th><th>J用量(kg)</th><th>净库存(kg)</th><th>可撑(月)</th><th>备注</th>
+      </tr></thead>
+      <tbody id="spNetBody"></tbody>
+    </table>
     </div>
   </div>
+  <div class="stockplan-tbl-wrap" id="spBaseTblWrap">
+  <table class="stockplan-table">
+    <thead><tr>
+      <th>状态</th><th>客户料号</th><th>现行牌号</th><th>当前库存(kg)</th><th>月均用量(kg)</th><th>全期月均</th><th>可撑(月)</th><th>建议备货(kg)</th><th>最迟下单</th><th>未来6个月供需</th>
+    </tr></thead>
+    <tbody id="spBody"></tbody>
+  </table>
+  </div>
+  <div class="stockplan-note" style="margin-top:10px">牌号与客户料号对应规则来自订单文件；库存取自 2026-09-18 库存总表；数据随每周库存更新同步刷新。</div>
 </div>
 
-<!-- 三聚绝活 - 易经占卜 -->
-<div class="fortune-page" id="fortunePage" style="display:none">
-  <div class="fortune-header">
-    <button class="back-btn" onclick="backToSkillsFromFortune()">←</button>
-    <h1>易经占卜</h1>
-  </div>
-  <div class="fortune-stage" id="fortuneStage">
-    <div class="fortune-btn-wrap">
-      <div class="fortune-btn-ring"></div>
-      <div class="fortune-btn-glow" id="fortuneGlow"></div>
-      <button class="fortune-btn" id="fortuneBtn" onclick="startFortune()">开始<br>占卜</button>
-    </div>
-    <div class="fortune-hint">静心凝神，点击上方按钮占卜一卦</div>
-    <div id="fortuneResult"></div>
-  </div>
-</div>
-
-<!-- 库存差异对比 -->
-<div class="compare-page" id="comparePage">
-  <div class="compare-header">
-    <button class="back-btn" onclick="backToSkillsFromCompare()">←</button>
-    <h1>库存差异对比</h1>
-  </div>
-  <div class="compare-body">
-    <div class="upload-grid">
-      <div class="upload-card"><div class="label">表 A — 我方库存（CSV）</div><div class="fname" id="cmpNameA">未选择</div><label class="up-btn" for="cmpFileA">选择 CSV</label><input type="file" id="cmpFileA" accept=".csv"><div class="hint" id="cmpHintA"></div></div>
-      <div class="upload-card"><div class="label">表 B — 仓库库存（CSV）</div><div class="fname" id="cmpNameB">未选择</div><label class="up-btn" for="cmpFileB">选择 CSV</label><input type="file" id="cmpFileB" accept=".csv"><div class="hint" id="cmpHintB"></div></div>
-    </div>
-    <div class="compare-tools">
-      <span style="font-size:12px;color:#666">匹配：</span>
-      <select id="cmpMatchKey"><option value="批号">批号</option><option value="物料代码">物料代码</option><option value="规格型号">规格型号</option><option value="物料代码+规格型号">物料代码+规格型号</option></select>
-      <span style="font-size:12px;color:#666">比对：</span>
-      <span style="font-size:12px;color:#666">我方比对：</span>
-      <select id="cmpFieldA"><option value="基本单位数量">基本单位数量</option></select>
-      <span style="font-size:12px;color:#666">仓库比对：</span>
-      <select id="cmpFieldB"><option value="基本单位数量">基本单位数量</option></select>
-      <span style="font-size:12px;color:#666">我方规格：</span>
-      <select id="cmpSpecA"><option value="规格型号">规格型号</option></select>
-      <span style="font-size:12px;color:#666">仓库规格：</span>
-      <select id="cmpSpecB"><option value="规格型号">规格型号</option></select>
-      <button class="cmp-btn" id="cmpBtn" disabled onclick="runCompare()">开始对比</button>
-      <button class="exp-btn" id="cmpExpBtn" style="display:none" onclick="exportCompare()">导出 Excel</button>
-    </div>
-    <div class="stats-grid" id="cmpStats" style="display:none"></div>
-    <div class="compare-filter" id="cmpFilter" style="display:none">
-      <input type="text" id="cmpSearch" placeholder="搜索规格型号、物料名称..." oninput="cmpFilter()">
-      <select id="cmpStatus" onchange="cmpFilter()"><option value="all">全部</option><option value="same">一致</option><option value="diff">数量差异</option></select>
-      <span class="fc" id="cmpCount"></span>
-    </div>
-    <div class="cmp-tbl-wrap" id="cmpTblWrap" style="display:none"></div>
-    <div class="compare-empty" id="cmpEmpty">上传两张 Excel 后点击「开始对比」</div>
-  </div>
-</div>
 
 
 <!-- 历史库存回顾 -->
@@ -746,9 +594,9 @@ html,body{background:linear-gradient(175deg,#f7faff 0%,#eef4fd 45%,#e7effb 100%)
 <div style="text-align:center"><button class="print-btn" id="printBtn" style="display:none" onclick="doPrint()">下载报价单</button></div>
 
 
-<!-- 三聚绝活 - 物性表查询 -->
+<!-- 物性表查询 -->
 <div class="datasheets-page" id="datasheetsPage" style="display:none">
-  <div class="skills-header">
+  <div class="datasheets-header">
     <button class="back-btn" onclick="goHome()">←</button>
     <h1>物性表查询</h1>
   </div>
@@ -1045,245 +893,6 @@ function doPrint(){
   }
 }
 
-/* ===== 库存差异对比 ===== */
-var cmpDataA = [], cmpDataB = [], cmpResult = [];
-
-function goCompare(){
-  document.getElementById('skillsPage').style.display = 'none';
-  document.getElementById('comparePage').classList.add('show');
-}
-function backToSkillsFromCompare(){
-  document.getElementById('comparePage').classList.remove('show');
-  document.getElementById('historyPage').style.display = 'none';
-  document.getElementById('hfhsPage').style.display = 'none';
-  document.getElementById('skillsPage').style.display = 'flex';
-}
-
-document.getElementById('cmpFileA').addEventListener('change',function(e){
-  var f = e.target.files[0]; if(!f) return;
-  document.getElementById('cmpNameA').textContent = f.name;
-  cmpParse(f,'A');
-});
-document.getElementById('cmpFileB').addEventListener('change',function(e){
-  var f = e.target.files[0]; if(!f) return;
-  document.getElementById('cmpNameB').textContent = f.name;
-  cmpParse(f,'B');
-});
-
-// CSV 解析器（纯原生，完全离线可用）
-function parseCSV(text){
-  // 去 BOM
-  if(text.charCodeAt(0)===0xFEFF) text = text.slice(1);
-  var rows = []; var row = []; var cell = ''; var inQ = false;
-  for(var i=0;i<text.length;i++){
-    var ch = text[i]; var next = text[i+1]||'';
-    if(inQ){
-      if(ch==='"'){
-        if(next==='"'){ cell+='"'; i++; }
-        else { inQ=false; }
-      } else { cell+=ch; }
-    } else {
-      if(ch==='"'){ inQ=true; }
-      else if(ch===','){ row.push(cell); cell=''; }
-      else if(ch==='\n'){
-        row.push(cell); rows.push(row); row=[]; cell='';
-      }
-      else if(ch==='\r'){
-        row.push(cell);
-        if(next==='\n') i++;
-        rows.push(row); row=[]; cell='';
-      }
-      else { cell+=ch; }
-    }
-  }
-  // 最后一行（可能没有换行符结尾）
-  row.push(cell); if(row.some(function(x){return x!=='';}) || row.length>1) rows.push(row);
-  if(rows.length<2) return [];
-  var headers = rows[0];
-  return rows.slice(1).map(function(r){
-    var o={};
-    headers.forEach(function(h,j){ o[h]=(r[j]||''); });
-    return o;
-  });
-}
-
-function cmpParse(file, side){
-  var r = new FileReader();
-  r.onload = function(e){
-    try {
-      // 读二进制，自动尝试 UTF-8 / GBK
-      var buf = new Uint8Array(e.target.result);
-      var text;
-      try { text = new TextDecoder('utf-8', {fatal: true}).decode(buf); }
-      catch(utfErr){ text = new TextDecoder('gbk').decode(buf); }
-      var json = parseCSV(text);
-      if(json.length===0){ showToast('文件为空或格式不正确（请确认为 CSV 格式）', 'error'); return; }
-      if(side==='A'){ cmpDataA = json; document.getElementById('cmpHintA').textContent = json.length+' 条';
-        var keysA = Object.keys(json[0]||{});
-        // 填充我方比对字段下拉框
-        var fa = document.getElementById('cmpFieldA'); fa.innerHTML = '';
-        keysA.forEach(function(k){ fa.innerHTML += '<option value="'+k+'">'+k+'</option>'; });
-        fa.value = keysA.indexOf('基本单位数量')>=0 ? '基本单位数量' : keysA[0];
-        // 填充我方规格下拉框
-        var sa = document.getElementById('cmpSpecA'); sa.innerHTML = '';
-        keysA.forEach(function(k){ sa.innerHTML += '<option value="'+k+'">'+k+'</option>'; });
-        sa.value = keysA.indexOf('规格型号')>=0 ? '规格型号' : keysA[0];
-      } else { cmpDataB = json; document.getElementById('cmpHintB').textContent = json.length+' 条';
-        var keysB = Object.keys(json[0]||{});
-        // 填充仓库比对字段下拉框
-        var fb = document.getElementById('cmpFieldB'); fb.innerHTML = '';
-        keysB.forEach(function(k){ fb.innerHTML += '<option value="'+k+'">'+k+'</option>'; });
-        fb.value = keysB.indexOf('基本单位数量')>=0 ? '基本单位数量' : keysB[0];
-        // 填充仓库规格下拉框
-        var sb = document.getElementById('cmpSpecB'); sb.innerHTML = '';
-        keysB.forEach(function(k){ sb.innerHTML += '<option value="'+k+'">'+k+'</option>'; });
-        sb.value = keysB.indexOf('规格型号')>=0 ? '规格型号' : keysB[0];
-      }
-      var btn = document.getElementById('cmpBtn');
-      btn.disabled = !(cmpDataA.length && cmpDataB.length);
-      if(cmpDataA.length && cmpDataB.length) btn.textContent = '开始对比（A:'+cmpDataA.length+' vs B:'+cmpDataB.length+'）';
-    } catch(err){
-      showToast('文件解析失败：' + err.message, 'error');
-    }
-  };
-  r.onerror = function(){ showToast('文件读取失败，请重试', 'error'); };
-  r.readAsArrayBuffer(file);
-}
-
-function runCompare(){
-  var mk = document.getElementById('cmpMatchKey').value;
-  var cfA = document.getElementById('cmpFieldA').value;
-  var cfB = document.getElementById('cmpFieldB').value;
-  var specA = document.getElementById('cmpSpecA').value;
-  var specB = document.getElementById('cmpSpecB').value;
-  // 按批号分组，汇总规格型号和数量
-  var grpA = {}, grpB = {};
-  function keyOf(r,k){ return k==='物料代码+规格型号' ? (r['物料代码']||'')+'|||'+(r[specA]||'') : (r[k]||''); }
-  function add(mp, r, specField, cf){
-    var k = keyOf(r,mk);
-    if(!k) return;
-    if(!mp[k]) mp[k] = {specs:{}, total:0};
-    var spec = r[specField]||'-';
-    mp[k].specs[spec] = true;
-    mp[k].total += parseFloat(r[cf])||0;
-  }
-  cmpDataA.forEach(function(r){ add(grpA, r, specA, cfA); });
-  cmpDataB.forEach(function(r){ add(grpB, r, specB, cfB); });
-
-  // 合并所有批号，排序
-  var allKeys = {}, sorted = [];
-  function keys(mp){ Object.keys(mp).forEach(function(k){ if(!allKeys[k]){ allKeys[k]=true; sorted.push(k); } }); }
-  keys(grpA); keys(grpB);
-  sorted.sort();
-
-  // 构建表格
-  var h = '<table class="cmp-tbl"><thead><tr><th>'+mk+'</th><th>我方-'+specA+'</th><th>我方-'+cf+'</th><th>仓库-'+specB+'</th><th>仓库-'+cf+'</th><th>差异</th></tr></thead><tbody id="cmpTbody">';
-  sorted.forEach(function(key){
-    var a = grpA[key]||{specs:{}, total:0};
-    var b = grpB[key]||{specs:{}, total:0};
-    var aSpec = Object.keys(a.specs).join(', ') || '-';
-    var bSpec = Object.keys(b.specs).join(', ') || '-';
-    var diff = a.total - b.total;
-    var cls = Math.abs(diff)<0.001 ? 'r-same' : 'r-diff';
-    h += '<tr class="'+cls+'" data-status="'+(Math.abs(diff)<0.001?'same':'diff')+'">';
-    h += '<td>'+esc(key)+'</td><td style="text-align:left">'+esc(aSpec)+'</td><td>'+a.total+'</td><td style="text-align:left">'+esc(bSpec)+'</td><td>'+b.total+'</td>';
-    if(Math.abs(diff)<0.001) h += '<td>0</td>';
-    else h += '<td><span class="diff-bg">'+(diff>0?'+':'')+diff.toFixed(2)+'</span></td>';
-    h += '</tr>';
-  });
-  h += '</tbody></table>';
-
-  // 更新统计
-  var sameCnt = 0, diffCnt = 0;
-  sorted.forEach(function(key){
-    var a = grpA[key]||{total:0}, b = grpB[key]||{total:0};
-    if(Math.abs(a.total-b.total)<0.001) sameCnt++; else diffCnt++;
-  });
-  document.getElementById('cmpStats').style.display = 'flex';
-  document.getElementById('cmpStats').innerHTML =
-    '<div class="stat-card st-match"><div class="num">'+sameCnt+'</div><div class="lb">一致</div></div>'+
-    '<div class="stat-card st-diff"><div class="num">'+diffCnt+'</div><div class="lb">数量差异</div></div>';
-
-  document.getElementById('cmpTblWrap').innerHTML = h;
-  document.getElementById('cmpTblWrap').style.display = 'block';
-  document.getElementById('cmpFilter').style.display = 'flex';
-  document.getElementById('cmpExpBtn').style.display = 'inline-block';
-  document.getElementById('cmpEmpty').style.display = 'none';
-  document.getElementById('cmpCount').textContent = '共 '+sorted.length+' 个批号';
-}
-
-function cmpFilter(){
-  var kw = (document.getElementById('cmpSearch').value||'').toLowerCase();
-  var s = document.getElementById('cmpStatus').value;
-  var rows = document.querySelectorAll('#cmpTbody tr');
-  var c = 0;
-  rows.forEach(function(tr){
-    var ok = (s==='all'||tr.getAttribute('data-status')===s) && (!kw||tr.textContent.toLowerCase().indexOf(kw)>=0);
-    tr.style.display = ok?'':'none'; if(ok) c++;
-  });
-  document.getElementById('cmpCount').textContent = '显示 '+c+' 个批号';
-}
-
-function exportCompare(){
-  var mk = document.getElementById('cmpMatchKey').value;
-  var cfA = document.getElementById('cmpFieldA').value;
-  var cfB = document.getElementById('cmpFieldB').value;
-  var specA = document.getElementById('cmpSpecA').value;
-  var specB = document.getElementById('cmpSpecB').value;
-  var esc = function(v){
-    v = String(v==null?'':v);
-    return v.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  };
-
-  // 按批号分组，汇总规格型号和数量
-  var grpA = {}, grpB = {};
-  function add(mp, r, specField, cf){
-    var k = (mk==='物料代码+规格型号') ? (r['物料代码']||'')+'|||'+(r[specA]||'') : (r[mk]||'');
-    if(!k) return;
-    if(!mp[k]) mp[k] = {specs:{}, total:0};
-    var spec = r[specField]||'-';
-    mp[k].specs[spec] = true;
-    mp[k].total += parseFloat(r[cf])||0;
-  }
-  cmpDataA.forEach(function(r){ add(grpA, r, specA, cfA); });
-  cmpDataB.forEach(function(r){ add(grpB, r, specB, cfB); });
-
-  // 合并所有批号，排序
-  var allKeys = {}, sorted = [];
-  function keys(mp){ Object.keys(mp).forEach(function(k){ if(!allKeys[k]){ allKeys[k]=true; sorted.push(k); } }); }
-  keys(grpA); keys(grpB);
-  sorted.sort();
-
-  // 5列：批号 | 我方规格型号 | 我方数量 | 仓库规格型号 | 仓库数量
-  var body = '';
-  sorted.forEach(function(key){
-    var a = grpA[key]||{specs:{}, total:0};
-    var b = grpB[key]||{specs:{}, total:0};
-    var aSpec = Object.keys(a.specs).join(', ') || '-';
-    var bSpec = Object.keys(b.specs).join(', ') || '-';
-    var diff = a.total - b.total;
-    var rowBg = Math.abs(diff)<0.001 ? '' : ' bgcolor="#FFF3CD"';
-    body += '<tr'+rowBg+'><td>'+esc(key)+'</td><td>'+esc(aSpec)+'</td><td>'+a.total+'</td><td>'+esc(bSpec)+'</td><td>'+b.total+'</td></tr>';
-  });
-
-  var headerRow = '<tr>'
-    +'<th bgcolor="#4472C4" style="color:#fff">'+esc(mk)+'</th>'
-    +'<th bgcolor="#4472C4" style="color:#fff">我方-'+esc(specA)+'</th>'
-    +'<th bgcolor="#4472C4" style="color:#fff">我方-'+esc(cfA)+'</th>'
-    +'<th bgcolor="#4472C4" style="color:#fff">仓库-'+esc(specB)+'</th>'
-    +'<th bgcolor="#4472C4" style="color:#fff">仓库-'+esc(cfB)+'</th>'
-    +'</tr>';
-
-  var html = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="UTF-8"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>库存差异对比</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><style>td,th{border:1px solid #999;padding:4px 8px;font-size:12px}</style></head><body><table>'+headerRow+body+'</table></body></html>';
-
-  var blob = new Blob([html],{type:'application/vnd.ms-excel;charset=UTF-8'});
-  var a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = '库存差异对比_' + new Date().toISOString().slice(0,10) + '.xls';
-  a.click();
-  showToast('已导出 '+sorted.length+' 个批号对比（.xls），请用 Excel 打开');
-}
-
 function esc(s){
   s = String(s==null?'':s);
   return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -1296,14 +905,11 @@ document.getElementById('kw').addEventListener('keydown',function(e){
 function goHome(){
   document.getElementById('main').style.display = 'none';
   document.getElementById('datasheetsPage').style.display = 'none';
-  document.getElementById('skillsPage').style.display = 'none';
-  document.getElementById('converterPage').style.display = 'none';
-  document.getElementById('fortunePage').style.display = 'none';
-  document.getElementById('comparePage').classList.remove('show');
   document.getElementById('quotePreview').style.display = 'none';
   document.getElementById('printBtn').style.display = 'none';
   document.getElementById('floatBar').classList.remove('show');
   document.getElementById('quoteModal').classList.remove('show');
+  document.getElementById('stockplanPage').style.display = 'none';
   document.getElementById('homePage').style.display = 'flex';
   var now = new Date();
   var d = document.getElementById('heroDate');
@@ -1631,375 +1237,6 @@ function renderHistoryTable(){
   wrap.innerHTML = h;
 }
 
-// ========== 三聚绝活 ==========
-function goSkills(){
-  document.getElementById("homePage").style.display = "none";
-  document.getElementById("skillsPage").style.display = "flex";
-}
-
-function goConverter(){
-  document.getElementById("skillsPage").style.display = "none";
-  document.getElementById("converterPage").style.display = "flex";
-  document.getElementById("numInput").value = "";
-  document.getElementById("converterResult").innerHTML = "<div class=\"converter-placeholder\">在上方输入数字后实时显示转换结果</div>";
-}
-
-function backToSkills(){
-  document.getElementById("converterPage").style.display = "none";
-  document.getElementById("skillsPage").style.display = "flex";
-}
-
-// 数字转换核心算法
-var DIGITS_UPPER = ["零","壹","贰","叁","肆","伍","陆","柒","捌","玖"];
-var DIGITS_LOWER = ["零","一","二","三","四","五","六","七","八","九"];
-var UNITS_UPPER = ["","拾","佰","仟"];
-var UNITS_LOWER = ["","十","百","千"];
-var BIG_UNITS_UPPER = ["","万","亿","万"];
-var BIG_UNITS_LOWER = ["","万","亿","万"];
-
-function toChineseUpperInt(numStr){
-  if(numStr === "0") return "零";
-  var result = "";
-  var len = numStr.length;
-  var zeroFlag = false;
-  for(var i = 0; i < len; i++){
-    var digit = parseInt(numStr[i]);
-    var pos = len - 1 - i;
-    var unitIdx = pos % 4;
-    var bigIdx = Math.floor(pos / 4);
-    if(digit === 0){
-      zeroFlag = true;
-      if(unitIdx === 0 && bigIdx > 0){
-        var segStart = Math.max(0, i - 3);
-        var seg = numStr.substring(segStart, i + 1);
-        if(!/^0+$/.test(seg)){
-          result += BIG_UNITS_UPPER[bigIdx];
-        }
-        zeroFlag = false;
-      }
-    } else {
-      if(zeroFlag){
-        result += "零";
-        zeroFlag = false;
-      }
-      result += DIGITS_UPPER[digit] + UNITS_UPPER[unitIdx];
-    }
-    if(unitIdx === 0 && bigIdx > 0 && digit !== 0){
-      result += BIG_UNITS_UPPER[bigIdx];
-    }
-  }
-  if(result.endsWith("零")) result = result.slice(0, -1);
-  if(result.startsWith("壹拾")) result = result.substring(1);
-  result = result.replace(/亿万/g, "亿");
-  return result || "零";
-}
-
-function toChineseLowerInt(numStr){
-  if(numStr === "0") return "零";
-  var result = "";
-  var len = numStr.length;
-  var zeroFlag = false;
-  for(var i = 0; i < len; i++){
-    var digit = parseInt(numStr[i]);
-    var pos = len - 1 - i;
-    var unitIdx = pos % 4;
-    var bigIdx = Math.floor(pos / 4);
-    if(digit === 0){
-      zeroFlag = true;
-      if(unitIdx === 0 && bigIdx > 0){
-        var segStart = Math.max(0, i - 3);
-        var seg = numStr.substring(segStart, i + 1);
-        if(!/^0+$/.test(seg)){
-          result += BIG_UNITS_LOWER[bigIdx];
-        }
-        zeroFlag = false;
-      }
-    } else {
-      if(zeroFlag){
-        result += "零";
-        zeroFlag = false;
-      }
-      result += DIGITS_LOWER[digit] + UNITS_LOWER[unitIdx];
-    }
-    if(unitIdx === 0 && bigIdx > 0 && digit !== 0){
-      result += BIG_UNITS_LOWER[bigIdx];
-    }
-  }
-  if(result.endsWith("零")) result = result.slice(0, -1);
-  if(result.startsWith("一十")) result = result.substring(1);
-  result = result.replace(/亿万/g, "亿");
-  return result || "零";
-}
-
-function toChineseUpper(num){
-  var clean = String(num).replace(/,/g, "").trim();
-  if(!/^\d+(\.\d{0,2})?$/.test(clean)) return "";
-  var parts = clean.split(".");
-  var intPart = parts[0];
-  var decPart = parts[1] || "";
-  var result = toChineseUpperInt(intPart) + "元";
-  if(decPart){
-    var jiao = parseInt(decPart[0] || "0");
-    var fen = parseInt(decPart[1] || "0");
-    if(jiao > 0) result += DIGITS_UPPER[jiao] + "角";
-    else if(fen > 0) result += "零";
-    if(fen > 0) result += DIGITS_UPPER[fen] + "分";
-    if(jiao === 0 && fen === 0) result += "整";
-  } else {
-    result += "整";
-  }
-  return result;
-}
-
-function toChineseLower(num){
-  var clean = String(num).replace(/,/g, "").trim();
-  if(!/^\d+(\.\d{0,2})?$/.test(clean)) return "";
-  var parts = clean.split(".");
-  var intPart = parts[0];
-  var decPart = parts[1] || "";
-  var result = toChineseLowerInt(intPart);
-  if(decPart){
-    result += "点";
-    for(var i = 0; i < decPart.length; i++){
-      result += DIGITS_LOWER[parseInt(decPart[i])];
-    }
-  }
-  return result;
-}
-
-function convertNumber(){
-  var input = document.getElementById("numInput");
-  var raw = input.value;
-  var clean = raw.replace(/,/g, "").trim();
-  var resultDiv = document.getElementById("converterResult");
-  
-  if(!clean){
-    resultDiv.innerHTML = "<div class=\"converter-placeholder\">在上方输入数字后实时显示转换结果</div>";
-    return;
-  }
-  
-  if(!/^\d+(\.\d{0,2})?$/.test(clean)){
-    resultDiv.innerHTML = "<div class=\"converter-placeholder\" style=\"color:#f44336\">请输入有效数字（整数或最多两位小数）</div>";
-    return;
-  }
-  
-  var upper = toChineseUpper(clean);
-  var lower = toChineseLower(clean);
-  var arabic = clean;
-  
-  if(clean.indexOf(".") !== -1){
-    var parts = clean.split(".");
-    arabic = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "." + parts[1];
-  } else {
-    arabic = clean.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
-  
-  var html = "";
-  html += buildRow("中文大写", upper);
-  html += buildRow("中文小写", lower);
-  html += buildRow("阿拉伯数字", arabic);
-  
-  resultDiv.innerHTML = html;
-}
-
-function buildRow(label, value){
-  return "<div class=\"converter-row\">"
-    + "<div class=\"result-label\">" + esc(label) + "</div>"
-    + "<div class=\"result-value\">" + esc(value) + "</div>"
-    + "<button class=\"copy-btn\" data-copy=\"" + esc(value).replace(/"/g, "&quot;") + "\" onclick=\"copyResult(this)\">复制</button>"
-    + "</div>";
-}
-
-function copyResult(btn){
-  var text = btn.getAttribute("data-copy");
-  if(navigator.clipboard && window.isSecureContext){
-    navigator.clipboard.writeText(text).then(function(){
-      btn.textContent = "已复制";
-      btn.classList.add("copied");
-      setTimeout(function(){ btn.textContent = "复制"; btn.classList.remove("copied"); }, 1500);
-    }).catch(function(){
-      fallbackCopy(btn, text);
-    });
-  } else {
-    fallbackCopy(btn, text);
-  }
-}
-
-function fallbackCopy(btn, text){
-  var textarea = document.createElement("textarea");
-  textarea.value = text;
-  textarea.style.position = "fixed";
-  textarea.style.opacity = "0";
-  document.body.appendChild(textarea);
-  textarea.select();
-  try{
-    document.execCommand("copy");
-    btn.textContent = "已复制";
-    btn.classList.add("copied");
-    setTimeout(function(){ btn.textContent = "复制"; btn.classList.remove("copied"); }, 1500);
-  } catch(e){
-    showToast("复制失败，请手动复制", "error");
-  }
-  document.body.removeChild(textarea);
-}
-
-function clearConverter(){
-  document.getElementById("numInput").value = "";
-  document.getElementById("converterResult").innerHTML = "<div class=\"converter-placeholder\">在上方输入数字后实时显示转换结果</div>";
-  document.getElementById("numInput").focus();
-}
-
-function pasteToConverter(){
-  if(navigator.clipboard && window.isSecureContext){
-    navigator.clipboard.readText().then(function(text){
-      document.getElementById("numInput").value = text;
-      convertNumber();
-    }).catch(function(){
-      showToast("粘贴失败，请手动粘贴", "error");
-    });
-  } else {
-    showToast("请使用 Ctrl+V 手动粘贴", "error");
-  }
-}
-
-// ========== 易经占卜 ==========
-var FORTUNE_DATA = [
-  {idx:1,name:"乾为天",symbol:"☰☰",level:"大吉",desc:"天行健，君子以自强不息。此卦如烈日当空，诸事亨通！今日宜大胆出击，领导力爆棚，适合做决定、谈合作。唯一提醒：别太上头，高处不胜寒，记得给身边人递杯茶。"},
-  {idx:2,name:"坤为地",symbol:"☷☷",level:"大吉",desc:"地势坤，君子以厚德载物。此卦如广袤大地，稳得一批。今日宜低调积累，默默耕耘自会开花。别人冲锋你在后头捡装备，最后赢家可能就是你。"},
-  {idx:3,name:"水雷屯",symbol:"☵☳",level:"小凶",desc:"屯者，难也。万事开头难，像春雨前的闷雷，憋着一股劲还没炸出来。今日不宜强行推进，适合蓄力、规划、整理思路。好事多磨，先泡杯茶等等。"},
-  {idx:4,name:"山水蒙",symbol:"☶☵",level:"中平",desc:"山下有水，蒙昧初开。你正站在知识的大门口，内心有点迷茫是正常的。今日宜虚心请教、报个学习班、读本书——别一个人瞎琢磨，问对了人答案自然来。"},
-  {idx:5,name:"水天需",symbol:"☵☰",level:"中平",desc:"云在天上，雨还没落下来。需要等待，但不是躺平——该准备雨伞的准备雨伞，该收衣服的收衣服。今日宜耐心等候时机，急也没用，天意如此。"},
-  {idx:6,name:"天水讼",symbol:"☰☵",level:"小凶",desc:"天上水下，方向相背。此卦主口舌纷争，今日容易跟人意见不合。建议管住嘴，忍一时风平浪静。不是怂，是智慧——有些架赢了道理输了人情，划不来。"},
-  {idx:7,name:"地水师",symbol:"☷☵",level:"中平",desc:"地中有水，蓄势待发。师者，众也。今日宜团队作战，别单打独斗。但选统帅要擦亮眼——跟对了人吃肉，跟错了人吃瘪。"},
-  {idx:8,name:"水地比",symbol:"☵☷",level:"吉",desc:"水附大地，亲比和谐。今日人气旺，社交运势飙升！适合聚餐、团建、联络感情。别人觉得你特别靠谱，记得保持这份亲和力，人脉就是钱脉。"},
-  {idx:9,name:"风天小畜",symbol:"☴☰",level:"中平",desc:"风行天上，小有积蓄。你正在攒一个大招，但目前能量还没满格。今日宜稳扎稳打、小步快跑。别指望一步登天，但每一步都在正确方向上。"},
-  {idx:10,name:"天泽履",symbol:"☰☱",level:"中平",desc:"上天下泽，如履薄冰。此卦提醒你：位置越高越要谨慎。今日做事前先想三秒，别踩到别人雷区。如老虎尾巴不可乱摸，摸对了是虎将，摸错了是虎粮。"},
-  {idx:11,name:"地天泰",symbol:"☷☰",level:"大吉",desc:"天地交泰，万物通！这是易经中最吉利的卦之一，阴阳和谐，否极泰来。今日做什么都顺，桃花运财运双开。趁天时地利，把重要的事都安排上！"},
-  {idx:12,name:"天地否",symbol:"☰☷",level:"小凶",desc:"天在上地在下，阴阳不交。否塞不通，做什么都感觉被堵着。今日宜收缩、保守、低调行事。别硬刚，这不是你的问题，是大环境如此——保存实力等风口来。"},
-  {idx:13,name:"天火同人",symbol:"☰☲",level:"吉",desc:"天火相映，志同道合。今日适合找人合作、组队开黑、谈项目合伙。你会遇到懂你的人，一拍即合。但要选志趣相投的，别为了凑数拉郎配。"},
-  {idx:14,name:"火天大有",symbol:"☲☰",level:"大吉",desc:"火在天上，普照万物。这是丰收卦！之前的努力终于要大爆发了。今日适合收割成果、展示成绩、提交方案。别人忙碌你收获——前提是你确实努力过。"},
-  {idx:15,name:"地山谦",symbol:"☷☶",level:"大吉",desc:"山在地下，谦逊之象。此卦是六十四卦中最稳的——满招损谦受益。今日保持低调谦虚，反而会有意外惊喜。不争不抢却自然有好事找上门，这就是谦逊的力量。"},
-  {idx:16,name:"雷地豫",symbol:"☳☷",level:"吉",desc:"雷出地奋，欢愉快乐。今日心情不错，适合放松、娱乐、犒赏自己。一张一弛乃文武之道，别把自己绷太紧。但快乐归快乐，正事别忘了做。"},
-  {idx:17,name:"泽雷随",symbol:"☱☳",level:"中平",desc:"泽上有雷，顺势而为。今日宜随机应变，跟着感觉走。别太固执于计划，有时候灵活变通比死磕到底更管用。跟对人，走对路，省力又高效。"},
-  {idx:18,name:"山风蛊",symbol:"☶☴",level:"小凶",desc:"山下有风，蛊惑腐败。有些积弊到了该清理的时候了。今日适合断舍离：清理旧物、整理关系、改掉坏习惯。动个小手术，为的是长远健康。"},
-  {idx:19,name:"地泽临",symbol:"☷☱",level:"吉",desc:"地临泽上，君临天下。今日气场两米八，适合主持会议、做汇报、当众发言。你自然而然就有领导范儿，别人愿意听你的。趁状态好，把重要事项推一把。"},
-  {idx:20,name:"风地观",symbol:"☴☷",level:"中平",desc:"风行地上，观察入微。今日宜多看少动，做个安静的观察者。你能看到别人看不到的细节和机会。信息收集够了再行动，先当侦探后当将军。"},
-  {idx:21,name:"火雷噬嗑",symbol:"☲☳",level:"中平",desc:"雷电交加，口中咬物。此卦主刑狱决断，今日适合做个了断——纠结的事该下决心了。咬碎硬骨头需要一口好牙，拿出果断来，拖得越久越麻烦。"},
-  {idx:22,name:"山火贲",symbol:"☶☲",level:"中平",desc:"山下有火，文饰之美。今日适合打扮、装饰、做PPT美化。外表很重要但别只追求表面——内在实力才是底气。适度包装可以，过度包装翻车更快。"},
-  {idx:23,name:"山地剥",symbol:"☶☷",level:"小凶",desc:"山附于地，剥落之象。根基不稳，容易塌方。今日宜巩固基础，别瞎扩张。有些事可能要推倒重来——不是坏事，烂尾楼拆了才能盖更好的。"},
-  {idx:24,name:"地雷复",symbol:"☷☳",level:"大吉",desc:"雷在地中，一阳来复！冬至过后阳气回升，好运正在回归的路上。今日宜重新出发、重启项目、找回状态。之前的低谷是弹簧的压缩，反弹即将开始！"},
-  {idx:25,name:"天雷无妄",symbol:"☰☳",level:"中平",desc:"天下雷行，真实无妄。今日宜实事求是，别耍小聪明也别抱侥幸心理。有一说一，诚实地对待自己和他人。不折腾就是最好的策略，顺其自然反而收获。"},
-  {idx:26,name:"山天大畜",symbol:"☶☰",level:"大吉",desc:"天在山中，积蓄能量。你正在默默积累超级资源，像充电宝怼满了电。今日适合学习新技能、储备知识、收集人脉。别急着放电，蓄满再释放效果翻倍！"},
-  {idx:27,name:"山雷颐",symbol:"☶☳",level:"中平",desc:"山下有雷，颐养天年。此卦管吃喝养生，今日宜关注身心健康。吃点好的、睡个好觉、锻炼一下。身体是革命的本钱，别拿青春赌明天。"},
-  {idx:28,name:"泽风大过",symbol:"☱☴",level:"小凶",desc:"泽灭木，大过之象。事情可能过头了——太用力反而折断。今日宜踩刹车，检查是不是哪里用力过猛。过犹不及，学会收放自如才是高手。"},
-  {idx:29,name:"坎为水",symbol:"☵☵",level:"凶",desc:"水势重叠，险陷重重。坎卦主险，今日诸事小心！像在深水区游泳，每一步都要探实了再走。但水也代表智慧——冷静思考能化险为夷，慌乱只会呛水。"},
-  {idx:30,name:"离为火",symbol:"☲☲",level:"吉",desc:"明两作，离火光明。今日适合展示才华、发表观点、上台表演。你有光芒，别藏着掖着。但火也需要燃料——保持学习和充电，核心竞争力不能丢。"},
-  {idx:31,name:"泽山咸",symbol:"☱☶",level:"吉",desc:"山上有泽，感应之象。此卦主感情和人际，今日桃花运不错！有心仪的对象可以试探一下，老友也会突然联系。用心去感应，不用太多理性分析，感觉对了就对了。"},
-  {idx:32,name:"雷风恒",symbol:"☳☴",level:"吉",desc:"雷风相助，恒久之道。今日宜坚持、长跑、做长期规划。不图一时之快，要为长远布局。西瓜要慢慢熟，好项目要慢慢打磨——恒心就是最大的竞争力。"},
-  {idx:33,name:"天山遁",symbol:"☰☶",level:"中平",desc:"天下有山，退避之象。今日不宜硬刚正面战场，适当撤退是智慧。遇到强敌先躲一躲，保存实力。三十六计走为上，这不叫怂，叫战略转进。"},
-  {idx:34,name:"雷天大壮",symbol:"☳☰",level:"大吉",desc:"雷在天上，声势浩大！这是四阳盛长之卦，力量满满。今日适合大动作、大项目、大决策。你的能量像满格WIFI信号，覆盖全场！但要记得物极必反，该收时还得收。"},
-  {idx:35,name:"火地晋",symbol:"☲☷",level:"吉",desc:"明出地上，旭日东升。运势正在上升通道！今日适合争取晋升、申请资源、推进项目。就像太阳从地平线升起，你的好日子正在前方，继续向前走就行。"},
-  {idx:36,name:"地火明夷",symbol:"☷☲",level:"凶",desc:"明入地中，光明受伤。此卦主时运不济，英雄落难。今日宜韬光养晦，把自己的锋芒藏起来。不是你的错，是风向不对——低调熬过去，天亮就在不远处。"},
-  {idx:37,name:"风火家人",symbol:"☴☲",level:"吉",desc:"风自火出，家人同心。今日宜回归家庭、关心亲人、处理内部事务。家和万事兴，后院不起火前线才能打仗。给爸妈打个电话，跟伴侣好好吃顿饭，比什么都强。"},
-  {idx:38,name:"火泽睽",symbol:"☲☱",level:"小凶",desc:"上火下泽，乖离不合。今日容易跟人闹别扭，观点分歧加大。别硬争对错，求同存异才是成年人。各让一步，火和水也能做鸳鸯锅嘛。"},
-  {idx:39,name:"水山蹇",symbol:"☵☶",level:"小凶",desc:"山上有水，行路艰难。前有高山后有深水，进退两难。今日宜停下来重新规划路线，别硬闯。有时候绕远路反而是捷径——换个方向，路可能就在脚下。"},
-  {idx:40,name:"雷水解",symbol:"☳☵",level:"吉",desc:"雷雨大作，困难消散。之前的困境终于要解开了！就像暴雨冲刷之后天空放晴。今日烦恼会找到解决方案，卡住的流程会松动。深呼吸，放轻松，乌云正在散去。"},
-  {idx:41,name:"山泽损",symbol:"☶☱",level:"中平",desc:"山下有泽，损下益上。今日可能需要做一些取舍，有舍才有得。该删的删、该减的减、该放手的放手。减肥的少吃一顿，省钱的少买一件——小损失换大收益。"},
-  {idx:42,name:"风雷益",symbol:"☴☳",level:"大吉",desc:"风雷相助，增益之象。今日适合投资自己、学习充电、拓展人脉。你付出的每一分努力都会加倍回报。老天给你开了增益Buff——大胆去做，回报率超高！"},
-  {idx:43,name:"泽天夬",symbol:"☱☰",level:"中平",desc:"泽上于天，决断之时。该做的决定不能再拖了！今日适合快刀斩乱麻，该断则断。但注意方式方法——决断不等于粗暴，温柔一刀更有说服力。"},
-  {idx:44,name:"天风姤",symbol:"☰☴",level:"中平",desc:"天下有风，邂逅相遇。今日可能有意外偶遇——老朋友、新缘分、偶然的机会。保持开放心态，惊喜往往在计划之外。但也留个心眼，不是所有邂逅都是缘分。"},
-  {idx:45,name:"泽地萃",symbol:"☱☷",level:"吉",desc:"泽上于地，精英荟萃。今日适合参加聚会、行业交流、面试求职。你会遇到对你有帮助的人。人往高处走，跟优秀的人在一起你也会变优秀。"},
-  {idx:46,name:"地风升",symbol:"☷☴",level:"吉",desc:"地中生木，蒸蒸日上。运势稳步上升中！今日适合推进项目、申请晋升、拓展业务。像树苗破土而出，一天比一天高。保持这个势头，别停下来。"},
-  {idx:47,name:"泽水困",symbol:"☱☵",level:"凶",desc:"泽中无水，困顿之象。此卦主穷途末路，处处碰壁。今日宜躺平认命——不是放弃，是节省体力等转机。所有的困都是暂时的，连水都能把石头滴穿，你慌什么。"},
-  {idx:48,name:"水风井",symbol:"☵☴",level:"中平",desc:"木上有水，井养不穷。此卦讲的是基础建设——今日宜修缮根基、改进流程、打牢地基。一口好井能养一村人，基础扎实了后面的发展才有保障。"},
-  {idx:49,name:"泽火革",symbol:"☱☲",level:"吉",desc:"泽中有火，变革之象。今日适合破旧立新！换个发型、改组团队、革新流程。旧的不去新的不来，你犹豫的变革很可能正是破局的关键。拥抱变化吧！"},
-  {idx:50,name:"火风鼎",symbol:"☲☴",level:"大吉",desc:"木上有火，鼎立之象。你正在建立自己的品牌和地位。今日适合打造个人IP、确立专业权威、发布重要成果。像鼎一样稳重可靠，别人会对你刮目相看。"},
-  {idx:51,name:"震为雷",symbol:"☳☳",level:"中平",desc:"洊雷震，君子以恐惧修省。双雷轰顶，可能有点惊吓。今日宜冷静自省，别被突发事件搞懵。雷声大不一定雨点大——稳住心态，风浪过后你还是最靓的仔。"},
-  {idx:52,name:"艮为山",symbol:"☶☶",level:"中平",desc:"兼山艮，君子以思不出其位。该停的时候就停，今日不宜冒进。像山一样稳坐不动，做好分内事即可。有时候不动就是最好的动——守住阵地也是胜利。"},
-  {idx:53,name:"风山渐",symbol:"☴☶",level:"吉",desc:"山上有木，渐进之象。好事多磨，急不得。今日宜一步一步来，稳扎稳打才能走得远。别跟别人比速度，按自己的节奏走——慢慢来反而比较快。"},
-  {idx:54,name:"雷泽归妹",symbol:"☳☱",level:"中平",desc:"泽上有雷，归妹之象。此卦主婚恋、合作、契约。今日适合签合同、确认关系、达成协议。但要看清条款，别被激情冲昏了头。嫁出去容易，过得好才是本事。"},
-  {idx:55,name:"雷火丰",symbol:"☳☲",level:"吉",desc:"雷电交加，盛大丰收。此卦主丰盛圆满！今日做什么都容易超额完成。你的能量值拉满，效率爆表。但丰盛时也要留有余地——月满则亏，适当储备过冬粮。"},
-  {idx:56,name:"火山旅",symbol:"☲☶",level:"中平",desc:"山上有火，旅行之象。今日宜外出、出差、换个环境。你的好运可能在别处——跳出舒适圈看看外面的世界。但要管好钱包，旅途中容易冲动消费。"},
-  {idx:57,name:"巽为风",symbol:"☴☴",level:"中平",desc:"随风巽，君子以申命行事。如风般柔顺但无孔不入。今日宜沟通、传达、说服——用柔和的方式达成目标。柔不是弱，是以柔克刚。风虽无形，却能撼动大树。"},
-  {idx:58,name:"兑为泽",symbol:"☱☱",level:"吉",desc:"丽泽兑，君子以朋友讲习。今日适合社交、聊天、分享快乐。你是人群中的小太阳，说话特别有感染力。约朋友喝杯奶茶，快乐加倍——独乐乐不如众乐乐。"},
-  {idx:59,name:"风水涣",symbol:"☴☵",level:"中平",desc:"风行水上，涣散之象。今日适合发散思维、头脑风暴、打开思路。别太拘谨，把心里的想法都倒出来。涣散不一定是坏事——有些结，散开了反而通透。"},
-  {idx:60,name:"水泽节",symbol:"☵☱",level:"中平",desc:"泽上有水，节制之象。今日宜控制预算、节制欲望、管理时间。刷手机的时间该控制一下了，花钱的手该收一收了。自律给你自由，节制是为了更长远的快乐。"},
-  {idx:61,name:"风泽中孚",symbol:"☴☱",level:"吉",desc:"泽上有风，诚信之象。今日宜兑现承诺、守信履约。你的信誉就是你最大的资产。说到做到，别人对你的信任会加倍。诚信不是口号——做一次胜过说一百次。"},
-  {idx:62,name:"雷山小过",symbol:"☳☶",level:"小凶",desc:"山上有雷，小有过越。今日宜小事收敛，别吹毛求疵。稍微放低标准，不要太追求完美。鸡蛋里挑骨头只会让自己累——差不多就得了，放过自己也放过别人。"},
-  {idx:63,name:"水火既济",symbol:"☵☲",level:"吉",desc:"水在火上，大事已成！此卦代表任务完成、功德圆满。今日适合收尾、交付、庆功。之前的努力有了成果，可以松一口气了。但别松懈太久——守成比开创更难。"},
-  {idx:64,name:"火水未济",symbol:"☲☵",level:"中平",desc:"火在水上，尚未成功。离终点只差最后一公里！今日宜再加一把油，别功亏一篑。未济不是失败是进行时——黎明前的黑暗最考验人，坚持冲过去就赢了。"}
-];
-
-function goFortune(){
-  document.getElementById("skillsPage").style.display = "none";
-  document.getElementById("fortunePage").style.display = "flex";
-  resetFortune();
-}
-
-function backToSkillsFromFortune(){
-  document.getElementById("fortunePage").style.display = "none";
-  document.getElementById("skillsPage").style.display = "flex";
-}
-
-function resetFortune(){
-  document.getElementById("fortuneResult").innerHTML = "";
-  var btn = document.getElementById("fortuneBtn");
-  btn.disabled = false;
-  btn.innerHTML = "开始<br>占卜";
-  btn.classList.remove("spinning");
-  document.getElementById("fortuneGlow").classList.remove("active");
-  document.querySelector(".fortune-hint").style.display = "";
-}
-
-function startFortune(){
-  var btn = document.getElementById("fortuneBtn");
-  var glow = document.getElementById("fortuneGlow");
-  var hint = document.querySelector(".fortune-hint");
-  var resultDiv = document.getElementById("fortuneResult");
-  
-  btn.disabled = true;
-  btn.innerHTML = "占卜<br>中...";
-  btn.classList.add("spinning");
-  glow.classList.add("active");
-  hint.style.display = "none";
-  resultDiv.innerHTML = "";
-  
-  var hexagram = FORTUNE_DATA[Math.floor(Math.random() * 64)];
-  
-  setTimeout(function(){
-    btn.classList.remove("spinning");
-    glow.classList.remove("active");
-    btn.innerHTML = "开始<br>占卜";
-    btn.disabled = false;
-    
-    var levelClass = "";
-    switch(hexagram.level){
-      case "大吉": levelClass = "lv-great"; break;
-      case "吉": levelClass = "lv-good"; break;
-      case "中平": levelClass = "lv-mid"; break;
-      case "小凶": levelClass = "lv-warn"; break;
-      case "凶": levelClass = "lv-bad"; break;
-    }
-    
-    resultDiv.innerHTML = "<div class=\"fortune-result\">"
-      + "<div class=\"fortune-hexagram\">" + hexagram.symbol + "</div>"
-      + "<div class=\"fortune-index\">第" + hexagram.idx + "卦</div>"
-      + "<div class=\"fortune-name\">" + hexagram.name + "</div>"
-      + "<div class=\"fortune-level " + levelClass + "\">" + hexagram.level + "</div>"
-      + "<div class=\"fortune-text\">" + hexagram.desc + "</div>"
-      + "<button class=\"fortune-again\" onclick=\"startFortune()\">再占一卦</button>"
-      + "</div>";
-  }, 2500);
-}
-
-// 更新 goHome 函数以隐藏技能页面
-var _origGoHome = goHome;
-goHome = function(){
-  document.getElementById("skillsPage").style.display = "none";
-  document.getElementById("converterPage").style.display = "none";
-  document.getElementById("fortunePage").style.display = "none";
-  _origGoHome();
-};
 
 
 // ========== 物性表查询 ==========
@@ -2053,7 +1290,6 @@ function getBrandLogo(brand) {
 
 function goDatasheets() {
   document.getElementById("homePage").style.display = "none";
-  document.getElementById("skillsPage").style.display = "none";
   document.getElementById("datasheetsPage").style.display = "flex";
   filterDatasheets();
 }
@@ -2120,6 +1356,153 @@ function escJs(s) {
   };
 })();
 
+
+
+// ===== 备货考量 · L客户 =====
+const STOCKPLAN_DATA = [{"code": "216-015034-001H", "grade": "Akulon AKV30FN04UF 200849 DUS867 Orange", "old": "旧牌号 SG-KGS6/HV OR64500 → 现 AKV30FN04UF 200849", "inv": 8600.0, "rmean": 16073.3, "fmean": 21540.0, "pred": 16073.3, "ml": 0.5, "status": "danger", "suggest": 39620, "heat": ["danger", "danger", "danger", "danger", "danger", "danger"], "note": "", "last": "2026-09-09"}, {"code": "90-00000604", "grade": "Fortii F11-T BK00001 Black", "old": "", "inv": 0.0, "rmean": 1866.7, "fmean": 1775.0, "pred": 1866.7, "ml": 0.0, "status": "danger", "suggest": 5600, "heat": ["danger", "danger", "danger", "danger", "danger", "danger"], "note": "", "last": "2026-08-19"}, {"code": "90-R0000001", "grade": "Stanyl TW200B6 NC Natural", "old": "", "inv": 235.6, "rmean": 93.3, "fmean": 117.1, "pred": 93.3, "ml": 2.5, "status": "warn", "suggest": 44, "heat": ["warn", "low", "danger", "danger", "danger", "danger"], "note": "", "last": "2026-09-08"}, {"code": "90-R0000115", "grade": "Akulon AKV30FN04UF 901510 DUS867 Black", "old": "旧牌号 SG-KGS6/HV BK00004 → 现 AKV30FN04UF 901510", "inv": 8060.0, "rmean": 6800.0, "fmean": 8000.0, "pred": 6800.0, "ml": 1.2, "status": "danger", "suggest": 12340, "heat": ["low", "danger", "danger", "danger", "danger", "danger"], "note": "", "last": "2026-09-09"}, {"code": "90-R0000125", "grade": "Xytron G4024T BK00001 Black", "old": "", "inv": 35923.0, "rmean": 1383.3, "fmean": 1053.6, "pred": 1383.3, "ml": 26.0, "status": "ok", "suggest": 0, "heat": ["ok", "ok", "ok", "ok", "ok", "ok"], "note": "", "last": "2026-08-19"}, {"code": "90-R0000151", "grade": "Pocan T3232 901510 Black", "old": "旧牌号 Arnite TV4461KL → 现 Pocan T3232", "inv": 216250.0, "rmean": 13750.0, "fmean": 11841.7, "pred": 13750.0, "ml": 15.7, "status": "ok", "suggest": 0, "heat": ["ok", "ok", "ok", "ok", "ok", "ok"], "note": "", "last": "2026-07-28"}, {"code": "90-R0000154", "grade": "Stanyl TE200F6 BLK Black", "old": "", "inv": 125.0, "rmean": 750.0, "fmean": 643.8, "pred": 750.0, "ml": 0.2, "status": "danger", "suggest": 2125, "heat": ["danger", "danger", "danger", "danger", "danger", "danger"], "note": "", "last": "2026-06-25"}, {"code": "90-R0000173", "grade": "Arnite AV2370XL T5.03.10 Black", "old": "", "inv": 0.0, "rmean": 3350.0, "fmean": 2785.7, "pred": 3350.0, "ml": 0.0, "status": "danger", "suggest": 10050, "heat": ["danger", "danger", "danger", "danger", "danger", "danger"], "note": "", "last": "2026-09-08"}, {"code": "90-R0000223", "grade": "Fortii TX1 BLK Black", "old": "", "inv": 8272.0, "rmean": 28.0, "fmean": 28.0, "pred": 28.0, "ml": 295.4, "status": "ok", "suggest": 0, "heat": ["ok", "ok", "ok", "ok", "ok", "ok"], "note": "", "last": "2026-09-16"}, {"code": "90-R0000224", "grade": "Fortii TX1 WT94016 White", "old": "", "inv": 794.0, "rmean": 33.0, "fmean": 33.0, "pred": 33.0, "ml": 24.1, "status": "ok", "suggest": 0, "heat": ["ok", "ok", "ok", "ok", "ok", "ok"], "note": "", "last": "2026-09-16"}, {"code": "90-R0000225", "grade": "Fortii TX1 BL55301 Blue", "old": "", "inv": 79.0, "rmean": 28.0, "fmean": 28.0, "pred": 28.0, "ml": 2.8, "status": "warn", "suggest": 5, "heat": ["warn", "low", "danger", "danger", "danger", "danger"], "note": "", "last": "2026-09-16"}, {"code": "90-R0000258", "grade": "Akulon AKV25FN04UF 000000 Natural", "old": "旧牌号 SG-KGS5/HV NA99001 → 现 AKV25FN04UF 000000", "inv": 2680.0, "rmean": 560.0, "fmean": 364.0, "pred": 560.0, "ml": 4.8, "status": "ok", "suggest": 0, "heat": ["ok", "ok", "warn", "low", "danger", "danger"], "note": "", "last": "2026-08-21"}, {"code": "90-R0000352", "grade": "FD-PEEK-310G-UL Natural", "old": "", "inv": 100.0, "rmean": 441.7, "fmean": 335.0, "pred": 441.7, "ml": 0.2, "status": "danger", "suggest": 1225, "heat": ["danger", "danger", "danger", "danger", "danger", "danger"], "note": "", "last": "2026-09-02"}, {"code": "90-R0000462", "grade": "Valox 420SE0-BK1066 Black", "old": "", "inv": 10075.0, "rmean": 266.7, "fmean": 266.7, "pred": 266.7, "ml": 37.8, "status": "ok", "suggest": 0, "heat": ["ok", "ok", "ok", "ok", "ok", "ok"], "note": "", "last": "2026-09-10"}, {"code": "(未录料号)", "grade": "Noryl N300XD-701 Black", "old": "", "inv": 13125.0, "rmean": 10.0, "fmean": 10.0, "pred": 10.0, "ml": 1312.5, "status": "ok", "suggest": 0, "heat": ["ok", "ok", "ok", "ok", "ok", "ok"], "note": "", "last": "2026-07-15"}];
+// ===== 时间点净库存（按周选择）=====
+const SP_WEEK0 = new Date(2026, 8, 21); // 2026-09-21 周一
+const SP_INTRANSIT = {
+  '216-015034-001H': [['2026-09-21',8000],['2026-10-19',8000],['2026-10-20',8000],['2026-10-23',8000]],
+  '90-R0000115': [['2026-09-21',8000],['2026-10-21',8000],['2026-10-27',8000],['2026-11-06',8000]],
+  '90-R0000173': [['2026-09-20',3075],['2026-11-23',3750],['2027-01-04',3750]],
+  '90-00000604': [['2026-09-23',2400],['2026-10-26',2400]]
+};
+const SP_CONSUME = {
+  '216-015034-001H': {L:25000, J:2000, note:'L 25吨/月；J 1-2吨/月 取上限2吨'},
+  '90-R0000115': {L:10000, J:3000, note:'L 10吨/月；J 3吨/月'},
+  '90-R0000173': {L:3350, J:0, note:'仅L客户，须提前3月以上订货'},
+  '90-00000604': {L:1866.7, J:0, note:'仅L客户'},
+  '90-R0000352': {L:441.7, J:0, note:'仅L客户'},
+  '90-R0000151': {L:5000, J:0, note:'L约5吨/月（苏州分货）'},
+  '90-R0000125': {L:1383.3, J:0, note:'分货表未列，按订单月均参考'},
+  '90-R0000258': {L:560, J:0, note:'苏州分货，按订单月均参考'},
+  '90-R0000154': {L:750, J:0, note:'仅L客户'},
+  '90-R0000001': {L:93.3, J:0, note:'仅L客户'},
+  '90-R0000462': {L:266.7, J:0, note:'不用备货，仅参考'}
+};
+const SP_WEEKS = 26;
+function spWeekLabel(i){
+  var d0 = new Date(SP_WEEK0.getTime() + i*7*86400000);
+  var d1 = new Date(d0.getTime() + 6*86400000);
+  function f(d){ return (d.getMonth()+1)+'/'+d.getDate(); }
+  return f(d0)+'~'+f(d1);
+}
+function initSpWeekSel(){
+  var sel = document.getElementById('spWeekSel');
+  if(!sel || sel.options.length > 1) return;
+  sel.innerHTML = '';
+  for(var i=0;i<=SP_WEEKS;i++){
+    var o = document.createElement('option');
+    o.value = i;
+    o.textContent = '第'+i+'周 ('+spWeekLabel(i)+')';
+    sel.appendChild(o);
+  }
+}
+function renderNetStock(){
+  initSpWeekSel();
+  var i = parseInt(document.getElementById('spWeekSel').value || '0', 10);
+  var end = new Date(SP_WEEK0.getTime() + (i+1)*7*86400000 - 1);
+  document.getElementById('spWeekRange').textContent = spWeekLabel(i);
+  var d = STOCKPLAN_DATA;
+  var h = '';
+  d.forEach(function(x){
+    var c = SP_CONSUME[x.code] || {L:0, J:0, note:''};
+    var lUse = (c.L||0)/4.345*(i+1);
+    var jUse = (c.J||0)/4.345*(i+1);
+    var arrive = 0;
+    (SP_INTRANSIT[x.code]||[]).forEach(function(t){
+      var dt = new Date(t[0]);
+      if(dt <= end) arrive += t[1];
+    });
+    var net = (x.inv||0) + arrive - lUse - jUse;
+    var monthUse = (c.L||0) + (c.J||0);
+    var ml = monthUse > 0 ? net/monthUse : (net >= 0 ? null : 0);
+    var st = monthUse <= 0 ? (net >= 0 ? 'ok' : 'danger') : (ml >= 4 ? 'ok' : (ml >= 2 ? 'warn' : 'danger'));
+    var stTxt = {ok:'充足', warn:'关注', danger:'缺口'}[st];
+    var mlTxt = monthUse <= 0 ? (net >= 0 ? '—' : '负值') : (net < 0 ? '负值' : ml.toFixed(1));
+    h += '<tr>' +
+      '<td><span class="sp-flag '+st+'"></span><span class="sp-grade '+st+'">'+stTxt+'</span></td>' +
+      '<td><b>'+x.code+'</b></td>' +
+      '<td>'+x.grade+'</td>' +
+      '<td>'+Math.round(x.inv||0).toLocaleString()+'</td>' +
+      '<td>'+Math.round(arrive).toLocaleString()+'</td>' +
+      '<td>'+Math.round(lUse).toLocaleString()+'</td>' +
+      '<td>'+Math.round(jUse).toLocaleString()+'</td>' +
+      '<td><b style="color:'+(net<0?'#c62828':'#1f2d3d')+'">'+Math.round(net).toLocaleString()+'</b></td>' +
+      '<td>'+mlTxt+'</td>' +
+      '<td><span class="sp-note2">'+(c.note||'')+'</span></td>' +
+      '</tr>';
+  });
+  document.getElementById('spNetBody').innerHTML = h;
+}
+function switchSpView(v){
+  var b = document.getElementById('btnViewBase');
+  var n = document.getElementById('btnViewNet');
+  if(v === 'net'){
+    n.className = 'sp-view-btn active';
+    b.className = 'sp-view-btn';
+    document.getElementById('spNetPanel').style.display = 'block';
+    document.getElementById('spBaseTblWrap').style.display = 'none';
+    renderNetStock();
+  } else {
+    b.className = 'sp-view-btn active';
+    n.className = 'sp-view-btn';
+    document.getElementById('spNetPanel').style.display = 'none';
+    document.getElementById('spBaseTblWrap').style.display = 'block';
+  }
+}
+const SP_MONTHS = ['10月','11月','12月','1月','2月','3月'];
+const LEAD_MONTHS = 2;
+function spLead(ml){
+  if(ml === null) return '—';
+  if(ml < LEAD_MONTHS) return '立即';
+  var m = Math.ceil(ml - LEAD_MONTHS + 0.01);
+  return m + '个月后';
+}
+function renderStockPlan(){
+  var d = STOCKPLAN_DATA;
+  var cnt = {danger:0, warn:0, ok:0};
+  d.forEach(function(x){ cnt[x.status] = (cnt[x.status]||0) + 1; });
+  var sum = '<div class="sp-sum sp-danger"><b>'+ (cnt.danger||0) +'</b><span>缺口(需立即备货)</span></div>' +
+            '<div class="sp-sum sp-warn"><b>'+ (cnt.warn||0) +'</b><span>关注(2个月内下单)</span></div>' +
+            '<div class="sp-sum sp-ok"><b>'+ (cnt.ok||0) +'</b><span>充足(暂不需备货)</span></div>';
+  document.getElementById('spSummary').innerHTML = sum;
+  var order = {danger:0, warn:1, ok:2, nodata:3};
+  var rows = d.slice().sort(function(a,b){ return order[a.status]-order[b.status] || b.pred-a.pred; });
+  var html = '';
+  rows.forEach(function(x){
+    var stTxt = {danger:'缺口', warn:'关注', ok:'充足', nodata:'无数据'}[x.status];
+    var heat = x.heat.map(function(h,i){
+      var c = {ok:'ok', warn:'warn', low:'low', danger:'danger'}[h];
+      return '<i class="'+c+'" title="'+SP_MONTHS[i]+'">'+SP_MONTHS[i]+'</i>';
+    }).join('');
+    var sug = x.suggest > 0 ? '<span class="sp-suggest">'+ x.suggest.toLocaleString() +'</span>'
+                            : '<span class="sp-suggest zero">0</span>';
+    html += '<tr>' +
+      '<td><span class="sp-flag '+x.status+'"></span><span class="sp-grade '+x.status+'">'+stTxt+'</span></td>' +
+      '<td><b>'+x.code+'</b>'+(x.old?'<span class="sp-old">'+x.old+'</span>':'')+'</td>' +
+      '<td>'+x.grade+(x.note?'<span class="sp-note2">⚠ '+x.note+'</span>':'')+'</td>' +
+      '<td>'+x.inv.toLocaleString()+'</td>' +
+      '<td><b>'+x.pred.toLocaleString()+'</b></td>' +
+      '<td>'+x.fmean.toLocaleString()+'</td>' +
+      '<td>'+(x.ml===null?'—':x.ml)+'</td>' +
+      '<td>'+sug+'</td>' +
+      '<td>'+spLead(x.ml)+'</td>' +
+      '<td><div class="sp-heat">'+heat+'</div></td>' +
+      '</tr>';
+  });
+  document.getElementById('spBody').innerHTML = html;
+}
+function goStockPlan(){
+  document.getElementById("homePage").style.display = "none";
+  document.getElementById("stockplanPage").style.display = "flex";
+  renderStockPlan();
+}
+function backFromStockPlan(){
+  document.getElementById("stockplanPage").style.display = "none";
+  document.getElementById("homePage").style.display = "flex";
+}
 
 </script>
 </body>
