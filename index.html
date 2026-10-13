@@ -216,6 +216,11 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
 .history-input:focus{border-color:#00897b}
 .history-btn{padding:0 24px;background:linear-gradient(135deg,#00695c,#00897b);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;transition:opacity .2s}
 .history-btn:active{opacity:.8}
+.trend-search{display:flex;gap:10px;margin-bottom:12px}
+.trend-summary{background:#fff;border-radius:14px;padding:14px 18px;margin-bottom:12px;box-shadow:0 2px 10px rgba(0,0,0,.06);font-size:14px;color:#333;display:flex;gap:18px;flex-wrap:wrap}
+.trend-summary b{color:#00695c}
+.trend-svg-wrap{background:#fff;border-radius:14px;padding:14px;margin-bottom:12px;box-shadow:0 2px 10px rgba(0,0,0,.06);overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+.trend-note{font-size:12px;color:#78909c;padding:4px 2px;text-align:center}
 .history-loading{text-align:center;color:#888;padding:40px 0;font-size:14px}
 .history-empty{text-align:center;color:#999;padding:40px 0;font-size:14px}
 .history-tbl-wrap{overflow-x:auto;background:#fff;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
@@ -517,6 +522,11 @@ html,body{background:linear-gradient(175deg,#f7faff 0%,#eef4fd 45%,#e7effb 100%)
       <input class="history-input" id="historyKw" type="text" placeholder="筛选：物料名称 / 规格 / 批号 / 厂家..." oninput="renderHistoryTable()">
       <button class="history-btn" onclick="renderHistoryTable()">筛选</button>
     </div>
+    <div class="trend-search">
+      <input class="history-input" id="trendKw" type="text" placeholder="输入材料牌号关键词（如 AKV25FN04UF），按周汇总库存走势" onkeydown="if(event.key==='Enter')searchHistoryTrend()">
+      <button class="history-btn" onclick="searchHistoryTrend()">查走势</button>
+    </div>
+    <div id="trendResult"></div>
     <div id="historyResult"></div>
   </div>
 </div>
@@ -1231,6 +1241,140 @@ function renderHistoryTable(){
   });
   h += '</table><div class="history-empty" style="padding:10px;font-size:12px">共 '+rows.length+' 条记录</div></div>';
   wrap.innerHTML = h;
+}
+
+// ===== 历史库存走势（牌号按周折线图） =====
+function ensureAllHistoryLoaded(cb){
+  var pend = [], failed = [];
+  HISTORY_WEEKS.forEach(function(w){
+    if(HISTORY_CACHE[w]) return;
+    if(window["HIST_STOCK_" + w]){ HISTORY_CACHE[w] = window["HIST_STOCK_" + w]; return; }
+    pend.push(w);
+  });
+  if(pend.length === 0){ cb(failed); return; }
+  var done = 0;
+  pend.forEach(function(w){
+    var s = document.createElement("script");
+    s.src = "history_data/history_" + w + ".js";
+    s.onload = function(){
+      if(window["HIST_STOCK_" + w]) HISTORY_CACHE[w] = window["HIST_STOCK_" + w];
+      else failed.push(w);
+      done++;
+      if(done === pend.length) cb(failed);
+    };
+    s.onerror = function(){
+      failed.push(w);
+      done++;
+      if(done === pend.length) cb(failed);
+    };
+    document.body.appendChild(s);
+  });
+}
+function escHtml(s){
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+function fmtQty(v){
+  var r = Math.round(v * 100) / 100;
+  return (r === Math.round(r)) ? Math.round(r).toLocaleString() : String(r);
+}
+function niceCeil(v){
+  if(v <= 0) return 1;
+  var p = Math.pow(10, Math.floor(Math.log(v) / Math.LN10));
+  var m = v / p;
+  var nm = m <= 1 ? 1 : m <= 2 ? 2 : m <= 5 ? 5 : 10;
+  return nm * p;
+}
+function searchHistoryTrend(){
+  var res = document.getElementById("trendResult");
+  var kw = document.getElementById("trendKw").value.trim();
+  if(!kw){
+    res.innerHTML = '<div class="history-empty">请输入材料牌号关键词，例如 AKV25FN04UF（可命中 Akulon AKV25FN04UF 000000 Natural）</div>';
+    return;
+  }
+  res.innerHTML = '<div class="history-loading">正在加载全部 ' + HISTORY_WEEKS.length + ' 期历史数据并按周统计，请稍候...</div>';
+  ensureAllHistoryLoaded(function(failed){ renderTrendChart(kw, failed); });
+}
+function renderTrendChart(kw, failed){
+  var res = document.getElementById("trendResult");
+  var k = kw.toUpperCase();
+  var n = HISTORY_WEEKS.length;
+  var series = [], hitCnt = 0, maxQty = 0;
+  HISTORY_WEEKS.forEach(function(w){
+    var d = HISTORY_CACHE[w];
+    var sum = 0, matched = false;
+    if(d){
+      d.forEach(function(r){
+        if(r[0] === "TOTAL:") return;
+        var s1 = String(r[1] || "").toUpperCase();
+        var s2 = String(r[2] || "").toUpperCase();
+        if(s1.indexOf(k) >= 0 || s2.indexOf(k) >= 0){
+          matched = true;
+          sum += Number(r[10]) || 0;
+        }
+      });
+    }
+    if(matched){ hitCnt++; if(sum > maxQty) maxQty = sum; }
+    series.push({week: w, qty: sum, matched: matched});
+  });
+  if(hitCnt === 0){
+    var html = '<div class="history-empty">未找到牌号「' + escHtml(kw) + '」的历史库存记录，无法绘制走势图。</div>' +
+      '<div class="history-empty" style="padding:2px 0;font-size:12px">请检查拼写或输入更短的关键词；示例：AKV25FN04UF 可匹配规格型号 Akulon AKV25FN04UF 000000 Natural</div>';
+    if(failed.length) html += '<div class="history-empty" style="padding:2px 0;font-size:12px;color:#d32f2f">提示：' + failed.length + ' 个历史周次数据文件缺失（' + failed.slice(0,5).join(', ') + '...），结果可能不全</div>';
+    res.innerHTML = html;
+    return;
+  }
+  var latest = series[n - 1];
+  var latestQty = latest.qty;
+  series.reverse();
+  var W = Math.max(960, hitCnt * 44 + 98), H = Math.min(360, Math.max(320, Math.round(W / 4.6)));
+  var L = 70, R = 28, T = 26, B = 58;
+  var plotW = W - L - R, plotH = H - T - B;
+  var yTop = niceCeil(maxQty);
+  function X(i){ return L + (n === 1 ? plotW / 2 : i * plotW / (n - 1)); }
+  function Y(v){ return T + plotH - v / yTop * plotH; }
+  var labelInterval = Math.max(1, Math.round(n / 13));
+  var valInterval = Math.max(1, Math.round(n / 26));
+  var s = '';
+  s += '<div class="trend-summary"><span><b>牌号：</b>' + escHtml(kw) + '</span>' +
+       '<span><b>命中周次：</b>' + hitCnt + ' / ' + n + ' 期</span>' +
+       '<span><b>最新一周（' + latest.week.slice(0,4) + '-' + latest.week.slice(4,6) + '-' + latest.week.slice(6,8) + '）库存：</b>' + fmtQty(latestQty) + ' kg</span>' +
+       '<span><b>历史峰值：</b>' + fmtQty(maxQty) + ' kg</span></div>';
+  s += '<div class="trend-svg-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" style="display:block;background:#fff;border-radius:12px;font-family:Arial,sans-serif">';
+  var yTicks = 5;
+  for(var t = 0; t < yTicks; t++){
+    var v = yTop * t / (yTicks - 1);
+    var yy = Y(v);
+    s += '<line x1="' + L + '" y1="' + yy + '" x2="' + (W - R) + '" y2="' + yy + '" stroke="#eceff1" stroke-width="1"/>';
+    s += '<text x="' + (L - 8) + '" y="' + (yy + 4) + '" text-anchor="end" font-size="12" fill="#78909c">' + fmtQty(v) + '</text>';
+  }
+  s += '<line x1="' + L + '" y1="' + Y(0) + '" x2="' + (W - R) + '" y2="' + Y(0) + '" stroke="#90a4ae" stroke-width="1"/>';
+  for(var i = 0; i < n; i++){
+    if(i % labelInterval !== 0 && i !== n - 1) continue;
+    var p = series[i];
+    var lbl = p.week.slice(4,6) + '-' + p.week.slice(6,8);
+    var anchor = i === 0 ? 'start' : (i === n - 1 ? 'end' : 'middle');
+    s += '<text x="' + X(i) + '" y="' + (Y(0) + 18) + '" text-anchor="' + anchor + '" font-size="12" fill="#546e7a">' + lbl + '</text>';
+    if(i === 0 || i === n - 1){
+      s += '<text x="' + X(i) + '" y="' + (Y(0) + 34) + '" text-anchor="' + anchor + '" font-size="12" fill="#00695c" font-weight="bold">' + p.week.slice(0,4) + '</text>';
+    }
+  }
+  var path = '';
+  series.forEach(function(p, i){ path += (i === 0 ? 'M' : 'L') + X(i) + ',' + Y(p.qty); });
+  s += '<path d="' + path + '" fill="none" stroke="#00695c" stroke-width="2"/>';
+  series.forEach(function(p, i){
+    if(p.qty <= 0) return;
+    var cx = X(i), cy = Y(p.qty);
+    s += '<circle cx="' + cx + '" cy="' + cy + '" r="' + (i === 0 ? 4.5 : 3) + '" fill="' + (i === 0 ? '#d32f2f' : '#ff6f00') + '"/>';
+    if(i % valInterval === 0 || i === 0 || i === n - 1){
+      s += '<text x="' + cx + '" y="' + (cy - 10) + '" text-anchor="middle" font-size="12" fill="#bf360c">' + fmtQty(p.qty) + '</text>';
+    }
+  });
+  s += '</svg></div>';
+  s += '<div class="trend-note">折线图 X 轴从左至右为最新 → 更早的周次；未命中该牌号的周次数量记为 0；数量单位为千克（kg）。</div>';
+  if(failed.length){
+    s += '<div class="trend-note" style="color:#d32f2f">提示：' + failed.length + ' 个历史周次数据文件缺失，已按 0 处理：' + failed.join(', ') + '</div>';
+  }
+  res.innerHTML = s;
 }
 
 
