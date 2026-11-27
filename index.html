@@ -57,6 +57,16 @@ body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Robo
 .quote-btn.added{background:#4caf50}
 .quote-btn:active{opacity:.8}
 
+/* ===== 通用牌号复制按钮（与 A.Space 复制反馈一致） ===== */
+.cp-txt{-webkit-user-select:text;user-select:text}
+.cp-btn{flex:0 0 auto;font-family:inherit;font-size:12px;font-weight:600;line-height:1.7;color:#fff;background:#0891b2;border:1px solid #0e7490;border-radius:6px;padding:0 8px;margin-left:6px;cursor:pointer;white-space:nowrap;vertical-align:middle;position:relative;z-index:6;box-shadow:0 1px 4px rgba(8,145,178,.30);-webkit-user-select:none;user-select:none}
+.cp-btn:hover{background:#0e7490}
+.cp-btn:active{opacity:.8}
+.cp-btn.done{color:#fff;background:#16a34a;border-color:#15803d}
+.hfhs-prod .pv .cp-btn{font-size:12px;vertical-align:1px}
+.card-model{display:flex;align-items:baseline;gap:4px;flex-wrap:nowrap;padding-right:112px}
+.card-model .cp-txt{flex:1 1 auto;min-width:0}
+
 .float-bar{position:fixed;bottom:0;left:0;width:100%;background:#fff;box-shadow:0 -2px 12px rgba(0,0,0,.1);padding:12px 16px;display:none;z-index:200;align-items:center;justify-content:space-between}
 .float-bar.show{display:flex}
 .float-bar .count{font-size:14px;color:#333}
@@ -712,7 +722,7 @@ function search(){
       html += '<div class="card" onclick="toggle('+i+')">';
       html += '<button class="quote-btn'+isAdded+'" onclick="event.stopPropagation();toggleSelect('+dataIdx+',this)">'+btnText+'</button>';
       html += '<div class="card-top"><div class="card-info">';
-      html += '<div class="card-model">'+esc(title)+'</div>';
+      html += '<div class="card-model"><span class="cp-txt">'+esc(title)+'</span><button type="button" class="cp-btn" onclick="copyPrev(event,this)" title="复制完整牌号">复制</button></div>';
       html += '<div class="card-meta">';
       html += '<span>'+esc(r['所属公司']||'')+'</span>';
       html += '<span>'+esc(r['基本单位数量']||'')+' '+esc(r['常用计量单位']||'')+'</span>';
@@ -1102,7 +1112,7 @@ function renderHfhsSearch(kw, showAllIfEmpty){
     html += '<div class="hfhs-prods">';
     [["PPO N300X",6,7],["PPO N300XD",8,9],["PA4T TX1",10,11]].forEach(function(p){
       var pv = r[p[1]], ps = r[p[2]];
-      html += '<div class="hfhs-prod"><div class="pn">'+p[0]+'</div><div class="pv">'+(pv===""?'-':pv)+'</div><div class="ps '+(ps==="有"?'stock':'nostock')+'">'+(ps==="有"?'● 常备库存':'○ 无库存')+'</div></div>';
+      html += '<div class="hfhs-prod"><div class="pn">'+p[0]+'</div><div class="pv">'+(pv===""?'-':'<span class="cp-txt">'+escHtml(pv)+'</span><button type="button" class="cp-btn" onclick="copyPrev(event,this)" title="复制完整牌号">复制</button>')+'</div><div class="ps '+(ps==="有"?'stock':'nostock')+'">'+(ps==="有"?'● 常备库存':'○ 无库存')+'</div></div>';
     });
     html += '</div>';
     html += '<div class="hfhs-use">用途：'+r[12]+'</div>';
@@ -1126,7 +1136,7 @@ function hfhsStockQuery(specKey, cx){
   }
   var h = '<table class="ral-stock-table"><tr><th>规格型号</th><th>批号</th><th>数量</th><th>进仓日期</th><th>仓库</th></tr>';
   rows.forEach(function(r){
-    h += '<tr><td>'+r.spec+'</td><td>'+(r.lot||'—')+'</td><td>'+(r.qty===undefined?'—':r.qty)+'</td><td>'+(r.date||'—')+'</td><td>'+(r.wh||'—')+'</td></tr>';
+    h += '<tr><td><span class="cp-txt">'+escHtml(r.spec)+'</span><button type="button" class="cp-btn" onclick="copyPrev(event,this)" title="复制完整牌号">复制</button></td><td>'+(r.lot||'—')+'</td><td>'+(r.qty===undefined?'—':r.qty)+'</td><td>'+(r.date||'—')+'</td><td>'+(r.wh||'—')+'</td></tr>';
   });
   h += '</table>';
   return h;
@@ -1164,7 +1174,9 @@ function renderHfhsAll(){
     h += '<td><b>'+r[0]+'</b></td><td>'+r[1]+'</td>';
     for(var i=2;i<=5;i++){ h += '<td>'+(r[i]==="-"||r[i]===""?'-':r[i])+'</td>'; }
     for(var j=6;j<=11;j++){
-      if(j%2===0){ h += '<td>'+(r[j]===""?'-':r[j])+'</td>'; }
+      if(j%2===0){
+        h += '<td>'+(r[j]===""?'-':'<span class="cp-txt">'+escHtml(r[j])+'</span><button type="button" class="cp-btn" onclick="copyPrev(event,this)" title="复制完整牌号">复制</button>')+'</td>';
+      }
       else{ h += '<td>'+r[j]+'</td>'; }
     }
     h += '<td style="white-space:normal">'+r[12]+'</td>';
@@ -1251,7 +1263,11 @@ function renderHistoryTable(){
   h += '</tr>';
   rows.forEach(function(r){
     h += '<tr>';
-    heads.forEach(function(_,i){ h += '<td>'+(r[i]===undefined?'':String(r[i]))+'</td>'; });
+    heads.forEach(function(_,i){
+      var cell = (r[i]===undefined?'':String(r[i]));
+      if(i===2 && cell){ h += '<td><span class="cp-txt">'+escHtml(cell)+'</span><button type="button" class="cp-btn" onclick="copyPrev(event,this)" title="复制完整牌号">复制</button></td>'; }
+      else{ h += '<td>'+cell+'</td>'; }
+    });
     h += '</tr>';
   });
   h += '</table><div class="history-empty" style="padding:10px;font-size:12px">共 '+rows.length+' 条记录</div></div>';
@@ -1601,11 +1617,7 @@ function fallbackCopyText(text){
   return ok;
 }
 
-function copyGrade(ev, btn){
-  if(ev){ if(ev.stopPropagation){ ev.stopPropagation(); } if(ev.preventDefault){ ev.preventDefault(); } }
-  var wrap = btn.parentNode;
-  var span = wrap ? wrap.querySelector(".q-grade-txt") : null;
-  var text = span ? (span.textContent || "") : "";
+function copyFeedback(btn, text){
   if(!text){ return; }
   var done = function(ok){
     if(ok){
@@ -1622,6 +1634,21 @@ function copyGrade(ev, btn){
   }else{
     done(fallbackCopyText(text));
   }
+}
+
+// 库存类列表通用：复制同行 .cp-txt 的完整牌号原文
+function copyPrev(ev, btn){
+  if(ev){ if(ev.stopPropagation){ ev.stopPropagation(); } if(ev.preventDefault){ ev.preventDefault(); } }
+  var wrap = btn.parentNode;
+  var span = wrap ? wrap.querySelector(".cp-txt") : null;
+  copyFeedback(btn, span ? (span.textContent || "") : "");
+}
+
+function copyGrade(ev, btn){
+  if(ev){ if(ev.stopPropagation){ ev.stopPropagation(); } if(ev.preventDefault){ ev.preventDefault(); } }
+  var wrap = btn.parentNode;
+  var span = wrap ? wrap.querySelector(".q-grade-txt") : null;
+  copyFeedback(btn, span ? (span.textContent || "") : "");
 }
 
 function renderQuotes(){
