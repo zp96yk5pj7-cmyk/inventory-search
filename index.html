@@ -372,44 +372,62 @@ html,body{background:linear-gradient(175deg,#f7faff 0%,#eef4fd 45%,#e7effb 100%)
 /* ---- 报价单预览 ---- */
 .quote-preview{background:#fff!important;border-radius:var(--r-lg)!important;box-shadow:var(--shadow-sm)!important;}
 /* ===================== 美化覆盖层结束 ===================== */
+/* ===================== A.Space ===================== */
+.card-secret .card-icon{background:rgba(8,145,178,.12);color:#0891b2;}
+.secret-page{display:none;flex-direction:column;min-height:100vh;padding-bottom:40px;animation:contentIn .4s both;}
+.secret-header{background:rgba(255,255,255,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.85);box-shadow:0 4px 24px rgba(23,43,77,.06);padding:16px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:20;}
+.secret-header h1{font-size:18px;font-weight:700;color:var(--tx);letter-spacing:2px;margin:0;}
+.secret-flag{display:none;}
+.secret-body{padding:20px;max-width:1000px;margin:0 auto;width:100%;}
+
+/* ---- 门禁 ---- */
+.secret-gate{max-width:360px;margin:18vh auto 0;background:var(--card);border:1px solid rgba(255,255,255,.85);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:26px 22px;text-align:center;}
+.gate-input{width:100%;box-sizing:border-box;padding:13px 16px;border:1.5px solid rgba(23,43,77,.12);border-radius:12px;background:#f6f9ff;font-size:16px;letter-spacing:4px;text-align:center;outline:none;color:var(--tx);transition:border-color .2s,box-shadow .2s;}
+.gate-input:focus{border-color:rgba(8,145,178,.75);box-shadow:0 0 0 3px rgba(8,145,178,.14);}
+.gate-input.shake{animation:shakeX .35s;}
+.gate-error{display:none;margin-top:12px;font-size:12.5px;color:#8fa3b3;letter-spacing:.5px;}
+.gate-error.show{display:block;}
+@keyframes shakeX{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* ---- 报价列表 ---- */
+.quote-search{display:flex;gap:10px;margin-bottom:12px;}
+.quote-input{flex:1;min-width:0;padding:12px 16px;border:1.5px solid rgba(23,43,77,.10);border-radius:12px;font-size:15px;outline:none;background:#fff;color:var(--tx);transition:border-color .2s,box-shadow .2s;}
+.quote-input:focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(26,86,176,.12);}
+.quote-sort{padding:12px 12px;border:1.5px solid rgba(23,43,77,.10);border-radius:12px;background:#fff;font-size:13.5px;color:var(--tx);outline:none;cursor:pointer;flex-shrink:0;}
+.quote-toolbar{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+.quote-tip{font-size:13px;color:var(--tx2);}
+.quote-tip b{color:#0891b2;font-size:15px;}
+.quote-list{display:flex;flex-direction:column;gap:10px;}
+.quote-item{background:#fff;border-radius:16px;box-shadow:var(--shadow-sm);border:1px solid rgba(255,255,255,.85);overflow:hidden;transition:box-shadow .2s;}
+.quote-item.open{box-shadow:var(--shadow);}
+.quote-row{display:flex;align-items:center;gap:14px;padding:15px 18px;cursor:pointer;transition:background .15s;}
+.quote-row:hover{background:#f6faff;}
+.q-date{font-size:13px;color:var(--tx2);flex-shrink:0;width:86px;font-variant-numeric:tabular-nums;}
+.q-main{flex:1;min-width:0;}
+.q-cust{font-size:15px;font-weight:600;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.q-grade{font-size:12.5px;color:#5b6b82;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.q-amount{font-size:23px;font-weight:800;color:#0e7490;letter-spacing:-.5px;flex-shrink:0;font-variant-numeric:tabular-nums;}
+.q-amount i{font-size:12px;font-style:normal;font-weight:600;color:#38bdd8;margin-right:2px;}
+.q-amount.none{font-size:13px;font-weight:600;color:#a6b3c7;letter-spacing:0;}
+.q-arrow{flex-shrink:0;width:20px;text-align:center;color:#b8c4d4;font-size:11px;transition:transform .25s;}
+.quote-item.open .q-arrow{transform:rotate(180deg);}
+.quote-detail{display:none;padding:0 18px 16px;border-top:1px dashed #eef2f8;}
+.quote-item.open .quote-detail{display:block;animation:contentIn .25s both;}
+.qd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px 18px;padding-top:14px;}
+.qd-cell{min-width:0;}
+.qd-cell .k{font-size:11.5px;color:#98a6ba;letter-spacing:.5px;}
+.qd-cell .v{font-size:13.5px;color:var(--tx);margin-top:2px;word-break:break-word;}
+.qd-raw{grid-column:1/-1;background:#f8fafd;border:1px solid #eef2f8;border-radius:12px;padding:11px 14px;font-size:13px;color:#44556c;line-height:1.65;white-space:pre-wrap;word-break:break-word;}
+.quote-empty{text-align:center;color:#a6b3c7;padding:50px 0;font-size:14px;}
+@media(max-width:560px){
+  .secret-body{padding:14px;}
+  .q-date{width:auto;font-size:12px;}
+  .q-amount{font-size:20px;}
+  .q-cust{font-size:14px;}
+}
 
 
-/* ===== 备货考量板块 ===== */
-.card-stockplan{background:linear-gradient(135deg,#B71C1C,#D32F2F,#E53935)}
-.stockplan-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.78)!important;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.85);box-shadow:0 4px 24px rgba(23,43,77,.06);display:flex;align-items:center;gap:12px;padding:12px 16px}
-.stockplan-header h1{color:#1c2733;font-size:18px;margin:0;letter-spacing:1px}
-.stockplan-page{flex-direction:column;min-height:100vh;background:transparent;padding-bottom:60px}
-.stockplan-note{background:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.9);border-radius:14px;padding:10px 14px;margin:12px 16px 0;font-size:12px;color:#6b7a90;line-height:1.6;box-shadow:0 4px 14px rgba(23,43,77,.05)}
-.stockplan-summary{display:flex;gap:12px;margin:12px 16px 0;flex-wrap:wrap}
-.sp-sum{flex:1;min-width:120px;background:rgba(255,255,255,.9);border-radius:14px;padding:12px 14px;text-align:center;box-shadow:0 4px 14px rgba(23,43,77,.06)}
-.sp-sum b{display:block;font-size:26px;line-height:1.2}
-.sp-sum span{font-size:12px;color:#6b7a90}
-.sp-danger b{color:#e53935}.sp-warn b{color:#f9a825}.sp-ok b{color:#2e7d32}
-.stockplan-legend{margin:12px 16px 0;font-size:12px;color:#6b7a90;display:flex;align-items:center;flex-wrap:wrap;gap:6px}
-.lg{display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:600}
-.lg-ok{background:#d7f5e0;color:#1d7a3c}.lg-warn{background:#fff3cd;color:#8a6d00}.lg-danger{background:#ffdcd9;color:#c62828}.lg-low{background:#ffe9d1;color:#b25e00}
-.stockplan-tbl-wrap{background:#fff;border-radius:16px;box-shadow:0 4px 18px rgba(23,43,77,.07);margin:12px 16px 0;overflow-x:auto}
-.stockplan-table{width:100%;border-collapse:collapse;font-size:13px;min-width:1080px}
-.stockplan-table th{background:#f2f7ff;color:#44556c;padding:10px 10px;text-align:left;white-space:nowrap;font-weight:600;border-bottom:1px solid #e8eef8}
-.stockplan-table td{padding:10px 10px;border-bottom:1px solid #eef2f8;vertical-align:middle}
-.stockplan-table tr:hover td{background:#f6faff}
-.sp-grade{font-size:12px;font-weight:600;white-space:nowrap}
-.sp-grade.ok{color:#1d7a3c}.sp-grade.warn{color:#8a6d00}.sp-grade.danger{color:#c62828}
-.sp-flag{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
-.sp-flag.ok{background:#34c759}.sp-flag.warn{background:#ffcc00}.sp-flag.danger{background:#ff3b30}
-.sp-heat{display:flex;gap:3px}
-.sp-heat i{width:26px;height:22px;border-radius:4px;font-style:normal;font-size:10px;line-height:22px;text-align:center;color:#fff;flex-shrink:0}
-.sp-heat .ok{background:#34c759}.sp-heat .warn{background:#ffcc00;color:#6b5300}.sp-heat .low{background:#ff9800}.sp-heat .danger{background:#ff3b30}
-.sp-old{display:block;font-size:11px;color:#9aa8bd;margin-top:2px}
-.sp-suggest{font-weight:700;color:#c62828;white-space:nowrap}
-.sp-suggest.zero{color:#9aa8bd;font-weight:400}
-.sp-note2{display:block;font-size:11px;color:#b25e00;margin-top:2px;max-width:260px}
-.sp-viewbar{margin:10px 0 8px;display:flex;gap:8px;flex-wrap:wrap}
-.sp-view-btn{background:#eef2f7;border:1px solid #d5dee8;color:#3a4a5a;padding:6px 14px;border-radius:16px;cursor:pointer;font-size:13px}
-.sp-view-btn.active{background:#2f6fed;border-color:#2f6fed;color:#fff}
-.sp-weekbar{background:#f6f9fc;border:1px solid #e3ebf3;border-radius:8px;padding:10px 12px;margin-bottom:8px;font-size:13px;color:#3a4a5a;line-height:1.7}
-.sp-weekbar select{padding:3px 6px;border-radius:6px;border:1px solid #c8d4e0;font-size:13px}
-.sp-weekbar b{color:#1f2d3d}
+
 
 </style>
 </head>
@@ -451,58 +469,15 @@ html,body{background:linear-gradient(175deg,#f7faff 0%,#eef4fd 45%,#e7effb 100%)
       <div class="card-title">高频高速色号</div>
       <div class="card-desc">连接器颜色编码总表<br>单个检索 / 全表总览</div>
     </div>
-    <div class="home-card card-stockplan" onclick="goStockPlan()">
-      <div class="card-icon">📈</div>
-      <div class="card-title">备货考量</div>
-      <div class="card-desc">L客户备货计划<br>供需预测 / 缺口提醒</div>
+    <div class="home-card card-secret" onclick="goSecret()">
+      <div class="card-icon">✦</div>
+      <div class="card-title">A.Space</div>
+      <div class="card-desc">&nbsp;</div>
     </div>
   </div>
 </div>
 
 
-<div class="stockplan-page" id="stockplanPage" style="display:none">
-  <div class="stockplan-header">
-    <button class="back-btn" onclick="backFromStockPlan()">←</button>
-    <h1>备货考量 · L客户</h1>
-  </div>
-  <div class="stockplan-note">
-    预测口径：按 L客户销售订单近3个月月均用量推演（全期月均作参考）· 采购前置期默认 2 个月 · 建议备至 3 个月用量水位 · 在途到货请结合采购报表自行判断
-  </div>
-  <div class="stockplan-summary" id="spSummary"></div>
-  <div class="stockplan-legend">
-    <span class="lg lg-ok">充足(≥4个月)</span><span class="lg lg-warn">关注(2~4个月)</span><span class="lg lg-danger">缺口(<2个月)</span>
-    <span style="margin-left:10px;color:#6b7a90">热力图 = 未来6个月余量：</span>
-    <span class="lg lg-ok">≥2月</span><span class="lg lg-warn">1~2月</span><span class="lg lg-low">0~1月</span><span class="lg lg-danger">缺口</span>
-  </div>
-  <div class="sp-viewbar">
-    <button class="sp-view-btn active" id="btnViewBase" onclick="switchSpView('base')">常规备货视图</button>
-    <button class="sp-view-btn" id="btnViewNet" onclick="switchSpView('net')">时间点净库存视图</button>
-  </div>
-  <div id="spNetPanel" style="display:none">
-    <div class="sp-weekbar">
-      <b>未来时间点净库存：</b>截至第 <select id="spWeekSel" onchange="renderNetStock()"></select> 周（<span id="spWeekRange">—</span>）<br>
-      <span class="sp-note2">口径：净库存 = 当前库存 + 在途到货(交期≤该周末) − L客户用量(至该周) − J客户用量(至该周)；月用量÷4.345 折算周用量、按整周估算。</span>
-      <span class="sp-note2">注：另有 1 批 200849 在途 8000kg 未注明交期，未自动计入；AV2370XL 9/20 已到 3075kg 计入本周。</span>
-    </div>
-    <div class="stockplan-tbl-wrap">
-    <table class="stockplan-table">
-      <thead><tr>
-        <th>状态</th><th>客户料号</th><th>牌号</th><th>当前库存(kg)</th><th>在途到货(kg)</th><th>L用量(kg)</th><th>J用量(kg)</th><th>净库存(kg)</th><th>可撑(月)</th><th>备注</th>
-      </tr></thead>
-      <tbody id="spNetBody"></tbody>
-    </table>
-    </div>
-  </div>
-  <div class="stockplan-tbl-wrap" id="spBaseTblWrap">
-  <table class="stockplan-table">
-    <thead><tr>
-      <th>状态</th><th>客户料号</th><th>现行牌号</th><th>当前库存(kg)</th><th>月均用量(kg)</th><th>全期月均</th><th>可撑(月)</th><th>建议备货(kg)</th><th>最迟下单</th><th>未来6个月供需</th>
-    </tr></thead>
-    <tbody id="spBody"></tbody>
-  </table>
-  </div>
-  <div class="stockplan-note" style="margin-top:10px">牌号与客户料号对应规则来自订单文件；库存取自 2026-09-18 库存总表；数据随每周库存更新同步刷新。</div>
-</div>
 
 
 
@@ -547,6 +522,35 @@ html,body{background:linear-gradient(175deg,#f7faff 0%,#eef4fd 45%,#e7effb 100%)
       <span class="hfhs-hint">共 23 个颜色编码</span>
     </div>
     <div id="hfhsResult"></div>
+  </div>
+</div>
+
+<!-- A.Space -->
+<div class="secret-page" id="secretPage" style="display:none">
+  <div class="secret-header">
+    <button class="back-btn" onclick="backFromSecret()">←</button>
+    <h1>A.Space</h1>
+  </div>
+  <div class="secret-body">
+    <div class="secret-gate" id="secretGate">
+      <input class="gate-input" id="secretPwd" type="password" placeholder="输入密码" maxlength="20" autofocus
+             oninput="verifySecret()" onkeydown="if(event.key==='Enter')verifySecret(true)">
+      <div class="gate-error" id="secretError"></div>
+    </div>
+    <div id="secretContent" style="display:none">
+      <div class="quote-search">
+        <input class="quote-input" id="secretKw" type="text" placeholder="搜索" oninput="renderQuotes()">
+        <select class="quote-sort" id="quoteSort" onchange="renderQuotes()">
+          <option value="date">日期（新→旧）</option>
+          <option value="amountDesc">金额（高→低）</option>
+          <option value="amountAsc">金额（低→高）</option>
+        </select>
+      </div>
+      <div class="quote-toolbar">
+        <span class="quote-tip" id="quoteTip"></span>
+      </div>
+      <div class="quote-list" id="quoteList"></div>
+    </div>
   </div>
 </div>
 
@@ -920,7 +924,6 @@ function goHome(){
   document.getElementById('printBtn').style.display = 'none';
   document.getElementById('floatBar').classList.remove('show');
   document.getElementById('quoteModal').classList.remove('show');
-  document.getElementById('stockplanPage').style.display = 'none';
   document.getElementById('homePage').style.display = 'flex';
   var now = new Date();
   var d = document.getElementById('heroDate');
@@ -1499,151 +1502,135 @@ function escJs(s) {
 
 
 
-// ===== 备货考量 · L客户 =====
-const STOCKPLAN_DATA = [{"code": "216-015034-001H", "grade": "Akulon AKV30FN04UF 200849 DUS867 Orange", "old": "旧牌号 SG-KGS6/HV OR64500 → 现 AKV30FN04UF 200849", "inv": 8600.0, "rmean": 16073.3, "fmean": 21540.0, "pred": 16073.3, "ml": 0.5, "status": "danger", "suggest": 39620, "heat": ["danger", "danger", "danger", "danger", "danger", "danger"], "note": "", "last": "2026-09-09"}, {"code": "90-00000604", "grade": "Fortii F11-T BK00001 Black", "old": "", "inv": 0.0, "rmean": 1866.7, "fmean": 1775.0, "pred": 1866.7, "ml": 0.0, "status": "danger", "suggest": 5600, "heat": ["danger", "danger", "danger", "danger", "danger", "danger"], "note": "", "last": "2026-08-19"}, {"code": "90-R0000001", "grade": "Stanyl TW200B6 NC Natural", "old": "", "inv": 235.6, "rmean": 93.3, "fmean": 117.1, "pred": 93.3, "ml": 2.5, "status": "warn", "suggest": 44, "heat": ["warn", "low", "danger", "danger", "danger", "danger"], "note": "", "last": "2026-09-08"}, {"code": "90-R0000115", "grade": "Akulon AKV30FN04UF 901510 DUS867 Black", "old": "旧牌号 SG-KGS6/HV BK00004 → 现 AKV30FN04UF 901510", "inv": 8060.0, "rmean": 6800.0, "fmean": 8000.0, "pred": 6800.0, "ml": 1.2, "status": "danger", "suggest": 12340, "heat": ["low", "danger", "danger", "danger", "danger", "danger"], "note": "", "last": "2026-09-09"}, {"code": "90-R0000125", "grade": "Xytron G4024T BK00001 Black", "old": "", "inv": 35923.0, "rmean": 1383.3, "fmean": 1053.6, "pred": 1383.3, "ml": 26.0, "status": "ok", "suggest": 0, "heat": ["ok", "ok", "ok", "ok", "ok", "ok"], "note": "", "last": "2026-08-19"}, {"code": "90-R0000151", "grade": "Pocan T3232 901510 Black", "old": "旧牌号 Arnite TV4461KL → 现 Pocan T3232", "inv": 216250.0, "rmean": 13750.0, "fmean": 11841.7, "pred": 13750.0, "ml": 15.7, "status": "ok", "suggest": 0, "heat": ["ok", "ok", "ok", "ok", "ok", "ok"], "note": "", "last": "2026-07-28"}, {"code": "90-R0000154", "grade": "Stanyl TE200F6 BLK Black", "old": "", "inv": 125.0, "rmean": 750.0, "fmean": 643.8, "pred": 750.0, "ml": 0.2, "status": "danger", "suggest": 2125, "heat": ["danger", "danger", "danger", "danger", "danger", "danger"], "note": "", "last": "2026-06-25"}, {"code": "90-R0000173", "grade": "Arnite AV2370XL T5.03.10 Black", "old": "", "inv": 0.0, "rmean": 3350.0, "fmean": 2785.7, "pred": 3350.0, "ml": 0.0, "status": "danger", "suggest": 10050, "heat": ["danger", "danger", "danger", "danger", "danger", "danger"], "note": "", "last": "2026-09-08"}, {"code": "90-R0000223", "grade": "Fortii TX1 BLK Black", "old": "", "inv": 8272.0, "rmean": 28.0, "fmean": 28.0, "pred": 28.0, "ml": 295.4, "status": "ok", "suggest": 0, "heat": ["ok", "ok", "ok", "ok", "ok", "ok"], "note": "", "last": "2026-09-16"}, {"code": "90-R0000224", "grade": "Fortii TX1 WT94016 White", "old": "", "inv": 794.0, "rmean": 33.0, "fmean": 33.0, "pred": 33.0, "ml": 24.1, "status": "ok", "suggest": 0, "heat": ["ok", "ok", "ok", "ok", "ok", "ok"], "note": "", "last": "2026-09-16"}, {"code": "90-R0000225", "grade": "Fortii TX1 BL55301 Blue", "old": "", "inv": 79.0, "rmean": 28.0, "fmean": 28.0, "pred": 28.0, "ml": 2.8, "status": "warn", "suggest": 5, "heat": ["warn", "low", "danger", "danger", "danger", "danger"], "note": "", "last": "2026-09-16"}, {"code": "90-R0000258", "grade": "Akulon AKV25FN04UF 000000 Natural", "old": "旧牌号 SG-KGS5/HV NA99001 → 现 AKV25FN04UF 000000", "inv": 2680.0, "rmean": 560.0, "fmean": 364.0, "pred": 560.0, "ml": 4.8, "status": "ok", "suggest": 0, "heat": ["ok", "ok", "warn", "low", "danger", "danger"], "note": "", "last": "2026-08-21"}, {"code": "90-R0000352", "grade": "FD-PEEK-310G-UL Natural", "old": "", "inv": 100.0, "rmean": 441.7, "fmean": 335.0, "pred": 441.7, "ml": 0.2, "status": "danger", "suggest": 1225, "heat": ["danger", "danger", "danger", "danger", "danger", "danger"], "note": "", "last": "2026-09-02"}, {"code": "90-R0000462", "grade": "Valox 420SE0-BK1066 Black", "old": "", "inv": 10075.0, "rmean": 266.7, "fmean": 266.7, "pred": 266.7, "ml": 37.8, "status": "ok", "suggest": 0, "heat": ["ok", "ok", "ok", "ok", "ok", "ok"], "note": "", "last": "2026-09-10"}, {"code": "(未录料号)", "grade": "Noryl N300XD-701 Black", "old": "", "inv": 13125.0, "rmean": 10.0, "fmean": 10.0, "pred": 10.0, "ml": 1312.5, "status": "ok", "suggest": 0, "heat": ["ok", "ok", "ok", "ok", "ok", "ok"], "note": "", "last": "2026-07-15"}];
-// ===== 时间点净库存（按周选择）=====
-const SP_WEEK0 = new Date(2026, 8, 21); // 2026-09-21 周一
-const SP_INTRANSIT = {
-  '216-015034-001H': [['2026-09-21',8000],['2026-10-19',8000],['2026-10-20',8000],['2026-10-23',8000]],
-  '90-R0000115': [['2026-09-21',8000],['2026-10-21',8000],['2026-10-27',8000],['2026-11-06',8000]],
-  '90-R0000173': [['2026-09-20',3075],['2026-11-23',3750],['2027-01-04',3750]],
-  '90-00000604': [['2026-09-23',2400],['2026-10-26',2400]]
-};
-const SP_CONSUME = {
-  '216-015034-001H': {L:25000, J:2000, note:'L 25吨/月；J 1-2吨/月 取上限2吨'},
-  '90-R0000115': {L:10000, J:3000, note:'L 10吨/月；J 3吨/月'},
-  '90-R0000173': {L:3350, J:0, note:'仅L客户，须提前3月以上订货'},
-  '90-00000604': {L:1866.7, J:0, note:'仅L客户'},
-  '90-R0000352': {L:441.7, J:0, note:'仅L客户'},
-  '90-R0000151': {L:5000, J:0, note:'L约5吨/月（苏州分货）'},
-  '90-R0000125': {L:1383.3, J:0, note:'分货表未列，按订单月均参考'},
-  '90-R0000258': {L:560, J:0, note:'苏州分货，按订单月均参考'},
-  '90-R0000154': {L:750, J:0, note:'仅L客户'},
-  '90-R0000001': {L:93.3, J:0, note:'仅L客户'},
-  '90-R0000462': {L:266.7, J:0, note:'不用备货，仅参考'}
-};
-const SP_WEEKS = 26;
-function spWeekLabel(i){
-  var d0 = new Date(SP_WEEK0.getTime() + i*7*86400000);
-  var d1 = new Date(d0.getTime() + 6*86400000);
-  function f(d){ return (d.getMonth()+1)+'/'+d.getDate(); }
-  return f(d0)+'~'+f(d1);
-}
-function initSpWeekSel(){
-  var sel = document.getElementById('spWeekSel');
-  if(!sel || sel.options.length > 1) return;
-  sel.innerHTML = '';
-  for(var i=0;i<=SP_WEEKS;i++){
-    var o = document.createElement('option');
-    o.value = i;
-    o.textContent = '第'+i+'周 ('+spWeekLabel(i)+')';
-    sel.appendChild(o);
-  }
-}
-function renderNetStock(){
-  initSpWeekSel();
-  var i = parseInt(document.getElementById('spWeekSel').value || '0', 10);
-  var end = new Date(SP_WEEK0.getTime() + (i+1)*7*86400000 - 1);
-  document.getElementById('spWeekRange').textContent = spWeekLabel(i);
-  var d = STOCKPLAN_DATA;
-  var h = '';
-  d.forEach(function(x){
-    var c = SP_CONSUME[x.code] || {L:0, J:0, note:''};
-    var lUse = (c.L||0)/4.345*(i+1);
-    var jUse = (c.J||0)/4.345*(i+1);
-    var arrive = 0;
-    (SP_INTRANSIT[x.code]||[]).forEach(function(t){
-      var dt = new Date(t[0]);
-      if(dt <= end) arrive += t[1];
-    });
-    var net = (x.inv||0) + arrive - lUse - jUse;
-    var monthUse = (c.L||0) + (c.J||0);
-    var ml = monthUse > 0 ? net/monthUse : (net >= 0 ? null : 0);
-    var st = monthUse <= 0 ? (net >= 0 ? 'ok' : 'danger') : (ml >= 4 ? 'ok' : (ml >= 2 ? 'warn' : 'danger'));
-    var stTxt = {ok:'充足', warn:'关注', danger:'缺口'}[st];
-    var mlTxt = monthUse <= 0 ? (net >= 0 ? '—' : '负值') : (net < 0 ? '负值' : ml.toFixed(1));
-    h += '<tr>' +
-      '<td><span class="sp-flag '+st+'"></span><span class="sp-grade '+st+'">'+stTxt+'</span></td>' +
-      '<td><b>'+x.code+'</b></td>' +
-      '<td>'+x.grade+'</td>' +
-      '<td>'+Math.round(x.inv||0).toLocaleString()+'</td>' +
-      '<td>'+Math.round(arrive).toLocaleString()+'</td>' +
-      '<td>'+Math.round(lUse).toLocaleString()+'</td>' +
-      '<td>'+Math.round(jUse).toLocaleString()+'</td>' +
-      '<td><b style="color:'+(net<0?'#c62828':'#1f2d3d')+'">'+Math.round(net).toLocaleString()+'</b></td>' +
-      '<td>'+mlTxt+'</td>' +
-      '<td><span class="sp-note2">'+(c.note||'')+'</span></td>' +
-      '</tr>';
-  });
-  document.getElementById('spNetBody').innerHTML = h;
-}
-function switchSpView(v){
-  var b = document.getElementById('btnViewBase');
-  var n = document.getElementById('btnViewNet');
-  if(v === 'net'){
-    n.className = 'sp-view-btn active';
-    b.className = 'sp-view-btn';
-    document.getElementById('spNetPanel').style.display = 'block';
-    document.getElementById('spBaseTblWrap').style.display = 'none';
-    renderNetStock();
-  } else {
-    b.className = 'sp-view-btn active';
-    n.className = 'sp-view-btn';
-    document.getElementById('spNetPanel').style.display = 'none';
-    document.getElementById('spBaseTblWrap').style.display = 'block';
-  }
-}
-const SP_MONTHS = ['10月','11月','12月','1月','2月','3月'];
-const LEAD_MONTHS = 2;
-function spLead(ml){
-  if(ml === null) return '—';
-  if(ml < LEAD_MONTHS) return '立即';
-  var m = Math.ceil(ml - LEAD_MONTHS + 0.01);
-  return m + '个月后';
-}
-function renderStockPlan(){
-  var d = STOCKPLAN_DATA;
-  var cnt = {danger:0, warn:0, ok:0};
-  d.forEach(function(x){ cnt[x.status] = (cnt[x.status]||0) + 1; });
-  var sum = '<div class="sp-sum sp-danger"><b>'+ (cnt.danger||0) +'</b><span>缺口(需立即备货)</span></div>' +
-            '<div class="sp-sum sp-warn"><b>'+ (cnt.warn||0) +'</b><span>关注(2个月内下单)</span></div>' +
-            '<div class="sp-sum sp-ok"><b>'+ (cnt.ok||0) +'</b><span>充足(暂不需备货)</span></div>';
-  document.getElementById('spSummary').innerHTML = sum;
-  var order = {danger:0, warn:1, ok:2, nodata:3};
-  var rows = d.slice().sort(function(a,b){ return order[a.status]-order[b.status] || b.pred-a.pred; });
-  var html = '';
-  rows.forEach(function(x){
-    var stTxt = {danger:'缺口', warn:'关注', ok:'充足', nodata:'无数据'}[x.status];
-    var heat = x.heat.map(function(h,i){
-      var c = {ok:'ok', warn:'warn', low:'low', danger:'danger'}[h];
-      return '<i class="'+c+'" title="'+SP_MONTHS[i]+'">'+SP_MONTHS[i]+'</i>';
-    }).join('');
-    var sug = x.suggest > 0 ? '<span class="sp-suggest">'+ x.suggest.toLocaleString() +'</span>'
-                            : '<span class="sp-suggest zero">0</span>';
-    html += '<tr>' +
-      '<td><span class="sp-flag '+x.status+'"></span><span class="sp-grade '+x.status+'">'+stTxt+'</span></td>' +
-      '<td><b>'+x.code+'</b>'+(x.old?'<span class="sp-old">'+x.old+'</span>':'')+'</td>' +
-      '<td>'+x.grade+(x.note?'<span class="sp-note2">⚠ '+x.note+'</span>':'')+'</td>' +
-      '<td>'+x.inv.toLocaleString()+'</td>' +
-      '<td><b>'+x.pred.toLocaleString()+'</b></td>' +
-      '<td>'+x.fmean.toLocaleString()+'</td>' +
-      '<td>'+(x.ml===null?'—':x.ml)+'</td>' +
-      '<td>'+sug+'</td>' +
-      '<td>'+spLead(x.ml)+'</td>' +
-      '<td><div class="sp-heat">'+heat+'</div></td>' +
-      '</tr>';
-  });
-  document.getElementById('spBody').innerHTML = html;
-}
-function goStockPlan(){
+
+// ===== A.Space 数据 =====
+var SECRET_PASSWORD = "1111";
+// [编号, 日期, 客户名称, 项目名称, TIER1, 最终用户, 分类, 材料种类, 牌号, 供应商, 月用量, 项目阶段, 试模时间, 量产时间, 报价原文, 报价, 产地, MOQ, 交期, 备注]
+var QUOTE_DATA = [{"编号": "KH-0001", "日期": "2026-04-25", "客户名称": "嘉兴德鑫电子科技有限公司", "项目名称": "GAC X2D平台车型，电机控制器熔断器底座", "TIER1": "", "最终用户": "广汽", "分类": "Auto E&E", "材料种类": "PPS", "牌号": "G4024T", "供应商": "Envalior", "月用量": "", "项目阶段": "T0", "试模时间": "", "量产时间": "27年年初", "报价原文": "G4024T 44元/KG未税", "报价": 44.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0002", "日期": "2026-04-26", "客户名称": "苏州铭青机电有限公司", "项目名称": "", "TIER1": "立讯", "最终用户": "安波福", "分类": "Auto E&E", "材料种类": "PA", "牌号": "AKV30FN04EF", "供应商": "Envalior", "月用量": "", "项目阶段": "T0", "试模时间": "", "量产时间": "", "报价原文": "AKV30FN04EF 38.5", "报价": 38.5, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0003", "日期": "2026-04-23", "客户名称": "芜湖铭毅智能科技有限公司", "项目名称": "华为的HVPRM1000系列高压连接器", "TIER1": "立讯", "最终用户": "华为", "分类": "Auto E&E", "材料种类": "PA", "牌号": "AKV30FN04EF", "供应商": "Envalior", "月用量": "", "项目阶段": "T0", "试模时间": "", "量产时间": "", "报价原文": "38.5未税", "报价": 38.5, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0004", "日期": "2026-04-23", "客户名称": "江苏泽润新能科技股份有限公司湖北分公司", "项目名称": "前标立标（发光星标），下一代E级", "TIER1": "洛坦", "最终用户": "", "分类": "Auto E&E", "材料种类": "PPS", "牌号": "G4024T", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "G4024T 44元/KG未税", "报价": 44.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0005", "日期": "2026-04-23", "客户名称": "镇江仕德汽车零部件有限公司", "项目名称": "特斯拉的项目", "TIER1": "伟速达", "最终用户": "", "分类": "Auto E&E", "材料种类": "PC-ABS", "牌号": "A35-105", "供应商": "Trinseo", "月用量": "15/50一年", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "26/28未税", "报价": 26.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0006", "日期": "2026-03-25", "客户名称": "华域视觉科技（常熟）有限公司", "项目名称": "E0V、M1FA", "TIER1": "", "最终用户": "奇瑞路虎", "分类": "Auto E&E", "材料种类": "PMMA", "牌号": "11G3、0292", "供应商": "成都真彩", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "明灰32/黑色31 未税", "报价": 31.0, "产地": "", "MOQ": "", "交期": "", "备注": "5月明灰备货两吨，5月10日左右到货600kg灰色，黑色有库存"}, {"编号": "KH-0007", "日期": "2026-06-03", "客户名称": "苏州邦杨精密模塑有限公司", "项目名称": "汽车机顶盒按键", "TIER1": "湖北大理", "最终用户": "", "分类": "", "材料种类": "PBT", "牌号": "B3235 S800", "供应商": "Envalior", "月用量": "3吨", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "B3235 19.5未税", "报价": 19.5, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0008", "日期": "2026-05-27", "客户名称": "江苏辉能有限公司", "项目名称": "断路器", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "PC", "牌号": "500R-131、945-NC", "供应商": "Sabic", "月用量": "1吨", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "945、500R 27 未税", "报价": 27.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0009", "日期": "2026-05-19", "客户名称": "苏州瓦诺科技有限公司", "项目名称": "低压连接器", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "PC", "牌号": "945-701 BLACK", "供应商": "Sabic", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "945-701 BLACK  未税30", "报价": 30.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0010", "日期": "2026-06-08", "客户名称": "苏州祥龙嘉业电子科技股份有限公司", "项目名称": "TYPE-C接口", "TIER1": "Apple", "最终用户": "Apple", "分类": "", "材料种类": "PA46", "牌号": "HFX31S WT94005", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "99未税", "报价": 99.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0011", "日期": "2026-06-16", "客户名称": "宣城立讯", "项目名称": "", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "PA9T", "牌号": "BG4300T", "供应商": "可乐丽", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "78未税", "报价": 78.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0012", "日期": "2026-06-16", "客户名称": "宣城立讯", "项目名称": "FAKRA连接器", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "PPO", "牌号": "N300X", "供应商": "Sabic", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "N300X-CC\n未税56.73 MOQ:1000kg\n未税59.73 MOQ:500kg\n本色，未税46.", "报价": 56.73, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0013", "日期": "2026-06-26", "客户名称": "盛威新创技术(杭州)有限责任公司", "项目名称": "PCB面板零件", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "", "牌号": "K224-G6 NA99001 、2807 550115 、F-X9190 NA99001、K 224-G6 BK00001 、K225-KS  NA99001", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "K224-G6 NA99001  含税24；2807 550115 含税21；F-X9190 NA99001 含税28；K224-G6 BK00001 含税23；K225-KS  NA99001 含税43", "报价": 24.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0014", "日期": "2026-07-10", "客户名称": "无锡捷进精机有限公司", "项目名称": "零件包胶", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "TPC", "牌号": "EL250-08", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "EL250-08，含税65元/KG", "报价": 65.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0015", "日期": "2026-07-15", "客户名称": "南通信昌线缆", "项目名称": "除颤仪抽线", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "TPV", "牌号": "3170", "供应商": "特诺尔埃佩斯", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "3170，本色，未税60元/KG", "报价": 60.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0016", "日期": "2026-07-27", "客户名称": "乐清市澳美达电器有限公司", "项目名称": "", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "PPS", "牌号": "MH540", "供应商": "明泉", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "未税31元/KG", "报价": 31.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0017", "日期": "2026-07-28", "客户名称": "瀚乐电子机械(南京)有限公司", "项目名称": "洗衣机门锁", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "PC", "牌号": "PC 1026NI-G30", "供应商": "维邦宝研", "月用量": "4吨", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "PC 1026NI-G30 23含税", "报价": 23.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0018", "日期": "2026-07-29", "客户名称": "南通曼博莱", "项目名称": "薄膜开关", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "POM", "牌号": "Duracon M90-44 CD3068 Black", "供应商": "大赛路", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "报价含税23.5元/KG MOQ：1吨", "报价": 23.5, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0019", "日期": "2026-08-09", "客户名称": "江苏华富精密高速模具工程技术研究有限公司", "项目名称": "FAKRA连接器", "TIER1": "天海", "最终用户": "", "分类": "", "材料种类": "PPO", "牌号": "Noryl N300XD", "供应商": "Sabic", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "N300XD CC 63 元/KG 含税 500KG\n                    60 元/KG 含税 1000KG\n本色、黑色   51 元/KG 含税 500KG\n                    48 元/KG 含税 1000KG\n色母   RAL 6027 203.4元/KG 含税 25KG", "报价": 63.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0020", "日期": "2026-04-23", "客户名称": "芜湖铭毅智能科技有限公司", "项目名称": "FAKRA连接器", "TIER1": "立讯", "最终用户": "", "分类": "Auto E&E", "材料种类": "PPO", "牌号": "Noryl N300XD", "供应商": "Sabic", "月用量": "", "项目阶段": "T0", "试模时间": "", "量产时间": "", "报价原文": "N300X-CC\n未税56.73元 MOQ:1000kg；未税59.73元 MOQ:500kg\n本色，未税46元", "报价": 56.73, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0021", "日期": "2026-04-23", "客户名称": "芜湖铭毅智能科技有限公司", "项目名称": "泰科的连接器", "TIER1": "立讯", "最终用户": "", "分类": "Auto E&E", "材料种类": "PA", "牌号": "AKV30FN04EF", "供应商": "维邦宝研", "月用量": "3吨", "项目阶段": "T0", "试模时间": "", "量产时间": "", "报价原文": "A1KVG5 BK80001 26.5未税", "报价": 26.5, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0022", "日期": "2026-07-28", "客户名称": "瀚乐电子机械(南京)有限公司", "项目名称": "洗衣机门锁", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "PA", "牌号": "PA6 4116-G30S", "供应商": "维邦宝研", "月用量": "4吨", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "PA6 4116-G30S 24含税", "报价": 24.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0023", "日期": "2026-04-23", "客户名称": "镇江仕德汽车零部件有限公司", "项目名称": "特斯拉的项目", "TIER1": "伟速达", "最终用户": "", "分类": "Auto E&E", "材料种类": "PC-ABS", "牌号": "3570LC", "供应商": "维邦宝研", "月用量": "15/50一年", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "3570LC 17未税", "报价": 17.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0024", "日期": "2026-04-23", "客户名称": "镇江仕德汽车零部件有限公司", "项目名称": "特斯拉的项目", "TIER1": "伟速达", "最终用户": "", "分类": "Auto E&E", "材料种类": "PA", "牌号": "K224-HG8", "供应商": "维邦宝研", "月用量": "15/50一年", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "K224-PG8 BK25018报价24未税", "报价": 24.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0025", "日期": "2026-04-23", "客户名称": "镇江仕德汽车零部件有限公司", "项目名称": "特斯拉的项目", "TIER1": "伟速达", "最终用户": "", "分类": "Auto E&E", "材料种类": "PC-ABS", "牌号": "T45-PG", "供应商": "Trinseo", "月用量": "15/50一年", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "T45PG报价含税30.3 元", "报价": 30.3, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0026", "日期": "2026-07-10", "客户名称": "无锡捷进精机有限公司", "项目名称": "零件包胶", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "TPC", "牌号": "EL550-08", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "EL550-08 含税75元/公斤", "报价": 75.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0027", "日期": "2026-08-21", "客户名称": "缔久高科技材料（南通）有限公司", "项目名称": "高频高速", "TIER1": "立讯", "最终用户": "", "分类": "", "材料种类": "PPO", "牌号": "N300XD", "供应商": "Sabic", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "Noryl N300XD-111 Natural\n\n未税46元/公斤\n\n包装方式：25公斤/包，1000公斤/托", "报价": 46.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0028", "日期": "2026-08-21", "客户名称": "缔久高科技材料（南通）有限公司", "项目名称": "高频高速", "TIER1": "立讯", "最终用户": "", "分类": "", "材料种类": "PPA", "牌号": "ForTii TX1 NAT Natural", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "FoTii TX1  配色价格未税84元/公斤\nForTii TX1 NAT本色未税71.8元/公斤", "报价": 84.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0029", "日期": "2026-08-24", "客户名称": "嘉兴德鑫电子科技有限公司", "项目名称": "", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "PPS", "牌号": "G3080R", "供应商": "Envalior", "月用量": "", "项目阶段": "T0", "试模时间": "", "量产时间": "27年年初", "报价原文": "全部未税价格\n3080R 55元/KG 1吨起订,56元/KG 500KG起订。", "报价": 55.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0030", "日期": "2026-08-25", "客户名称": "昆山新鸿顺密封技术有限公司", "项目名称": "高压连接器", "TIER1": "立讯", "最终用户": "", "分类": "", "材料种类": "PA66", "牌号": "AKV30FN04UF DUS867", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "AKV30FN04UF 本色 43.5元/KG 未税；\nAKV30FN04UF 橙色 38.3元/KG 未税", "报价": 43.5, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0031", "日期": "2026-08-25", "客户名称": "昆山新鸿顺密封技术有限公司", "项目名称": "高压连接器", "TIER1": "立讯", "最终用户": "", "分类": "", "材料种类": "PA66", "牌号": "B 50H1 BLACK LBO 129", "供应商": "BASF", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "无", "报价": "", "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0032", "日期": "2026-08-25", "客户名称": "江苏辉能有限公司", "项目名称": "断路器", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "PC", "牌号": "500R-131、945-NC", "供应商": "Sabic", "月用量": "1", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "945-NC、500R-131 24.2元含税\nMOQ: 1 吨含税24元/公斤\nMOQ: 5 吨含税23.7元/公斤\n成本：华东调货22.2元含税", "报价": 24.2, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0034", "日期": "2026-08-27", "客户名称": "苏州铭青机电有限公司", "项目名称": "继电器", "TIER1": "泰科", "最终用户": "", "分类": "", "材料种类": "PBT", "牌号": "420", "供应商": "Sabic", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "36元/KG 未税 MOQ：50KG", "报价": 36.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0035", "日期": "2026-08-27", "客户名称": "苏州铭青机电有限公司", "项目名称": "继电器", "TIER1": "泰科", "最终用户": "", "分类": "", "材料种类": "PBT", "牌号": "Valox DR48-BK1066 Black", "供应商": "Sabic", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "含税38元/KG，其中多2元快递费", "报价": 38.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0036", "日期": "2026-08-27", "客户名称": "苏州铭青机电有限公司", "项目名称": "继电器", "TIER1": "泰科", "最终用户": "", "分类": "", "材料种类": "PA46", "牌号": "PA46 Stanyl 46HF5040", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "46HF5040黑色\n未税93元/公斤 MOQ:1000KG", "报价": 93.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0037", "日期": "2026-09-07", "客户名称": "江苏科成电子有限公司", "项目名称": "石英晶体基座", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "PEEK", "牌号": "中研纯料A牌", "供应商": "", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "12*20*145棒材尺寸，厚度20mm板材，价格21.5元/根，含税；", "报价": 21.5, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0038", "日期": "2026-09-07", "客户名称": "东莞共益塑胶", "项目名称": "代理商", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "PA", "牌号": "100H", "供应商": "特诺尔埃佩斯", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "含税42，MOQ 1吨；新加坡产，正常交期10周左右", "报价": 42.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0039", "日期": "2026-09-11", "客户名称": "宣城立讯", "项目名称": "", "TIER1": "舍佛勒", "最终用户": "", "分类": "", "材料种类": "PPS", "牌号": "G3080R", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "G3080R报未税55元 MOQ:1000KG", "报价": 55.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0040", "日期": "2026-09-11", "客户名称": "吉安杨溪汽车电气有限公司", "项目名称": "连接器", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "PA", "牌号": "Akulon AKV30FN04UF 901510 DUS867 Black", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "未税42.5元/公斤M0Q:800KG；未税44.5元/公斤M0Q:20KG", "报价": 42.5, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0041", "日期": "2026-09-16", "客户名称": "无锡捷进精机有限公司", "项目名称": "定子包胶", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "TPC", "牌号": "ET3155D NT005", "供应商": "八倍新材", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "成本32元含税", "报价": 32.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0042", "日期": "2026-09-21", "客户名称": "苏州铭青机电有限公司", "项目名称": "立讯产品预研", "TIER1": "立讯", "最终用户": "", "分类": "", "材料种类": "PA", "牌号": "Akulon AKV30FN04UF DUS867 橙色", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "含税43.5元", "报价": 43.5, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0043", "日期": "2026-09-22", "客户名称": "苏州铭青机电有限公司", "项目名称": "TE", "TIER1": "立讯", "最终用户": "", "分类": "", "材料种类": "LCP", "牌号": "LCP E130i BK210P", "供应商": "宝理", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "没货分", "报价": "", "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0044", "日期": "2026-09-22", "客户名称": "苏州铭青机电有限公司", "项目名称": "", "TIER1": "立讯", "最终用户": "", "分类": "", "材料种类": "PBT", "牌号": "Pocan B4225-NC", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "", "报价": "", "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0045", "日期": "2026-09-23", "客户名称": "苏州铭青机电有限公司", "项目名称": "高压连接器，替代UF", "TIER1": "泰科", "最终用户": "", "分类": "", "材料种类": "PA66", "牌号": "A 60G1 V30 OR16655", "供应商": "BASF", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "报不了价格", "报价": "", "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0046", "日期": "2026-09-24", "客户名称": "嘉兴德鑫电子科技有限公司", "项目名称": "", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "PPS", "牌号": "G4024T", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "G4024T 44.3元/KG 1吨起订；3080R 55元/KG 1吨起订,56元/KG 500KG起订。全部未税价格", "报价": 44.3, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0047", "日期": "2026-10-08", "客户名称": "苏州铭青机电有限公司", "项目名称": "安波福", "TIER1": "安波福", "最终用户": "", "分类": "", "材料种类": "PBT", "牌号": "B4300G6", "供应商": "BASF", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "B4300G6 NC  100公斤 未税26.3元/公斤；B4300G6 BK05110 125公斤 未税22.3元/公斤，利润率超过30%", "报价": 26.3, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0048", "日期": "2026-10-13", "客户名称": "苏州市源动未来科技有限公司", "项目名称": "", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "PA46", "牌号": "TW200F6", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "报价90，后期量大88含税", "报价": 88.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0049", "日期": "2026-10-14", "客户名称": "苏州万店掌网络科技有限公司", "项目名称": "自营", "TIER1": "自营", "最终用户": "", "分类": "", "材料种类": "PC", "牌号": "945-701 BLACK", "供应商": "Sabic", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "945-701 BLACK ，28含税，成本23含税", "报价": 23.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0050", "日期": "2026-10-14", "客户名称": "芜湖铭毅智能科技有限公司", "项目名称": "", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "PA9T", "牌号": "N3U41G6 R01 UN /LS BK", "供应商": "BASF", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "N3U41G6 R01 UN /LS BK \n含税运105.5/KG，MOQ 3吨。上海凡云报价95含税，三吨起订", "报价": 105.5, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0051", "日期": "2026-10-15", "客户名称": "江苏华富精密高速模具工程技术研究有限公司", "项目名称": "FAKRA连接器", "TIER1": "天海", "最终用户": "", "分类": "", "材料种类": "PPO", "牌号": "Noryl N300XD", "供应商": "Sabic", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "N300XD CC 63 元/KG 含税 500KG\n                    60 元/KG 含税 1000KG\n本色、黑色   51 元/KG 含税 500KG\n                    48 元/KG 含税 1000KG\n色母   RAL 6027 203.4元/KG 含税 25KG；其余色母价格照样，由广州供货，我们来出", "报价": 63.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0052", "日期": "2026-10-16", "客户名称": "US Farathane", "项目名称": "白特荣做的欧洲通用的汽车项目", "TIER1": "通用", "最终用户": "", "分类": "", "材料种类": "", "牌号": "Pulse 2100LG IP7700376", "供应商": "Trinseo", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "31.50RMB/Kg,未税到货上海", "报价": 31.5, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0053", "日期": "2026-10-20", "客户名称": "培奇爱汽车配件(盐城)有限公司", "项目名称": "车门限位器", "TIER1": "悦达起亚", "最终用户": "", "分类": "", "材料种类": "PA46", "牌号": "Stanyl TW341-B BLK Black", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "Stanyl TW341-B BLK Black\n含税94元/公斤 MOQ 1吨\n预付款", "报价": 94.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0014", "日期": "2026-11-05", "客户名称": "无锡捷进精机有限公司", "项目名称": "零件包胶", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "TPC", "牌号": "EL250-08", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "EL250-08，含税65元/KG；整托800kg，含税64.2元/kg", "报价": 65.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0055", "日期": "2026-11-09", "客户名称": "昆山仂凯电子", "项目名称": "", "TIER1": "上海移远", "最终用户": "", "分类": "", "材料种类": "ASA-PC", "牌号": "Geloy XP4034-BK1041 Black", "供应商": "Sabic", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "含税38元/公斤 for 25 kg\n含税34元/公斤 for 1000 kg。", "报价": 38.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0056", "日期": "2026-11-09", "客户名称": "苏州耀辉精密", "项目名称": "", "TIER1": "傲乐", "最终用户": "", "分类": "", "材料种类": "", "牌号": "Ryton R-7-120BL", "供应商": "苏威", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "Ryton R-7-120BL 黑色 ：含税58元/公斤 for 100kg", "报价": 58.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0057", "日期": "2026-11-11", "客户名称": "苏州铭青机电有限公司", "项目名称": "连接器", "TIER1": "泰科", "最终用户": "", "分类": "", "材料种类": "PA6", "牌号": "Ultramid B3EG6 BK00564 Black", "供应商": "BASF", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "一包含税20.5元/公斤\n500公斤含税18.2元/公斤", "报价": 20.5, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0058", "日期": "2026-11-13", "客户名称": "宣城立讯", "项目名称": "FAKRA 连接器", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "PA46", "牌号": "Stanyl TS200F6 00001 Natural", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "未税86元/公斤", "报价": 86.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0059", "日期": "2026-11-16", "客户名称": "无锡捷进精机有限公司", "项目名称": "定子铁芯槽内包塑", "TIER1": "博格华纳", "最终用户": "", "分类": "", "材料种类": "PA66", "牌号": "Akulon AKV30HRH2.0D 900111 Black", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "未税18", "报价": 18.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0060", "日期": "2026-11-16", "客户名称": "苏州祥龙嘉业电子科技股份有限公司", "项目名称": "", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "PA46", "牌号": "ForTii TX1 BLK", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "ForTii TX1 BLK  黑色未税75.8元/公斤。", "报价": 75.8, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0061", "日期": "2026-11-16", "客户名称": "无锡捷进精机有限公司", "项目名称": "定子铁芯槽内包塑", "TIER1": "博格华纳", "最终用户": "", "分类": "", "材料种类": "PA66", "牌号": "polywing A1NG6", "供应商": "宝研", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "成本18含税或者17.5含税", "报价": 17.5, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0062", "日期": "2026-11-18", "客户名称": "苏州耀辉精密模具有限公司", "项目名称": "", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "PC", "牌号": "940-701", "供应商": "Sabic", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "26含税", "报价": 26.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0063", "日期": "2026-11-00", "客户名称": "‌上海众安电器塑料有限公司", "项目名称": "", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "PA66", "牌号": "LANXESS DURETHAN BKV30H2.0", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "材料：PA6 GF30 HB   材料代码：M4127002\n1、LANXESS DURETHAN BKV30H2.0\n  年用量：180吨       生命周期：6年", "报价": "", "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0064", "日期": "2026-11-20", "客户名称": "苏州耀辉精密模具有限公司", "项目名称": "", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "PC", "牌号": "Makrolon LED2245 000000 Natural", "供应商": "Covestro", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "Makrolon LED2245 000000 Natural \n华东自提含税29.8元/KG", "报价": 29.8, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0065", "日期": "2026-11-23", "客户名称": "克模塑胶（上海）有限公司", "项目名称": "AML的新项目，用于空调出风口组件", "TIER1": "AML艾默林汽车活动组件（无锡）有限公司", "最终用户": "", "分类": "", "材料种类": "PA46", "牌号": "Stanyl TW276F6H BK00001", "供应商": "Envalior", "月用量": "月用量1~2T,", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "未税单价：130元/kg\nMOQ：1250kg\nEcho报价的", "报价": 130.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0066", "日期": "", "客户名称": "好润精密模具（江苏）有限公司", "项目名称": "", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "", "牌号": "Durethan BKV30FN02UF 901510 Black", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "含税37元/KG，月结60天，收3个月银行承兑", "报价": 37.0, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0067", "日期": "", "客户名称": "昆山维肯恩电子科技有限公司", "项目名称": "", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "", "牌号": "Xytron G3080R BK00001 Black", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "含税RMB51.16/kg，100kg", "报价": 51.16, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0068", "日期": "", "客户名称": "昆山维肯恩电子科技有限公司", "项目名称": "", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "", "牌号": "Xytron G4024T BK00001 Black", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "含税RMB50.16/kg，500kg\n含税RMB49/kg，1000kg", "报价": 50.16, "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0069", "日期": "2026-11-27", "客户名称": "昆山安费诺正日电子有限公司", "项目名称": "", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "PA46", "牌号": "Stanyl TS250F6D 9B0040 Black", "供应商": "Envalior", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "", "报价": "", "产地": "", "MOQ": "", "交期": "", "备注": ""}, {"编号": "KH-0070", "日期": "", "客户名称": "华睿智连（南通）电子科技有限公司", "项目名称": "", "TIER1": "", "最终用户": "", "分类": "", "材料种类": "", "牌号": "Celcon LW90 Natural", "供应商": "", "月用量": "", "项目阶段": "", "试模时间": "", "量产时间": "", "报价原文": "", "报价": "", "产地": "", "MOQ": "", "交期": "", "备注": ""}];
+
+function goSecret(){
   document.getElementById("homePage").style.display = "none";
-  document.getElementById("stockplanPage").style.display = "flex";
-  renderStockPlan();
+  document.getElementById("secretPage").style.display = "flex";
+  var inp = document.getElementById("secretPwd");
+  inp.value = "";
+  document.getElementById("secretError").classList.remove("show");
+  document.getElementById("secretGate").style.display = "block";
+  document.getElementById("secretContent").style.display = "none";
+  setTimeout(function(){ inp.focus(); }, 200);
 }
-function backFromStockPlan(){
-  document.getElementById("stockplanPage").style.display = "none";
+
+function backFromSecret(){
+  document.getElementById("secretPage").style.display = "none";
+  document.getElementById("secretPwd").value = "";
+  document.getElementById("secretError").classList.remove("show");
+  document.getElementById("secretGate").style.display = "block";
+  document.getElementById("secretContent").style.display = "none";
   document.getElementById("homePage").style.display = "flex";
 }
+
+// 与一级密码一致：输入即校验，正确直接进入；支持回车提交
+function verifySecret(byEnter){
+  var el = document.getElementById("secretPwd");
+  if(!el) return;
+  if(el.value === SECRET_PASSWORD){
+    document.getElementById("secretGate").style.display = "none";
+    document.getElementById("secretError").classList.remove("show");
+    document.getElementById("secretContent").style.display = "block";
+    document.getElementById("secretKw").value = "";
+    document.getElementById("quoteSort").value = "date";
+    renderQuotes();
+    return;
+  }
+  if(byEnter || el.value.length >= SECRET_PASSWORD.length){
+    var err = document.getElementById("secretError");
+    if(err){ err.textContent = "请重试"; err.classList.add("show"); }
+    el.value = "";
+    el.classList.add("shake");
+    setTimeout(function(){ el.classList.remove("shake"); }, 380);
+  }
+}
+
+function quoteAmt(v){
+  if(v === "" || v === null || v === undefined) return "";
+  var n = Number(v);
+  if(isNaN(n)) return "";
+  return String(Math.round(n * 100) / 100);
+}
+
+function toggleQuoteRow(el){
+  if(el.classList.contains("open")){ el.classList.remove("open"); }
+  else{ el.classList.add("open"); }
+}
+
+function renderQuotes(){
+  var kwEl = document.getElementById("secretKw");
+  var kw = (kwEl && kwEl.value ? kwEl.value : "").trim().toLowerCase();
+  var sort = document.getElementById("quoteSort").value;
+  var rows = [];
+  for(var i = 0; i < QUOTE_DATA.length; i++){
+    var r = QUOTE_DATA[i];
+    if(kw){
+      var hay = ((r["客户名称"] || "") + " " + (r["牌号"] || "")).toLowerCase();
+      if(hay.indexOf(kw) === -1) continue;
+    }
+    rows.push(r);
+  }
+  rows.sort(function(a, b){
+    if(sort === "amountDesc" || sort === "amountAsc"){
+      var va = quoteAmt(a["报价"]) === "" ? null : Number(a["报价"]);
+      var vb = quoteAmt(b["报价"]) === "" ? null : Number(b["报价"]);
+      if(va === null && vb === null) return 0;
+      if(va === null) return 1;
+      if(vb === null) return -1;
+      return sort === "amountDesc" ? vb - va : va - vb;
+    }
+    var da = a["日期"] || "", db = b["日期"] || "";
+    if(da === db) return 0;
+    if(!da) return 1;
+    if(!db) return -1;
+    return db > da ? 1 : -1;
+  });
+
+  var detailKeys = ["编号","项目名称","TIER1","最终用户","分类","材料种类","供应商","月用量","项目阶段","试模时间","量产时间","产地","MOQ","交期","备注"];
+  var html = "";
+  for(var j = 0; j < rows.length; j++){
+    var q = rows[j];
+    var amt = quoteAmt(q["报价"]);
+    var amtHtml = amt === "" ? '<span class="q-amount none">未报价</span>'
+                             : '<span class="q-amount"><i>¥</i>' + amt + '</span>';
+    var cells = "";
+    for(var k = 0; k < detailKeys.length; k++){
+      var key = detailKeys[k];
+      var val = q[key];
+      if(val === undefined || val === null || val === "") continue;
+      cells += '<div class="qd-cell"><div class="k">' + escHtml(key) + '</div><div class="v">' + escHtml(String(val)).replace(/\n/g, "<br>") + '</div></div>';
+    }
+    var raw = q["报价原文"] || "";
+    if(raw){
+      cells += '<div class="qd-raw">' + escHtml(raw) + '</div>';
+    }
+    html += '<div class="quote-item" onclick="toggleQuoteRow(this)">'
+      + '<div class="quote-row">'
+      +   '<div class="q-date">' + (q["日期"] ? escHtml(q["日期"]) : "日期未填") + '</div>'
+      +   '<div class="q-main"><div class="q-cust">' + (q["客户名称"] ? escHtml(q["客户名称"]) : "客户未填") + '</div>'
+      +     '<div class="q-grade">' + (q["牌号"] ? escHtml(q["牌号"]) : "牌号未填") + '</div></div>'
+      +   amtHtml
+      +   '<div class="q-arrow">▼</div>'
+      + '</div>'
+      + '<div class="quote-detail"><div class="qd-grid">' + cells + '</div></div>'
+      + '</div>';
+  }
+  var tip = document.getElementById("quoteTip");
+  var stat = '共 <b>' + QUOTE_DATA.length + '</b> 条记录';
+  if(!html){
+    document.getElementById("quoteList").innerHTML = '<div class="quote-empty">没有匹配的记录</div>';
+    tip.innerHTML = stat;
+  }else{
+    document.getElementById("quoteList").innerHTML = html;
+    tip.innerHTML = kw ? ('筛选出 <b>' + rows.length + '</b> 条 ｜ ' + stat) : stat;
+  }
+}
+
 
 </script>
 </body>
